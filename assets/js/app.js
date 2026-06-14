@@ -34,7 +34,10 @@
       fabric:'A fitted sleeveless waistcoat in washed linen with a rounded neck, covered buttons and a woven MAREN label.', care:'Machine wash cold or hand wash; line dry, cool iron.'},
     {id:'set',      name:'The Linen Set',        price:160, cat:'Sets',        g:'dress', blooms:'#E2D7C3', hero:true,  pal:['neutrals'], occ:['town','evening'],
       desc:'Waistcoat & mini skirt, washed linen', colors:[{name:'White',hex:'#FBF8F2'},{name:'Navy',hex:'#2A3B52',img:'set-navy'},{name:'Brown',hex:'#6E5847',img:'set-brown'}],
-      fabric:'The Linen Waistcoat and Mini Skirt as a tailored co-ord — washed linen, worn together. A saving on buying the pieces separately.', care:'Machine wash cold or hand wash; line dry, cool iron.'}
+      fabric:'The Linen Waistcoat and Mini Skirt as a tailored co-ord — washed linen, worn together. A saving on buying the pieces separately.', care:'Machine wash cold or hand wash; line dry, cool iron.'},
+    {id:'pants',    name:'The Fold-Over Flares', price:88,  cat:'Trousers',    g:'set',   blooms:'#8FB0CB', hero:false, pal:['neutrals','blues'], occ:['rest','town'],
+      desc:'Fold-over waist, wide flare, soft jersey', colors:[{name:'Navy',hex:'#2A3B52'},{name:'Brown',hex:'#6E5847',img:'pants-brown'}],
+      fabric:'Soft brushed jersey lounge flares with a fold-over waistband and a wide, drapey leg. Woven MAREN waistband label.', care:'Machine wash cold, line dry; do not tumble.'}
   ];
   var byId = {}; products.forEach(function(p){ byId[p.id]=p; });
 
@@ -59,7 +62,9 @@
     skirt:[{r:5,a:'Iris',t:'So easy',b:'Sits beautifully and the linen has lovely body. Goes with everything.',d:'May 2026'}],
     vest:[{r:5,a:'Margot',t:'Quietly perfect',b:'Lovely tailored shape over the linen shirt or alone. Feels special.',d:'May 2026'},
           {r:4,a:'Cleo',t:'Beautiful piece',b:'The fit is sharp. Sized up for a roomier layer.',d:'Apr 2026'}],
-    set:[{r:5,a:'Florence',t:'A whole look',b:'Wore the waistcoat and skirt together to a summer lunch — felt so pulled together.',d:'May 2026'}]
+    set:[{r:5,a:'Florence',t:'A whole look',b:'Wore the waistcoat and skirt together to a summer lunch — felt so pulled together.',d:'May 2026'}],
+    pants:[{r:5,a:'Maya',t:'Live in them',b:'The fold-over waist is so comfy and the flare is flattering. Softest jersey.',d:'May 2026'},
+           {r:4,a:'Lena',t:'So soft',b:'Lovely drape. A little long for me — I’m petite — but gorgeous.',d:'Apr 2026'}]
   };
   function reviewsFor(id){ return (store.reviews[id]||[]).concat(seededReviews[id]||[]); }
   function avgRating(id){ var rs=reviewsFor(id); if(!rs.length) return 0; return rs.reduce(function(n,x){return n+x.r;},0)/rs.length; }
