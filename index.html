@@ -28,6 +28,7 @@
     <div class="nav-right">
       <a href="#muses">The Muses</a>
       <a href="#world">World</a>
+      <button id="open-search" type="button" aria-label="Search">Search</button>
       <button id="open-wish" type="button">Saved <span class="count-badge" id="wish-count">(0)</span></button>
       <button id="open-cart" type="button">Bag <span class="count-badge" id="bag-count">(0)</span></button>
     </div>
@@ -336,6 +337,17 @@
 <div class="modal" id="sizeguide" role="dialog" aria-label="Size and fit guide">
   <div class="modal-card size-card"><button class="modal-close" data-close aria-label="Close">&times;</button>
     <div class="size-body" id="size-body"></div>
+  </div>
+</div>
+
+<div class="modal search-modal" id="searchmodal" role="dialog" aria-label="Search">
+  <div class="modal-card search-card">
+    <div class="search-head">
+      <span class="ic" aria-hidden="true">&#9906;</span>
+      <input id="search-input" type="search" placeholder="Search the collection…" autocomplete="off" aria-label="Search the collection">
+      <button class="modal-close" data-close aria-label="Close" style="position:static;">&times;</button>
+    </div>
+    <div class="search-results" id="search-results"></div>
   </div>
 </div>
 

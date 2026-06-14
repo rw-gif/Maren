@@ -38,6 +38,26 @@
   ];
   var byId = {}; products.forEach(function(p){ byId[p.id]=p; });
 
+  // Product imagery: drop assets/products/<id>.jpg (and -2/-3 for gallery).
+  function imgFor(id,n){ return 'assets/products/'+id+(n?('-'+n):'')+'.jpg'; }
+
+  // Seeded reviews (sample). Customer-submitted reviews merge from localStorage.
+  var seededReviews = {
+    shift:[{r:5,a:'Eleanor',t:'My summer uniform',b:'Wears beautifully and softens with every wash. I’ve nearly lived in it.',d:'May 2026'},
+           {r:4,a:'Priya',t:'Lovely linen',b:'Generous cut, crumples in the good way. Sized down for a neater fit.',d:'Apr 2026'}],
+    breton:[{r:5,a:'Marlowe',t:'The perfect stripe',b:'Heavy cotton, holds its shape and isn’t see-through. A keeper.',d:'May 2026'}],
+    knit:[{r:5,a:'Sofia',t:'So soft',b:'Cosy without being bulky, and the sky blue is just right.',d:'Mar 2026'},
+          {r:4,a:'Hana',t:'Lovely weight',b:'Warm for the evening drop in temperature. Comes in cream too.',d:'Apr 2026'}],
+    shirt:[{r:4,a:'Tom',t:'Great everyday shirt',b:'Crisp poplin, oversized but tidy, and iron-friendly.',d:'May 2026'}],
+    scallop:[{r:5,a:'Aria',t:'Evening favourite',b:'The scalloped edge is so pretty — structured and flattering.',d:'May 2026'}],
+    set:[{r:5,a:'Bea',t:'Slow-morning bliss',b:'Soft gingham and the scrunchie is a sweet touch.',d:'Apr 2026'}],
+    babydoll:[{r:4,a:'Niamh',t:'Pretty broderie',b:'Floaty and cool for hot days.',d:'May 2026'}],
+    pj:[{r:5,a:'Cleo',t:'Dreamy',b:'Brushed cotton is so soft — best night’s sleep.',d:'Mar 2026'}]
+  };
+  function reviewsFor(id){ return (store.reviews[id]||[]).concat(seededReviews[id]||[]); }
+  function avgRating(id){ var rs=reviewsFor(id); if(!rs.length) return 0; return rs.reduce(function(n,x){return n+x.r;},0)/rs.length; }
+  function starStr(n){ var f=Math.round(n); return '★★★★★'.slice(0,f)+'☆☆☆☆☆'.slice(0,5-f); }
+
   // Shoppable lookbook looks — hotspots map x/y% to catalogue ids.
   var looks = [
     {muse:'cami', k:'The Linen Shirt', t:'Clean lines, by the water.',
@@ -97,16 +117,19 @@
 
   /* ---------------- STORE (cart + wishlist) ---------------- */
   var store = {
-    cart: [], wish: [],
+    cart: [], wish: [], reviews: {},
     load:function(){
       try{ this.cart = JSON.parse(localStorage.getItem('maren_cart')) || []; }catch(e){ this.cart=[]; }
       try{ this.wish = JSON.parse(localStorage.getItem('maren_wish')) || []; }catch(e){ this.wish=[]; }
+      try{ this.reviews = JSON.parse(localStorage.getItem('maren_reviews')) || {}; }catch(e){ this.reviews={}; }
     },
     save:function(){
       try{ localStorage.setItem('maren_cart', JSON.stringify(this.cart));
-           localStorage.setItem('maren_wish', JSON.stringify(this.wish)); }catch(e){}
+           localStorage.setItem('maren_wish', JSON.stringify(this.wish));
+           localStorage.setItem('maren_reviews', JSON.stringify(this.reviews)); }catch(e){}
       render.counts(); render.cart(); render.wishHearts();
     },
+    addReview:function(id,rev){ if(!this.reviews[id]) this.reviews[id]=[]; this.reviews[id].unshift(rev); this.save(); },
     addToCart:function(id,size,color){
       var key = id+'|'+size+'|'+color;
       var line = this.cart.filter(function(l){return l.key===key;})[0];
@@ -168,9 +191,11 @@
             '<span class="label-tag">'+p.cat+'</span>'+
             '<button class="wish'+(store.inWish(p.id)?' on':'')+'" data-wish="'+p.id+'" aria-label="Save">'+(store.inWish(p.id)?'♥':'♡')+'</button>'+
             bloomSVG(p.blooms)+
+            '<img class="prod-img" src="'+imgFor(p.id)+'" alt="'+p.name+'" loading="lazy" onerror="this.remove()">'+
           '</div>'+
           '<div class="meta"><h3>'+p.name+'</h3><div class="price">'+money(p.price)+'</div>'+
-          '<div class="desc">'+p.desc+'</div></div>'+
+          '<div class="desc">'+p.desc+'</div>'+
+          '<div class="rating"><span class="stars">'+starStr(avgRating(p.id))+'</span><span class="cnt">('+reviewsFor(p.id).length+')</span></div></div>'+
           '<div class="card-actions">'+
             '<button class="btn" data-quick="'+p.id+'">Quick view</button>'+
             '<button class="btn solid" data-tryon="'+p.id+'">Try on</button>'+
@@ -189,7 +214,8 @@
       var row = $('#lb-products'); if(!row) return;
       row.innerHTML = products.filter(function(p){return p.hero;}).map(function(p){
         var sw = p.colors.map(function(c){return '<i style="background:'+c.hex+'"></i>';}).join('');
-        return '<article class="lp" data-quick="'+p.id+'"><div class="ph"><span class="mono">M</span></div>'+
+        return '<article class="lp" data-quick="'+p.id+'"><div class="ph"><span class="mono">M</span>'+
+          '<img class="prod-img" src="'+imgFor(p.id)+'" alt="'+p.name+'" loading="lazy" onerror="this.remove()"></div>'+
           '<div class="info"><h4>'+p.name+'</h4><div class="pr">'+money(p.price)+'</div>'+
           '<div class="sw">'+sw+'</div></div></article>';
       }).join('');
@@ -248,7 +274,7 @@
       else {
         body.innerHTML = store.cart.map(function(l){
           var p = byId[l.id];
-          return '<div class="line"><div class="thumb"><span>M</span></div>'+
+          return '<div class="line"><div class="thumb"><span>M</span><img class="prod-img" src="'+imgFor(l.id)+'" alt="" onerror="this.remove()"></div>'+
             '<div class="li-info"><h4>'+p.name+'</h4>'+
             '<div class="vr">'+l.color+' &middot; Size '+l.size+'</div>'+
             '<div class="li-price">'+money(p.price)+'</div>'+
@@ -264,7 +290,7 @@
       if(!store.wish.length){ body.innerHTML = '<div class="drawer-empty">No saved pieces yet.</div>'; return; }
       body.innerHTML = store.wish.map(function(id){
         var p = byId[id];
-        return '<div class="line"><div class="thumb"><span>M</span></div>'+
+        return '<div class="line"><div class="thumb"><span>M</span><img class="prod-img" src="'+imgFor(id)+'" alt="" onerror="this.remove()"></div>'+
           '<div class="li-info"><h4>'+p.name+'</h4><div class="li-price">'+money(p.price)+'</div>'+
           '<button class="btn" data-quick="'+id+'" style="font-size:11px;padding:9px 14px;margin-top:8px;">View</button> '+
           '<button class="li-remove" data-wish="'+id+'">Remove</button></div></div>';
@@ -274,13 +300,14 @@
 
   /* ---------------- PRODUCT QUICK VIEW (PDP) ---------------- */
   var pdpState = { id:null, size:null, color:null };
+  var currentFilter = 'All';
   function openPDP(id){
     var p = byId[id]; if(!p) return;
     pdpState = { id:id, size:null, color:p.colors[0].name };
     var host = $('#pdp'); if(!host) return;
     host.innerHTML =
       '<div class="pdp-gallery">'+
-        '<div class="pdp-main" style="background:'+gradient(p.blooms)+'"><span class="mono">M</span></div>'+
+        '<div class="pdp-main" style="background:'+gradient(p.blooms)+'"><span class="mono">M</span><img class="prod-img" src="'+imgFor(id)+'" alt="'+p.name+'" onerror="this.remove()"></div>'+
         '<div class="pdp-thumbs">'+
           '<i style="background:'+gradient(p.blooms)+'"></i>'+
           '<i style="background:linear-gradient(160deg,#FBF8F2,#dfe7ee)"></i>'+
@@ -311,8 +338,56 @@
           '<details><summary>Delivery &amp; returns</summary><p>Demo storefront — shipping, returns and stock are not wired up. In production this reflects live fulfilment.</p></details>'+
         '</div>'+
         '<p class="pdp-note">Sample product — imagery and details are placeholders for layout.</p>'+
+        '<div class="reviews" id="pdp-reviews"></div>'+
       '</div>';
-    openPanel($('#quickview'));
+    closeAll(); openPanel($('#quickview')); renderReviews(id);
+  }
+
+  var revPick = 0;
+  function renderReviews(id){
+    var host = $('#pdp-reviews'); if(!host) return;
+    revPick = 0;
+    var rs = reviewsFor(id), avg = avgRating(id);
+    var list = rs.length ? rs.map(function(x){
+      return '<div class="rev"><div class="rh"><span class="stars">'+starStr(x.r)+'</span>'+
+        '<span class="who">'+(x.a||'Anonymous')+' &middot; '+(x.d||'')+'</span></div>'+
+        (x.t?'<h4>'+x.t+'</h4>':'')+'<p>'+x.b+'</p></div>';
+    }).join('') : '<p style="font-size:13px;color:var(--muted);">No reviews yet — be the first.</p>';
+    host.innerHTML =
+      '<h3>Reviews</h3>'+
+      '<div class="rev-agg"><span class="stars">'+starStr(avg)+'</span>'+
+        (rs.length ? '<span>'+avg.toFixed(1)+' / 5 &middot; '+rs.length+' review'+(rs.length>1?'s':'')+'</span>' : '<span>No reviews yet</span>')+'</div>'+
+      list +
+      '<details class="rev-form"><summary>Write a review</summary>'+
+        '<div class="rate-pick" id="rev-rate">'+[1,2,3,4,5].map(function(i){return '<i data-rate="'+i+'">☆</i>';}).join('')+'</div>'+
+        '<div class="co-field"><label>Name</label><input id="rev-name" placeholder="Your name"></div>'+
+        '<div class="co-field"><label>Headline</label><input id="rev-title" placeholder="Sum it up"></div>'+
+        '<div class="co-field"><label>Review</label><textarea id="rev-body" placeholder="How does it fit and feel?"></textarea></div>'+
+        '<button class="btn solid" id="rev-submit" style="font-size:11px;">Submit review</button>'+
+        '<p class="pdp-note">Demo — reviews are saved in your browser only.</p>'+
+      '</details>';
+  }
+
+  /* ---------------- SEARCH ---------------- */
+  function runSearch(q){
+    var host = $('#search-results'); if(!host) return;
+    q = (q||'').trim().toLowerCase();
+    if(!q){ host.innerHTML = '<div class="search-hint">Try: linen, breton, knit, dress, gingham…</div>'; return; }
+    var res = products.filter(function(p){
+      var hay = (p.name+' '+p.desc+' '+p.cat+' '+p.fabric+' '+p.colors.map(function(c){return c.name;}).join(' ')).toLowerCase();
+      return hay.indexOf(q) > -1;
+    });
+    if(!res.length){ host.innerHTML = '<div class="search-empty">No matches for “'+q+'”.</div>'; return; }
+    host.innerHTML = res.map(function(p){
+      return '<div class="sresult" data-quick="'+p.id+'"><div class="st"><span class="mono">M</span>'+
+        '<img class="prod-img" src="'+imgFor(p.id)+'" alt="" onerror="this.remove()"></div>'+
+        '<div><h4>'+p.name+'</h4><div class="meta">'+p.cat+' &middot; '+p.desc+'</div></div>'+
+        '<div class="pr">'+money(p.price)+'</div></div>';
+    }).join('');
+  }
+  function openSearch(){
+    openPanel($('#searchmodal'));
+    var i = $('#search-input'); if(i){ i.value=''; runSearch(''); setTimeout(function(){ i.focus(); }, 80); }
   }
 
   /* ---------------- CHECKOUT (multi-step demo, processor-ready) ---------------- */
@@ -423,7 +498,8 @@
 
       if(t.hasAttribute('data-filter')){
         $all('#edit-tools .filter-chip').forEach(function(c){c.classList.remove('active');});
-        t.classList.add('active'); render.grid(t.getAttribute('data-filter')); render.wishHearts(); return;
+        t.classList.add('active'); currentFilter = t.getAttribute('data-filter');
+        render.grid(currentFilter); render.wishHearts(); return;
       }
       if(t.hasAttribute('data-wish')){ e.preventDefault(); store.toggleWish(t.getAttribute('data-wish')); render.wishlist(); return; }
       if(t.hasAttribute('data-quick')){ openPDP(t.getAttribute('data-quick')); return; }
@@ -451,6 +527,20 @@
       }
       if(e.target.id==='pdp-wish'){ store.toggleWish(pdpState.id); render.wishHearts(); render.wishlist(); return; }
       if(e.target.id==='open-size'){ openPanel($('#sizeguide')); return; }
+      var rp = e.target.closest('[data-rate]'); if(rp){
+        revPick = parseInt(rp.getAttribute('data-rate'),10);
+        $all('#rev-rate i').forEach(function(ic,idx){ var on=idx<revPick; ic.classList.toggle('on',on); ic.textContent = on?'★':'☆'; });
+        return;
+      }
+      if(e.target.id==='rev-submit'){
+        var rb = ($('#rev-body').value||'').trim();
+        if(!revPick){ showToast('Please pick a star rating.'); return; }
+        if(!rb){ showToast('Please write a short review.'); return; }
+        store.addReview(pdpState.id, {r:revPick, a:(($('#rev-name').value||'').trim()||'Anonymous'), t:($('#rev-title').value||'').trim(), b:rb, d:'Just now'});
+        renderReviews(pdpState.id); render.grid(currentFilter); render.wishHearts();
+        showToast('Thanks for your review (demo).');
+        return;
+      }
     });
 
     // ----- cart drawer interactions -----
@@ -500,6 +590,8 @@
       if(e.target.id==='co-done-close'){ closeAll(); return; }
     });
     $('#open-size-foot') && $('#open-size-foot').addEventListener('click', function(e){ e.preventDefault(); openPanel($('#sizeguide')); });
+    $('#open-search') && $('#open-search').addEventListener('click', function(e){ e.preventDefault(); openSearch(); });
+    $('#search-input') && $('#search-input').addEventListener('input', function(){ runSearch(this.value); });
 
     // ----- mobile nav -----
     var navToggle = $('.nav-toggle');
