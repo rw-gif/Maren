@@ -695,6 +695,12 @@
     });
     var hero = $('#hero'), toggle = $('#media-toggle'), hv = $('#hero-video');
     if(hero) hero.classList.add('has-media');
+    // Reveal the video controls only once a real hero video can play.
+    if(hero && hv){
+      var markVideo = function(){ hero.classList.add('has-video'); };
+      hv.addEventListener('canplay', markVideo);
+      hv.addEventListener('playing', markVideo);
+    }
     if(toggle && hv){
       toggle.addEventListener('click', function(){
         if(hv.paused){ hv.play(); toggle.textContent='❙❙'; }
