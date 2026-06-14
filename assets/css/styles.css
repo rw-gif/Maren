@@ -480,7 +480,9 @@ table.size-table th{background:var(--oat);font-weight:500;letter-spacing:.04em;}
 .co-summary h4{font-family:var(--serif);font-weight:500;margin:0 0 16px;font-size:18px;}
 .co-sum-line{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px;align-items:center;}
 .co-sum-line .qd{width:46px;height:58px;flex:none;background:linear-gradient(160deg,#FBF8F2,#dfe7ee);border:1px solid var(--line);
-  display:flex;align-items:center;justify-content:center;font-family:var(--serif);color:var(--ink);opacity:.7;}
+  display:flex;align-items:center;justify-content:center;font-family:var(--serif);color:var(--ink);
+  position:relative;overflow:hidden;}
+.co-sum-line .qd span{opacity:.55;}
 .co-sum-line .nm{flex:1;}
 .co-sum-line .nm small{display:block;color:var(--muted);font-size:11px;}
 .co-tot{display:flex;justify-content:space-between;font-size:13px;margin-top:12px;color:var(--clay);}

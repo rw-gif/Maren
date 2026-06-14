@@ -268,7 +268,7 @@
       else {
         body.innerHTML = store.cart.map(function(l){
           var p = byId[l.id];
-          return '<div class="line"><div class="thumb"><span>M</span><img class="prod-img" src="'+imgFor(l.id)+'" alt="" onerror="this.remove()"></div>'+
+          return '<div class="line"><div class="thumb"><span>M</span><img class="prod-img" src="'+imgForColor(p,l.color)+'" alt="" onerror="this.remove()"></div>'+
             '<div class="li-info"><h4>'+p.name+'</h4>'+
             '<div class="vr">'+l.color+' &middot; Size '+l.size+'</div>'+
             '<div class="li-price">'+money(p.price)+'</div>'+
@@ -399,7 +399,7 @@
 
   function renderSummary(){
     var lines = store.cart.map(function(l){ var p=byId[l.id];
-      return '<div class="co-sum-line"><div class="qd">M</div>'+
+      return '<div class="co-sum-line"><div class="qd"><span>M</span><img class="prod-img" src="'+imgForColor(p,l.color)+'" alt="" onerror="this.remove()"></div>'+
         '<div class="nm">'+p.name+'<small>'+l.color+' &middot; Size '+l.size+' &middot; Qty '+l.qty+'</small></div>'+
         '<div>'+money(p.price*l.qty)+'</div></div>';
     }).join('');
