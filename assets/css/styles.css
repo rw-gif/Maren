@@ -512,7 +512,8 @@ table.size-table th{background:var(--oat);font-weight:500;letter-spacing:.04em;}
 .card .rating .cnt{color:var(--muted);font-size:11px;}
 .card .ways{display:flex;gap:6px;margin-top:11px;flex-wrap:wrap;}
 .card .cway{width:15px;height:15px;border-radius:50%;border:1px solid rgba(0,0,0,.2);padding:0;cursor:pointer;transition:outline .15s;}
-.card .cway:hover{outline:1px solid var(--ink);outline-offset:1px;}
+.card .cway:hover{outline:1px solid var(--muted);outline-offset:1px;}
+.card .cway.active{outline:1.5px solid var(--ink);outline-offset:1px;}
 
 /* ---------- REVIEWS (PDP) ---------- */
 .reviews{border-top:1px solid var(--line);margin-top:24px;padding-top:20px;}

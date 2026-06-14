@@ -198,12 +198,12 @@
             '<span class="label-tag">'+p.cat+'</span>'+
             '<button class="wish'+(store.inWish(p.id)?' on':'')+'" data-wish="'+p.id+'" aria-label="Save">'+(store.inWish(p.id)?'♥':'♡')+'</button>'+
             bloomSVG(p.blooms)+
-            '<img class="prod-img" src="'+imgFor(p.id)+'" alt="'+p.name+'" loading="lazy" onerror="this.remove()">'+
+            '<img class="prod-img" src="'+imgForColor(p,p.colors[0].name)+'" alt="'+p.name+'" loading="lazy" onerror="this.style.display=\'none\'" onload="this.style.display=\'\'">'+
           '</div>'+
           '<div class="meta"><h3>'+p.name+'</h3><div class="price">'+money(p.price)+'</div>'+
           '<div class="desc">'+p.desc+'</div>'+
           '<div class="rating"><span class="stars">'+starStr(avgRating(p.id))+'</span><span class="cnt">('+reviewsFor(p.id).length+')</span></div>'+
-          (p.colors.length>1 ? '<div class="ways">'+p.colors.map(function(c){return '<button class="cway" data-quick="'+p.id+'" data-pcolor="'+c.name+'" title="'+c.name+'" style="background:'+c.hex+'" aria-label="'+p.name+' in '+c.name+'"></button>';}).join('')+'</div>' : '')+
+          (p.colors.length>1 ? '<div class="ways">'+p.colors.map(function(c,i){return '<button class="cway'+(i===0?' active':'')+'" data-id="'+p.id+'" data-pcolor="'+c.name+'" title="'+c.name+'" style="background:'+c.hex+'" aria-label="'+p.name+' in '+c.name+'"></button>';}).join('')+'</div>' : '')+
           '</div>'+
           '<div class="card-actions">'+
             '<button class="btn" data-quick="'+p.id+'">Quick view</button>'+
@@ -513,9 +513,24 @@
         render.grid(currentFilter); render.wishHearts(); return;
       }
       if(t.hasAttribute('data-wish')){ e.preventDefault(); store.toggleWish(t.getAttribute('data-wish')); render.wishlist(); return; }
-      if(t.hasAttribute('data-quick')){ openPDP(t.getAttribute('data-quick'), t.getAttribute('data-pcolor')); return; }
+      if(t.hasAttribute('data-quick')){
+        var cardEl = t.closest('.card'); var col = t.getAttribute('data-pcolor');
+        if(cardEl){ var act = cardEl.querySelector('.cway.active'); if(act) col = act.getAttribute('data-pcolor'); }
+        openPDP(t.getAttribute('data-quick'), col); return;
+      }
       if(t.hasAttribute('data-article')){ openArticle(parseInt(t.getAttribute('data-article'),10)); return; }
       if(t.hasAttribute('data-tryon')){ closeAll(); jumpToTryOn(byId[t.getAttribute('data-tryon')].g); return; }
+    });
+
+    // ----- colour blocks on Edit cards: swap the thumbnail in place -----
+    var pgrid = $('#product-grid');
+    pgrid && pgrid.addEventListener('click', function(e){
+      var w = e.target.closest('.cway'); if(!w) return;
+      e.stopPropagation();
+      var card = w.closest('.card'); var p = byId[w.getAttribute('data-id')]; var color = w.getAttribute('data-pcolor');
+      card.querySelectorAll('.cway').forEach(function(x){ x.classList.remove('active'); }); w.classList.add('active');
+      var img = card.querySelector('.swatch .prod-img');
+      if(img){ img.style.display=''; img.src = imgForColor(p, color); }
     });
 
     // ----- PDP internal interactions (delegated to modal) -----
