@@ -37,7 +37,10 @@
       fabric:'The Linen Waistcoat and Mini Skirt as a tailored co-ord — washed linen, worn together. A saving on buying the pieces separately.', care:'Machine wash cold or hand wash; line dry, cool iron.'},
     {id:'pants',    name:'The Fold-Over Flares', price:88,  cat:'Trousers',    g:'set',   blooms:'#8FB0CB', hero:false, pal:['neutrals','blues'], occ:['rest','town'],
       desc:'Fold-over waist, wide flare, soft jersey', colors:[{name:'Navy',hex:'#2A3B52'},{name:'Brown',hex:'#6E5847',img:'pants-brown'}],
-      fabric:'Soft brushed jersey lounge flares with a fold-over waistband and a wide, drapey leg. Woven MAREN waistband label.', care:'Machine wash cold, line dry; do not tumble.'}
+      fabric:'Soft brushed jersey lounge flares with a fold-over waistband and a wide, drapey leg. Woven MAREN waistband label.', care:'Machine wash cold, line dry; do not tumble.'},
+    {id:'breton',   name:'The Breton Long-Sleeve', price:72, cat:'Tops',       g:'top',   blooms:'#8FB0CB', hero:false, pal:['stripe','blues'], occ:['town','rest'],
+      desc:'Oversized cotton, navy Breton stripe', colors:[{name:'Navy stripe',hex:'#2A3B52'}],
+      fabric:'Oversized long-sleeve in heavyweight cotton jersey with a yarn-dyed navy-and-cream Breton stripe and a woven MAREN collar label.', care:'Machine wash cold, reshape damp, dry flat.'}
   ];
   var byId = {}; products.forEach(function(p){ byId[p.id]=p; });
 
@@ -64,7 +67,8 @@
           {r:4,a:'Cleo',t:'Beautiful piece',b:'The fit is sharp. Sized up for a roomier layer.',d:'Apr 2026'}],
     set:[{r:5,a:'Florence',t:'A whole look',b:'Wore the waistcoat and skirt together to a summer lunch — felt so pulled together.',d:'May 2026'}],
     pants:[{r:5,a:'Maya',t:'Live in them',b:'The fold-over waist is so comfy and the flare is flattering. Softest jersey.',d:'May 2026'},
-           {r:4,a:'Lena',t:'So soft',b:'Lovely drape. A little long for me — I’m petite — but gorgeous.',d:'Apr 2026'}]
+           {r:4,a:'Lena',t:'So soft',b:'Lovely drape. A little long for me — I’m petite — but gorgeous.',d:'Apr 2026'}],
+    breton:[{r:5,a:'Juliet',t:'The perfect stripe',b:'Heavy cotton, holds its shape, properly oversized. A forever piece.',d:'May 2026'}]
   };
   function reviewsFor(id){ return (store.reviews[id]||[]).concat(seededReviews[id]||[]); }
   function avgRating(id){ var rs=reviewsFor(id); if(!rs.length) return 0; return rs.reduce(function(n,x){return n+x.r;},0)/rs.length; }
