@@ -25,7 +25,13 @@
       fabric:'Easy midi dress in pure washed linen with a square neckline, fine straps and a soft natural drape. Woven MAREN inner label.', care:'Machine wash cold, line dry, cool iron.'},
     {id:'shorts',   name:'The Gingham Shorts',  price:62,  cat:'Shorts',      g:'set',   blooms:'#8FB0CB', hero:true, pal:['blues','stripe'], occ:['rest','harbour'],
       desc:'Pull-on linen, navy-and-cream gingham', colors:[{name:'Navy gingham',hex:'#2A3B52'},{name:'Sky stripe',hex:'#AFC7DA'}],
-      fabric:'Relaxed pull-on shorts in lightweight gingham linen with a gathered elastic waist, button fly and a woven MAREN hem label.', care:'Machine wash cold, line dry, warm iron.'}
+      fabric:'Relaxed pull-on shorts in lightweight gingham linen with a gathered elastic waist, button fly and a woven MAREN hem label.', care:'Machine wash cold, line dry, warm iron.'},
+    {id:'skirt',    name:'The Linen Mini Skirt', price:78, cat:'Skirts',       g:'set',   blooms:'#C9C2B4', hero:false, pal:['neutrals'], occ:['town','harbour'],
+      desc:'A-line washed linen mini', colors:[{name:'White',hex:'#FBF8F2'}],
+      fabric:'Clean A-line mini in structured washed linen with a smooth waistband and a woven MAREN label.', care:'Machine wash cold, line dry, cool iron.'},
+    {id:'vest',     name:'The Linen Waistcoat',  price:92, cat:'Waistcoats',   g:'top',   blooms:'#E2D7C3', hero:false, pal:['neutrals'], occ:['town','evening'],
+      desc:'Tailored sleeveless linen, button front', colors:[{name:'Natural',hex:'#F2ECDF'}],
+      fabric:'A fitted sleeveless waistcoat in washed linen with a rounded neck, covered buttons and a woven MAREN label.', care:'Machine wash cold or hand wash; line dry, cool iron.'}
   ];
   var byId = {}; products.forEach(function(p){ byId[p.id]=p; });
 
@@ -46,7 +52,10 @@
            {r:4,a:'Tom',t:'Great cut',b:'Relaxed without being huge. Would love a navy too.',d:'May 2026'}],
     dress:[{r:5,a:'Aria',t:'Harbour to evening',b:'The square neck is so flattering and it keeps me cool all day.',d:'May 2026'}],
     shorts:[{r:5,a:'Bea',t:'Slow-morning bliss',b:'The gingham linen is dreamy and the fit is so comfy.',d:'Apr 2026'},
-            {r:4,a:'Niamh',t:'So comfy',b:'Lightweight and breezy. Runs a touch big — I sized down.',d:'May 2026'}]
+            {r:4,a:'Niamh',t:'So comfy',b:'Lightweight and breezy. Runs a touch big — I sized down.',d:'May 2026'}],
+    skirt:[{r:5,a:'Iris',t:'So easy',b:'Sits beautifully and the linen has lovely body. Goes with everything.',d:'May 2026'}],
+    vest:[{r:5,a:'Margot',t:'Quietly perfect',b:'Lovely tailored shape over the linen shirt or alone. Feels special.',d:'May 2026'},
+          {r:4,a:'Cleo',t:'Beautiful piece',b:'The fit is sharp. Sized up for a roomier layer.',d:'Apr 2026'}]
   };
   function reviewsFor(id){ return (store.reviews[id]||[]).concat(seededReviews[id]||[]); }
   function avgRating(id){ var rs=reviewsFor(id); if(!rs.length) return 0; return rs.reduce(function(n,x){return n+x.r;},0)/rs.length; }
