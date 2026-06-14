@@ -1,0 +1,17 @@
+id,product_code,product,muse,muse_ref,location,wardrobe,framing,aspect,output_file
+S01,CAP,The Harbour Cap,Vivi,assets/muses/vivi.jpg,Beach dunes,Navy cap + breton stripe top,Three-quarter body / mid-laugh,4:5,campaign/ss26/out/vivi_cap_beach.png
+S02,CAP,The Harbour Cap,Cami,assets/muses/cami.jpg,Yacht deck,Navy cap + white linen shirt,Mid-body / composed,4:5,campaign/ss26/out/cami_cap_yacht.png
+S03,SHIRT,The Coastal Linen Shirt,Cami,assets/muses/cami.jpg,Countryside + Land Rover Defender,Oversized white linen shirt + denim,Full body,4:5,campaign/ss26/out/cami_shirt_countryside.png
+S04,SHIRT,The Coastal Linen Shirt,Vivi,assets/muses/vivi.jpg,Harbour jetty,Blue-stripe linen shirt open over swimsuit,Candid / golden hour,3:2,campaign/ss26/out/vivi_shirt_jetty.png
+S05,SHIFT,The Linen Shift,Cami,assets/muses/cami.jpg,Riviera cypress garden,Cream A-line linen shift + sunglasses + raffia clutch,Full body / composed,4:5,campaign/ss26/out/cami_shift_riviera.png
+S06,SHIFT,The Linen Shift,Vivi,assets/muses/vivi.jpg,Cobbled town + bicycle,Cream linen shift,Three-quarter back / windswept,4:5,campaign/ss26/out/vivi_shift_town.png
+S07,SCALLOP,The Scallop Linen Mini,Cami,assets/muses/cami.jpg,Yacht sunset,Ink-navy scalloped strapless mini,Full body / elegant,4:5,campaign/ss26/out/cami_scallop_yacht.png
+S08,SCALLOP,The Scallop Linen Mini,Vivi,assets/muses/vivi.jpg,Beach evening bonfire,Ink-navy scalloped mini / barefoot,Full body / candid,4:5,campaign/ss26/out/vivi_scallop_beach.png
+S09,RIVIERA,The Riviera Linen Mini,Vivi,assets/muses/vivi.jpg,Cobbled street cycling,White sleeveless boat-neck linen mini,Back view / cycling away,4:5,campaign/ss26/out/vivi_riviera_cycle.png
+S10,RIVIERA,The Riviera Linen Mini,Cami,assets/muses/cami.jpg,Country lawn + Defender,White sleeveless linen mini + sunglasses,Full body,3:2,campaign/ss26/out/cami_riviera_lawn.png
+S11,SHORTS,The Sailing Shorts,Vivi,assets/muses/vivi.jpg,Boat deck,Breton top + white sailing shorts / barefoot,Full body / mid-laugh,4:5,campaign/ss26/out/vivi_shorts_boat.png
+S12,SHORTS,The Sailing Shorts,Cami,assets/muses/cami.jpg,Harbour stone steps,White linen shirt + white tailored shorts,Full body / composed,4:5,campaign/ss26/out/cami_shorts_harbour.png
+S13,JUMPER,The Cable Cardigan,Cami,assets/muses/cami.jpg,Coastal house window seat,Sky-blue cable cardigan over shoulders + tea,Mid-body / morning light,4:5,campaign/ss26/out/cami_jumper_house.png
+S14,JUMPER,The Cable Cardigan,Vivi,assets/muses/vivi.jpg,Beach dusk,Cream cable jumper + striped blanket,Mid-body / cozy,4:5,campaign/ss26/out/vivi_jumper_dusk.png
+S15,HERO,Campaign duo,Both,assets/muses/vivi.jpg;assets/muses/cami.jpg,Harbour wall,Breton + white linen,Full body / advanced composite,3:2,campaign/ss26/out/hero_duo_harbour.png
+S16,BANNER,Web banner,Vivi,assets/muses/vivi.jpg,Wide empty beach,Cream linen shift,Full body small / cinematic,16:9,campaign/ss26/out/banner_beach_wide.png
