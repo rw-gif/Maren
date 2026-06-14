@@ -202,7 +202,9 @@
           '</div>'+
           '<div class="meta"><h3>'+p.name+'</h3><div class="price">'+money(p.price)+'</div>'+
           '<div class="desc">'+p.desc+'</div>'+
-          '<div class="rating"><span class="stars">'+starStr(avgRating(p.id))+'</span><span class="cnt">('+reviewsFor(p.id).length+')</span></div></div>'+
+          '<div class="rating"><span class="stars">'+starStr(avgRating(p.id))+'</span><span class="cnt">('+reviewsFor(p.id).length+')</span></div>'+
+          (p.colors.length>1 ? '<div class="ways">'+p.colors.map(function(c){return '<button class="cway" data-quick="'+p.id+'" data-pcolor="'+c.name+'" title="'+c.name+'" style="background:'+c.hex+'" aria-label="'+p.name+' in '+c.name+'"></button>';}).join('')+'</div>' : '')+
+          '</div>'+
           '<div class="card-actions">'+
             '<button class="btn" data-quick="'+p.id+'">Quick view</button>'+
             '<button class="btn solid" data-tryon="'+p.id+'">Try on</button>'+
@@ -308,9 +310,11 @@
   /* ---------------- PRODUCT QUICK VIEW (PDP) ---------------- */
   var pdpState = { id:null, size:null, color:null };
   var currentFilter = 'All';
-  function openPDP(id){
+  function openPDP(id, colorName){
     var p = byId[id]; if(!p) return;
-    pdpState = { id:id, size:null, color:p.colors[0].name };
+    var ci = 0;
+    if(colorName){ for(var k=0;k<p.colors.length;k++){ if(p.colors[k].name===colorName){ ci=k; break; } } }
+    pdpState = { id:id, size:null, color:p.colors[ci].name };
     var host = $('#pdp'); if(!host) return;
     host.innerHTML =
       '<div class="pdp-gallery">'+
@@ -326,9 +330,9 @@
         '<h2>'+p.name+'</h2>'+
         '<div class="price">'+money(p.price)+'</div>'+
         '<p class="blurb">'+p.desc+'. '+p.fabric.split('.')[0]+'.</p>'+
-        '<div class="opt-label"><span>Colour — <em id="pdp-colorname">'+p.colors[0].name+'</em></span></div>'+
+        '<div class="opt-label"><span>Colour — <em id="pdp-colorname">'+p.colors[ci].name+'</em></span></div>'+
         '<div class="swatches" id="pdp-colors">'+
-          p.colors.map(function(c,i){ return '<button data-color="'+c.name+'" class="'+(i===0?'active':'')+'" style="background:'+c.hex+'" aria-label="'+c.name+'"></button>'; }).join('')+
+          p.colors.map(function(c,i){ return '<button data-color="'+c.name+'" class="'+(i===ci?'active':'')+'" style="background:'+c.hex+'" aria-label="'+c.name+'"></button>'; }).join('')+
         '</div>'+
         '<div class="opt-label"><span>Size</span><a id="open-size">Size &amp; fit guide</a></div>'+
         '<div class="sizes" id="pdp-sizes">'+
@@ -509,7 +513,7 @@
         render.grid(currentFilter); render.wishHearts(); return;
       }
       if(t.hasAttribute('data-wish')){ e.preventDefault(); store.toggleWish(t.getAttribute('data-wish')); render.wishlist(); return; }
-      if(t.hasAttribute('data-quick')){ openPDP(t.getAttribute('data-quick')); return; }
+      if(t.hasAttribute('data-quick')){ openPDP(t.getAttribute('data-quick'), t.getAttribute('data-pcolor')); return; }
       if(t.hasAttribute('data-article')){ openArticle(parseInt(t.getAttribute('data-article'),10)); return; }
       if(t.hasAttribute('data-tryon')){ closeAll(); jumpToTryOn(byId[t.getAttribute('data-tryon')].g); return; }
     });
