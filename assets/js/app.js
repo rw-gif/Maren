@@ -11,30 +11,21 @@
   // Placeholder range — swap for the real catalogue. Prices are numbers (GBP).
   var SIZES = ['XS','S','M','L','XL'];
   var products = [
-    {id:'shift',   name:'The Linen Shift',        price:128, cat:'Dresses',  g:'dress', blooms:'#AFC7DA', hero:true,  pal:['blues','neutrals'], occ:['harbour','town'],
-      desc:'Sleeveless, A-line, washed linen', colors:[{name:'Cream',hex:'#F2ECDF'},{name:'Sky',hex:'#AFC7DA'},{name:'Navy',hex:'#2A3B52'}],
-      fabric:'100% washed European linen. Breathable, lived-in, made to soften with every wear.', care:'Machine wash cold, line dry, warm iron. Gets better with age.'},
-    {id:'breton',  name:'Breton Long-Sleeve',     price:72,  cat:'Tops',     g:'top',   blooms:'#8FB0CB', hero:true,  pal:['stripe','blues'], occ:['town','rest'],
-      desc:'Cotton jersey, navy stripe', colors:[{name:'Navy stripe',hex:'#2A3B52'},{name:'Sky stripe',hex:'#8FB0CB'}],
-      fabric:'Heavyweight organic cotton jersey, yarn-dyed Breton stripe.', care:'Machine wash cold, reshape damp, dry flat.'},
-    {id:'set',     name:'Gingham Boxer Set',       price:86,  cat:'Sets',     g:'set',   blooms:'#C3D5E2', hero:false, pal:['neutrals','blues'], occ:['rest','harbour'],
-      desc:'Cotton shorts and scrunchie', colors:[{name:'Sky gingham',hex:'#AFC7DA'},{name:'Clay gingham',hex:'#C9BBA1'}],
-      fabric:'Crisp yarn-dyed cotton gingham. Shorts + matching scrunchie.', care:'Machine wash cold, warm iron.'},
-    {id:'pj',      name:'The Sea Pyjama',          price:94,  cat:'Sleepwear',g:'top',   blooms:'#E2D7C3', hero:false, pal:['neutrals'], occ:['rest'],
-      desc:'Brushed cotton, floral sprig', colors:[{name:'Oat',hex:'#E2D7C3'},{name:'Cream',hex:'#F2ECDF'}],
-      fabric:'Brushed organic cotton, soft floral sprig print.', care:'Machine wash cold, tumble low.'},
-    {id:'babydoll',name:'Babydoll Mini',           price:110, cat:'Dresses',  g:'dress', blooms:'#AFC7DA', hero:false, pal:['neutrals','blues'], occ:['evening','harbour'],
-      desc:'Tiered cotton, broderie hem', colors:[{name:'Cream',hex:'#F2ECDF'},{name:'Sky',hex:'#AFC7DA'}],
-      fabric:'Tiered cotton poplin with broderie anglaise hem.', care:'Machine wash cold, line dry, cool iron.'},
-    {id:'knit',    name:'Cable Cardigan',          price:148, cat:'Knitwear', g:'top',   blooms:'#8FB0CB', hero:true,  pal:['blues'], occ:['evening','rest'],
-      desc:'Cotton cable knit, sky blue', colors:[{name:'Sky',hex:'#AFC7DA'},{name:'Cream',hex:'#F2ECDF'}],
-      fabric:'Heavy cotton cable knit, horn buttons.', care:'Hand wash cool, dry flat, do not hang.'},
-    {id:'shirt',   name:'Coastal Oversize Shirt',  price:88,  cat:'Tops',     g:'top',   blooms:'#C3D5E2', hero:true,  pal:['stripe','neutrals'], occ:['town','harbour'],
-      desc:'Striped cotton poplin', colors:[{name:'White',hex:'#FBF8F2'},{name:'Sky stripe',hex:'#AFC7DA'}],
-      fabric:'Crisp cotton poplin, oversized cut, mother-of-pearl buttons.', care:'Machine wash cold, warm iron.'},
-    {id:'scallop', name:'Scallop Linen Mini',      price:124, cat:'Dresses',  g:'dress', blooms:'#2A3B52', hero:true,  pal:['blues','neutrals'], occ:['evening'],
-      desc:'Strapless, scalloped edge, ink', colors:[{name:'Ink',hex:'#2A3B52'},{name:'Cream',hex:'#F2ECDF'}],
-      fabric:'Structured linen blend, strapless with scalloped edge.', care:'Dry clean, or hand wash cool.'}
+    {id:'crewneck', name:'The Cotton Crewneck', price:138, cat:'Sweats',      g:'top',   blooms:'#C9C2B4', hero:true, pal:['neutrals'], occ:['rest','town'],
+      desc:'Oversized marl cotton fleece, chest pocket', colors:[{name:'Marl Grey',hex:'#C9C2B4'},{name:'Cream',hex:'#F2ECDF'}],
+      fabric:'Heavyweight brushed-back cotton fleece with a soft marl. Dropped shoulders, ribbed neck, cuffs and hem, with a patch chest pocket and an embroidered MAREN wordmark.', care:'Machine wash cold inside out; dry flat to keep its shape.'},
+    {id:'cap',      name:'The MAREN Cap',       price:42,  cat:'Accessories', g:'top',   blooms:'#2A3B52', hero:true, sizes:['One size'], pal:['blues','neutrals'], occ:['harbour','town'],
+      desc:'Washed-cotton six-panel, embroidered wordmark', colors:[{name:'Navy',hex:'#2A3B52'},{name:'Stone',hex:'#C9BBA1'}],
+      fabric:'Unstructured six-panel cap in soft washed cotton with a low crown, curved brim and an embroidered MAREN wordmark.', care:'Spot clean and air dry. Do not machine wash.'},
+    {id:'shirt',    name:'The Linen Shirt',     price:88,  cat:'Shirts',      g:'top',   blooms:'#AFC7DA', hero:true, pal:['neutrals','blues'], occ:['town','harbour'],
+      desc:'Pre-washed cream linen, mother-of-pearl buttons', colors:[{name:'Cream',hex:'#F2ECDF'},{name:'White',hex:'#FBF8F2'},{name:'Sky',hex:'#AFC7DA'}],
+      fabric:'Pre-washed pure linen with a relaxed cut, soft natural creases and mother-of-pearl buttons. Woven MAREN collar label.', care:'Machine wash cold, line dry, warm iron — or wear creased.'},
+    {id:'dress',    name:'The Linen Dress',     price:128, cat:'Dresses',     g:'dress', blooms:'#AFC7DA', hero:true, pal:['neutrals','blues'], occ:['harbour','evening'],
+      desc:'Square-neck linen midi, easy drape', colors:[{name:'White',hex:'#FBF8F2'},{name:'Oat',hex:'#E2D7C3'}],
+      fabric:'Easy midi dress in pure washed linen with a square neckline, fine straps and a soft natural drape. Woven MAREN inner label.', care:'Machine wash cold, line dry, cool iron.'},
+    {id:'shorts',   name:'The Gingham Shorts',  price:62,  cat:'Shorts',      g:'set',   blooms:'#8FB0CB', hero:true, pal:['blues','stripe'], occ:['rest','harbour'],
+      desc:'Pull-on linen, navy-and-cream gingham', colors:[{name:'Navy gingham',hex:'#2A3B52'},{name:'Sky stripe',hex:'#AFC7DA'}],
+      fabric:'Relaxed pull-on shorts in lightweight gingham linen with a gathered elastic waist, button fly and a woven MAREN hem label.', care:'Machine wash cold, line dry, warm iron.'}
   ];
   var byId = {}; products.forEach(function(p){ byId[p.id]=p; });
 
@@ -43,16 +34,14 @@
 
   // Seeded reviews (sample). Customer-submitted reviews merge from localStorage.
   var seededReviews = {
-    shift:[{r:5,a:'Eleanor',t:'My summer uniform',b:'Wears beautifully and softens with every wash. I’ve nearly lived in it.',d:'May 2026'},
-           {r:4,a:'Priya',t:'Lovely linen',b:'Generous cut, crumples in the good way. Sized down for a neater fit.',d:'Apr 2026'}],
-    breton:[{r:5,a:'Marlowe',t:'The perfect stripe',b:'Heavy cotton, holds its shape and isn’t see-through. A keeper.',d:'May 2026'}],
-    knit:[{r:5,a:'Sofia',t:'So soft',b:'Cosy without being bulky, and the sky blue is just right.',d:'Mar 2026'},
-          {r:4,a:'Hana',t:'Lovely weight',b:'Warm for the evening drop in temperature. Comes in cream too.',d:'Apr 2026'}],
-    shirt:[{r:4,a:'Tom',t:'Great everyday shirt',b:'Crisp poplin, oversized but tidy, and iron-friendly.',d:'May 2026'}],
-    scallop:[{r:5,a:'Aria',t:'Evening favourite',b:'The scalloped edge is so pretty — structured and flattering.',d:'May 2026'}],
-    set:[{r:5,a:'Bea',t:'Slow-morning bliss',b:'Soft gingham and the scrunchie is a sweet touch.',d:'Apr 2026'}],
-    babydoll:[{r:4,a:'Niamh',t:'Pretty broderie',b:'Floaty and cool for hot days.',d:'May 2026'}],
-    pj:[{r:5,a:'Cleo',t:'Dreamy',b:'Brushed cotton is so soft — best night’s sleep.',d:'Mar 2026'}]
+    crewneck:[{r:5,a:'Eleanor',t:'So soft, so easy',b:'The marl is gorgeous and the pocket detail makes it. Lives on me at weekends.',d:'May 2026'},
+              {r:4,a:'Priya',t:'Lovely weight',b:'Proper heavyweight fleece, generous oversized fit. Size down for less slouch.',d:'Apr 2026'}],
+    cap:[{r:5,a:'Marlowe',t:'Perfect navy',b:'Soft washed cotton, sits low, and the embroidery is so neat.',d:'May 2026'}],
+    shirt:[{r:5,a:'Sofia',t:'My everyday shirt',b:'Crisp but soft linen that creases in the good way. Buttons feel premium.',d:'Apr 2026'},
+           {r:4,a:'Tom',t:'Great cut',b:'Relaxed without being huge. Would love a navy too.',d:'May 2026'}],
+    dress:[{r:5,a:'Aria',t:'Harbour to evening',b:'The square neck is so flattering and it keeps me cool all day.',d:'May 2026'}],
+    shorts:[{r:5,a:'Bea',t:'Slow-morning bliss',b:'The gingham linen is dreamy and the fit is so comfy.',d:'Apr 2026'},
+            {r:4,a:'Niamh',t:'So comfy',b:'Lightweight and breezy. Runs a touch big — I sized down.',d:'May 2026'}]
   };
   function reviewsFor(id){ return (store.reviews[id]||[]).concat(seededReviews[id]||[]); }
   function avgRating(id){ var rs=reviewsFor(id); if(!rs.length) return 0; return rs.reduce(function(n,x){return n+x.r;},0)/rs.length; }
@@ -61,9 +50,9 @@
   // Shoppable lookbook looks — hotspots map x/y% to catalogue ids.
   var looks = [
     {muse:'cami', k:'The Linen Shirt', t:'Clean lines, by the water.',
-      hotspots:[{x:46,y:48,id:'shirt'},{x:58,y:76,id:'shift'}]},
+      hotspots:[{x:46,y:48,id:'shirt'},{x:58,y:76,id:'dress'}]},
     {muse:'vivi', k:'Off-duty', t:'Sun, stripes, salt air.',
-      hotspots:[{x:50,y:58,id:'breton'},{x:46,y:82,id:'scallop'}]}
+      hotspots:[{x:50,y:58,id:'crewneck'},{x:46,y:82,id:'shorts'}]}
   ];
 
   // The Journal — trend & editorial entries.
@@ -325,7 +314,7 @@
         '</div>'+
         '<div class="opt-label"><span>Size</span><a id="open-size">Size &amp; fit guide</a></div>'+
         '<div class="sizes" id="pdp-sizes">'+
-          SIZES.map(function(s){ return '<button data-size="'+s+'">'+s+'</button>'; }).join('')+
+          (p.sizes||SIZES).map(function(s){ return '<button data-size="'+s+'">'+s+'</button>'; }).join('')+
         '</div>'+
         '<div class="pdp-actions">'+
           '<button class="btn solid" id="pdp-add">Add to bag</button>'+
@@ -709,9 +698,9 @@
       reader.readAsDataURL(file);
     });
     var garmentBtns=[
-      {g:'dress',label:'Linen Shift',color:'#F2ECDF'},{g:'top',label:'Breton Top',color:'#dfe7ee'},
-      {g:'top',label:'Cable Knit',color:'#AFC7DA'},{g:'set',label:'Boxer Set',color:'#cdd9e6'},
-      {g:'dress',label:'Scallop Mini',color:'#2A3B52'}
+      {g:'dress',label:'Linen Dress',color:'#FBF8F2'},{g:'top',label:'Linen Shirt',color:'#F2ECDF'},
+      {g:'top',label:'Cotton Crewneck',color:'#C9C2B4'},{g:'set',label:'Gingham Shorts',color:'#AFC7DA'},
+      {g:'top',label:'MAREN Cap',color:'#2A3B52'}
     ];
     chipsBox && garmentBtns.forEach(function(o){
       var b=document.createElement('button'); b.className='chip'; b.textContent=o.label;
