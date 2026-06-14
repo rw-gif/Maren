@@ -66,6 +66,13 @@
       tags:['Fabric','Sustainability','Care']}
   ];
 
+  // Promotional films — drop matching files into /assets/video to play.
+  var films = [
+    {kind:'Campaign',         title:'SS26 — By the Sea',  poster:'vivi', src:'assets/video/promo-campaign.mp4'},
+    {kind:'Fabric story',     title:'The Linen Story',    poster:'mono', src:'assets/video/promo-linen.mp4'},
+    {kind:'Behind the seams', title:'In the Studio',      poster:'cami', src:'assets/video/promo-studio.mp4'}
+  ];
+
   // Size chart (cm) and fit-finder logic.
   var sizeRows = [
     ['XS','78–82','60–64','84–88'],
@@ -115,6 +122,7 @@
     },
     cartCount:function(){ return this.cart.reduce(function(n,l){return n+l.qty;},0); },
     cartTotal:function(){ return this.cart.reduce(function(n,l){return n+(byId[l.id].price*l.qty);},0); },
+    clearCart:function(){ this.cart=[]; this.save(); },
     toggleWish:function(id){
       var i = this.wish.indexOf(id);
       if(i>-1){ this.wish.splice(i,1); } else { this.wish.push(id); }
@@ -128,7 +136,7 @@
   function openPanel(el){ overlay.classList.add('show'); el.classList.add('show'); document.body.classList.add('no-scroll'); }
   function closeAll(){
     overlay.classList.remove('show');
-    $all('.drawer,.modal').forEach(function(p){ p.classList.remove('show'); });
+    $all('.drawer,.modal,.checkout').forEach(function(p){ p.classList.remove('show'); });
     document.body.classList.remove('no-scroll');
   }
   overlay && overlay.addEventListener('click', closeAll);
@@ -208,6 +216,21 @@
         return '<article class="jrn-card" data-article="'+i+'">'+cover+
           '<div class="jrn-body"><div class="date">'+a.date+'</div><h3>'+a.title+'</h3>'+
           '<p>'+a.excerpt+'</p><div class="read">Read &rsaquo;</div></div></article>';
+      }).join('');
+    },
+    films:function(){
+      var grid = $('#films-grid'); if(!grid) return;
+      grid.innerHTML = films.map(function(f){
+        var media = f.poster==='cami' ? '<div class="vmedia" style="background-image:var(--cami-img)">'
+                  : f.poster==='vivi' ? '<div class="vmedia" style="background-image:var(--vivi-img)">'
+                  : '<div class="vmedia mono">';
+        return '<figure class="vcard">'+ media +
+            '<span class="vslot-badge">Film slot</span>'+
+            '<video playsinline preload="none"><source src="'+f.src+'" type="video/mp4"></video>'+
+            '<button class="vplay" aria-label="Play '+f.title+'">&#9654;</button>'+
+          '</div>'+
+          '<figcaption><span class="kind">'+f.kind+'</span><h4>'+f.title+'</h4></figcaption>'+
+        '</figure>';
       }).join('');
     },
     wishHearts:function(){
@@ -292,6 +315,94 @@
     openPanel($('#quickview'));
   }
 
+  /* ---------------- CHECKOUT (multi-step demo, processor-ready) ---------------- */
+  var co = { step:'details', delivery:'standard', form:{}, orderId:null };
+  var DELIVERY = { standard:{name:'Standard',sub:'3–5 working days',price:4.95},
+                   express:{name:'Express',sub:'1–2 working days',price:9.95} };
+  function shipCost(){
+    if(co.delivery==='standard' && store.cartTotal()>=150) return 0; // free standard over £150
+    return DELIVERY[co.delivery].price;
+  }
+  function coTotal(){ return store.cartTotal() + shipCost(); }
+
+  function openCheckout(){ co.step='details'; renderCheckout();
+    var el=$('#checkout-modal'); el.classList.add('show'); document.body.classList.add('no-scroll'); }
+
+  function renderSummary(){
+    var lines = store.cart.map(function(l){ var p=byId[l.id];
+      return '<div class="co-sum-line"><div class="qd">M</div>'+
+        '<div class="nm">'+p.name+'<small>'+l.color+' &middot; Size '+l.size+' &middot; Qty '+l.qty+'</small></div>'+
+        '<div>'+money(p.price*l.qty)+'</div></div>';
+    }).join('');
+    var ship = shipCost();
+    return '<h4>Order summary</h4>'+lines+
+      '<div class="co-tot"><span>Subtotal</span><span>'+money(store.cartTotal())+'</span></div>'+
+      '<div class="co-tot"><span>Shipping</span><span>'+(ship===0?'Free':money(ship))+'</span></div>'+
+      '<div class="co-tot grand"><span>Total</span><b>'+money(coTotal())+'</b></div>';
+  }
+  function stepsBar(active){
+    var arr=[['details','Details'],['delivery','Delivery'],['payment','Payment']];
+    return '<div class="co-steps">'+arr.map(function(s,i){
+      var on=s[0]===active; return (on?'<b>':'<span>')+(i+1)+'. '+s[1]+(on?'</b>':'</span>');
+    }).join(' &middot; ')+'</div>';
+  }
+  function renderCheckout(){
+    var main=$('#co-main'), sum=$('#co-summary');
+    if(co.step!=='done'){ sum.style.display=''; sum.innerHTML = renderSummary(); } else { sum.style.display='none'; }
+
+    if(co.step==='details'){
+      main.innerHTML = stepsBar('details')+
+        '<div class="co-step"><h3>Contact &amp; shipping</h3>'+
+        '<div class="demo-banner">Demo checkout — no account, no real charge, nothing ships, nothing is stored.</div>'+
+        '<div class="co-field"><label>Email</label><input id="f-email" type="email" placeholder="you@example.com" value="'+(co.form.email||'')+'"></div>'+
+        '<div class="co-row"><div class="co-field"><label>First name</label><input id="f-first" value="'+(co.form.first||'')+'"></div>'+
+        '<div class="co-field"><label>Last name</label><input id="f-last" value="'+(co.form.last||'')+'"></div></div>'+
+        '<div class="co-field"><label>Address</label><input id="f-addr" value="'+(co.form.addr||'')+'"></div>'+
+        '<div class="co-row"><div class="co-field"><label>City / Town</label><input id="f-city" value="'+(co.form.city||'')+'"></div>'+
+        '<div class="co-field"><label>Postcode</label><input id="f-post" value="'+(co.form.post||'')+'"></div></div>'+
+        '<div class="co-field"><label>Country</label><select id="f-country"><option>United Kingdom</option><option>Ireland</option><option>France</option><option>United States</option></select></div>'+
+        '<div class="co-actions"><span></span><button class="btn solid" id="co-next">Continue to delivery</button></div></div>';
+    } else if(co.step==='delivery'){
+      main.innerHTML = stepsBar('delivery')+
+        '<div class="co-step"><h3>Delivery</h3>'+
+        Object.keys(DELIVERY).map(function(k){ var d=DELIVERY[k];
+          var pr=(k==='standard' && store.cartTotal()>=150)?'Free':money(d.price);
+          return '<div class="delivery-opt'+(co.delivery===k?' active':'')+'" data-deliv="'+k+'">'+
+            '<div><div class="d-name">'+d.name+'</div><div class="d-sub">'+d.sub+'</div></div><div class="d-price">'+pr+'</div></div>';
+        }).join('')+
+        '<div class="co-actions"><button class="co-back" id="co-back">&larr; Back</button><button class="btn solid" id="co-next">Continue to payment</button></div></div>';
+    } else if(co.step==='payment'){
+      main.innerHTML = stepsBar('payment')+
+        '<div class="co-step"><h3>Payment</h3>'+
+        '<div class="demo-banner">Demo payment — please don’t enter real card details; no charge is made. This is exactly where a real Stripe or Shopify hosted payment page slots in.</div>'+
+        '<div class="co-field"><label>Card number</label><input id="f-card" inputmode="numeric" placeholder="4242 4242 4242 4242"></div>'+
+        '<div class="co-row"><div class="co-field"><label>Expiry</label><input id="f-exp" placeholder="MM/YY"></div>'+
+        '<div class="co-field"><label>CVC</label><input id="f-cvc" inputmode="numeric" placeholder="123"></div></div>'+
+        '<div class="co-field"><label>Name on card</label><input id="f-cardname" value="'+(((co.form.first||'')+' '+(co.form.last||'')).trim())+'"></div>'+
+        '<div class="co-actions"><button class="co-back" id="co-back">&larr; Back</button><button class="btn solid" id="co-pay">Pay '+money(coTotal())+' (demo)</button></div></div>';
+    } else { // done
+      main.innerHTML = '<div class="co-done"><div class="mono">M</div><div class="ord">Order '+co.orderId+'</div>'+
+        '<h2>Thank you</h2>'+
+        '<p>This is a demo store — no payment was taken and nothing will ship. A confirmation would normally be sent to <b>'+(co.form.email||'your email')+'</b>.</p>'+
+        '<button class="btn solid" id="co-done-close">Continue shopping</button></div>';
+    }
+  }
+  function validateDetails(){
+    var ids={email:'f-email',first:'f-first',last:'f-last',addr:'f-addr',city:'f-city',post:'f-post'}, ok=true;
+    Object.keys(ids).forEach(function(k){ var el=$('#'+ids[k]); var v=(el.value||'').trim(); co.form[k]=v;
+      var bad = !v || (k==='email' && v.indexOf('@')<0); el.classList.toggle('bad',bad); if(bad) ok=false; });
+    var c=$('#f-country'); co.form.country = c?c.value:'United Kingdom';
+    if(!ok) showToast('Please complete the highlighted fields.');
+    return ok;
+  }
+  function placeOrder(){
+    var fields=['f-card','f-exp','f-cvc'], ok=true;
+    fields.forEach(function(id){ var el=$('#'+id); var bad=!(el.value||'').trim(); el.classList.toggle('bad',bad); if(bad) ok=false; });
+    if(!ok){ showToast('Enter the (demo) card details to continue.'); return; }
+    co.orderId='MAREN-'+Math.random().toString(36).slice(2,7).toUpperCase();
+    co.step='done'; store.clearCart(); renderCheckout();
+  }
+
   /* ---------------- INIT ---------------- */
   function init(){
     store.load();
@@ -300,6 +411,7 @@
     render.lookbookProducts();
     render.hotspots();
     render.journal();
+    render.films();
     render.counts();
     render.cart();
     render.wishHearts();
@@ -335,7 +447,7 @@
         if(!pdpState.size){ showToast('Please choose a size.'); return; }
         store.addToCart(pdpState.id, pdpState.size, pdpState.color);
         showToast(byId[pdpState.id].name+' added to bag.');
-        openPanel($('#cart')); return;
+        closeAll(); openPanel($('#cart')); return;
       }
       if(e.target.id==='pdp-wish'){ store.toggleWish(pdpState.id); render.wishHearts(); render.wishlist(); return; }
       if(e.target.id==='open-size'){ openPanel($('#sizeguide')); return; }
@@ -357,7 +469,36 @@
     // ----- nav openers -----
     $('#open-cart') && $('#open-cart').addEventListener('click', function(e){ e.preventDefault(); openPanel($('#cart')); });
     $('#open-wish') && $('#open-wish').addEventListener('click', function(e){ e.preventDefault(); render.wishlist(); openPanel($('#wish')); });
-    $('#checkout') && $('#checkout').addEventListener('click', function(){ showToast('Checkout isn’t wired up in this prototype.'); });
+    $('#checkout') && $('#checkout').addEventListener('click', function(){
+      if(!store.cart.length){ showToast('Your bag is empty.'); return; }
+      closeAll(); openCheckout();
+    });
+
+    // ----- promotional films: click-to-play -----
+    document.addEventListener('click', function(e){
+      var pb = e.target.closest('.vplay'); if(!pb) return;
+      var card = pb.closest('.vcard'); var v = card.querySelector('video');
+      card.classList.add('playing'); v.setAttribute('controls','controls');
+      var pr = v.play();
+      if(pr && pr.catch) pr.catch(function(){
+        card.classList.remove('playing'); v.removeAttribute('controls');
+        showToast('Add this film to /assets/video to play it.');
+      });
+    });
+
+    // ----- checkout step interactions -----
+    var coModal = $('#checkout-modal');
+    coModal && coModal.addEventListener('click', function(e){
+      var d = e.target.closest('[data-deliv]'); if(d){ co.delivery = d.getAttribute('data-deliv'); renderCheckout(); return; }
+      if(e.target.id==='co-next'){
+        if(co.step==='details'){ if(validateDetails()){ co.step='delivery'; renderCheckout(); } }
+        else if(co.step==='delivery'){ co.step='payment'; renderCheckout(); }
+        return;
+      }
+      if(e.target.id==='co-back'){ co.step = (co.step==='payment') ? 'delivery' : 'details'; renderCheckout(); return; }
+      if(e.target.id==='co-pay'){ placeOrder(); return; }
+      if(e.target.id==='co-done-close'){ closeAll(); return; }
+    });
     $('#open-size-foot') && $('#open-size-foot').addEventListener('click', function(e){ e.preventDefault(); openPanel($('#sizeguide')); });
 
     // ----- mobile nav -----

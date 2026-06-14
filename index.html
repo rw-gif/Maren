@@ -19,6 +19,7 @@
     <nav class="nav-links" aria-label="Primary">
       <a href="#edit">The Edit</a>
       <a href="#lookbook">Lookbook</a>
+      <a href="#films">Films</a>
       <a href="#journal">Journal</a>
       <a href="#tryon">Try On</a>
       <a href="#stylist">Stylist</a>
@@ -109,6 +110,20 @@
     <div class="sec-head"><div class="eyebrow">Trends &amp; stories</div><h2>The Journal</h2></div>
     <p class="intro-line">Seasonal trends, fabric notes and how-to-wear stories — data-driven, so it’s quick to keep current.</p>
     <div class="jrn-grid" id="jrn-grid"></div>
+  </div>
+</section>
+
+<!-- ============ FILMS (promotional video space) ============ -->
+<section id="films" class="films">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Watch</div><h2>Films</h2></div>
+    <p class="intro-line">Campaign films, fabric stories and behind-the-seams. Drop your clips into <code>/assets/video</code> and they play here — posters hold the space until then.</p>
+    <div class="film-hero">
+      <span class="vslot-badge">Promo film slot</span>
+      <video data-autoplay muted loop playsinline poster="assets/muses/cami.jpg"><source src="assets/video/promo-hero.mp4" type="video/mp4"></video>
+      <div class="cap"><div class="k">Campaign</div><div class="t">MAREN — Spring / Summer 2026</div></div>
+    </div>
+    <div class="films-grid" id="films-grid"></div>
   </div>
 </section>
 
@@ -321,6 +336,18 @@
 <div class="modal" id="sizeguide" role="dialog" aria-label="Size and fit guide">
   <div class="modal-card size-card"><button class="modal-close" data-close aria-label="Close">&times;</button>
     <div class="size-body" id="size-body"></div>
+  </div>
+</div>
+
+<!-- ============ CHECKOUT (demo) ============ -->
+<div class="checkout" id="checkout-modal" role="dialog" aria-label="Checkout">
+  <div class="co-bar">
+    <span class="co-brand">MAREN</span>
+    <button class="co-close" data-close aria-label="Close checkout">Close &times;</button>
+  </div>
+  <div class="co-grid">
+    <div class="co-main" id="co-main"></div>
+    <aside class="co-summary" id="co-summary"></aside>
   </div>
 </div>
 
