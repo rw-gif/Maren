@@ -4,275 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MAREN — Coastal Essentials</title>
+<meta name="description" content="MAREN — coastal essentials in linen and cotton, for slow days by the sea.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --cream:#F2ECDF;
-    --cream-2:#FBF8F2;
-    --ink:#2A3B52;
-    --sky:#AFC7DA;
-    --sky-deep:#8FB0CB;
-    --oat:#E2D7C3;
-    --clay:#6E5847;
-    --line:#D8CDB8;
-    --muted:#A9967F;
-    --serif:'Playfair Display',Georgia,serif;
-    --sans:'Jost','Helvetica Neue',Arial,sans-serif;
-    --maxw:1200px;
-    --cami-img:url("assets/muses/cami.jpg");
-    --vivi-img:url("assets/muses/vivi.jpg");
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;background:var(--cream);color:var(--ink);
-    font-family:var(--sans);font-weight:300;line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  img{max-width:100%;display:block;}
-  a{color:inherit;text-decoration:none;}
-  button{font-family:inherit;cursor:pointer;}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
-  .eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);font-weight:400;}
-  .serif{font-family:var(--serif);}
-  .italic{font-family:var(--serif);font-style:italic;}
-
-  /* focus visibility */
-  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
-    outline:2px solid var(--ink);outline-offset:3px;border-radius:2px;
-  }
-
-  /* ---------- NAV ---------- */
-  header.nav{
-    position:sticky;top:0;z-index:60;background:rgba(242,236,223,.86);
-    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
-  }
-  .nav-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:64px;}
-  .nav-links{display:flex;gap:30px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;}
-  .nav-links a{position:relative;padding:4px 0;}
-  .nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--ink);transition:width .35s ease;}
-  .nav-links a:hover::after{width:100%;}
-  .brandmark{font-family:var(--serif);font-size:24px;letter-spacing:.42em;text-align:center;padding-left:.42em;}
-  .nav-right{display:flex;gap:22px;justify-content:flex-end;font-size:12px;letter-spacing:.18em;text-transform:uppercase;}
-  .nav-toggle{display:none;background:none;border:none;color:var(--ink);font-size:12px;letter-spacing:.18em;}
-
-  /* ---------- HERO ---------- */
-  .hero{position:relative;min-height:84vh;display:flex;align-items:flex-end;overflow:hidden;
-    background:linear-gradient(180deg,#cddbe6 0%,#d9e3ea 26%,#ece6d9 64%,var(--cream) 100%);}
-  .hero .sea{position:absolute;left:0;right:0;bottom:0;height:34%;
-    background:linear-gradient(180deg,rgba(143,176,203,.0),rgba(143,176,203,.22));}
-  .hero-content{position:relative;z-index:2;padding-bottom:64px;}
-  .hero h1{font-family:var(--serif);font-weight:400;letter-spacing:.5em;margin:0;
-    font-size:clamp(48px,12vw,150px);line-height:.95;padding-left:.5em;}
-  .hero .tagline{display:flex;align-items:center;gap:18px;margin-top:22px;}
-  .hero .tagline span{font-size:13px;letter-spacing:.36em;text-transform:uppercase;color:var(--clay);}
-  .hero .rule{height:1px;width:64px;background:#B7A98E;}
-  .hero .sub{margin-top:14px;font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.4vw,26px);color:var(--ink);max-width:30ch;}
-  .hero .cta-row{margin-top:34px;display:flex;gap:16px;flex-wrap:wrap;}
-  .sprig-hero{position:absolute;top:8%;right:6%;width:clamp(120px,18vw,230px);z-index:1;
-    animation:sway 9s ease-in-out infinite;transform-origin:50% 100%;}
-  @keyframes sway{0%,100%{transform:rotate(-2.5deg);}50%{transform:rotate(2.5deg);}}
-
-  /* buttons */
-  .btn{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.2em;
-    text-transform:uppercase;padding:15px 26px;border:1px solid var(--ink);background:transparent;
-    color:var(--ink);transition:background .3s,color .3s;}
-  .btn:hover{background:var(--ink);color:var(--cream);}
-  .btn.solid{background:var(--ink);color:var(--cream);}
-  .btn.solid:hover{background:#1f2d40;}
-  .btn.light{border-color:var(--cream);color:var(--cream);}
-  .btn.light:hover{background:var(--cream);color:var(--ink);}
-
-  /* ---------- SECTION SHELL ---------- */
-  section{padding:96px 0;}
-  .sec-head{text-align:center;margin-bottom:54px;}
-  .sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4vw,46px);
-    letter-spacing:.06em;margin:14px 0 0;}
-  .divider{display:flex;align-items:center;justify-content:center;gap:18px;color:var(--line);}
-  .divider .ln{height:1px;width:90px;background:var(--line);}
-
-  /* ---------- PRODUCT GRID ---------- */
-  .note{font-size:11px;letter-spacing:.12em;color:var(--muted);text-align:center;margin:-30px auto 40px;max-width:60ch;}
-  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
-  .card{background:var(--cream-2);border:1px solid var(--line);padding:0 0 20px;position:relative;overflow:hidden;}
-  .card .swatch{aspect-ratio:3/4;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-  .card .swatch .label-tag{position:absolute;top:14px;left:14px;font-size:9px;letter-spacing:.22em;
-    text-transform:uppercase;color:var(--ink);background:rgba(251,248,242,.8);padding:5px 9px;border:1px solid var(--line);}
-  .card .bloom{width:46%;opacity:.9;transition:transform .6s ease;}
-  .card:hover .bloom{transform:translateY(-6px) scale(1.05);}
-  .card .meta{padding:18px 20px 0;}
-  .card h3{font-family:var(--serif);font-weight:500;font-size:19px;margin:0 0 4px;letter-spacing:.01em;}
-  .card .price{font-size:13px;letter-spacing:.08em;color:var(--clay);}
-  .card .desc{font-size:12px;letter-spacing:.04em;color:var(--muted);margin-top:6px;min-height:32px;}
-  .card .tryon{margin:14px 20px 0;width:calc(100% - 40px);justify-content:center;font-size:11px;padding:12px;}
-
-  /* ---------- TRY-ON ---------- */
-  .tryon-section{background:var(--ink);color:var(--cream);}
-  .tryon-section .eyebrow{color:var(--sky);}
-  .tryon-section h2{color:var(--cream-2);}
-  .tryon-lead{text-align:center;max-width:60ch;margin:0 auto 46px;color:#cdd7e2;font-weight:300;}
-  .studio{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start;
-    background:rgba(255,255,255,.04);border:1px solid rgba(175,199,218,.28);padding:34px;}
-  .stage{position:relative;aspect-ratio:3/4;background:linear-gradient(180deg,#33455e,#2a3b52);
-    border:1px solid rgba(175,199,218,.3);overflow:hidden;display:flex;align-items:center;justify-content:center;}
-  .stage .silhouette{position:absolute;bottom:0;height:92%;opacity:.92;}
-  .stage .garment{position:absolute;left:50%;transform:translateX(-50%);width:54%;opacity:0;
-    transition:opacity .5s ease;mix-blend-mode:normal;}
-  .stage .garment.on{opacity:1;}
-  .stage .placeholder-text{color:#9fb2c7;font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-align:center;padding:0 24px;}
-  .stage img.uploaded{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-  .controls label{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--sky);margin:0 0 10px;}
-  .controls .group{margin-bottom:26px;}
-  .chip-row{display:flex;flex-wrap:wrap;gap:10px;}
-  .chip{font-family:var(--sans);font-size:12px;letter-spacing:.08em;padding:10px 16px;border:1px solid rgba(175,199,218,.45);
-    background:transparent;color:var(--cream);transition:all .25s;}
-  .chip:hover{border-color:var(--sky);}
-  .chip.active{background:var(--sky);color:var(--ink);border-color:var(--sky);}
-  .upload-box{border:1px dashed rgba(175,199,218,.5);padding:16px;text-align:center;font-size:12px;color:#bcccd9;}
-  .upload-box input{display:none;}
-  .upload-box .pick{color:var(--sky);text-decoration:underline;cursor:pointer;}
-  details.how{margin-top:18px;border-top:1px solid rgba(175,199,218,.25);padding-top:16px;}
-  details.how summary{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--sky);cursor:pointer;}
-  details.how p{font-size:12.5px;color:#cdd7e2;margin:12px 0 0;line-height:1.7;}
-  .privacy-flag{font-size:11px;color:#9fb2c7;margin-top:14px;border-left:2px solid var(--sky);padding-left:12px;}
-
-  /* ---------- STYLIST ---------- */
-  .stylist-wrap{max-width:680px;margin:0 auto;background:var(--cream-2);border:1px solid var(--line);padding:42px;}
-  .q{margin-bottom:30px;}
-  .q p{font-family:var(--serif);font-size:20px;margin:0 0 16px;}
-  .stylist-out{display:none;}
-  .stylist-out.show{display:block;animation:fade .6s ease;}
-  @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
-  .rec{display:flex;gap:18px;align-items:center;border-top:1px solid var(--line);padding:18px 0;}
-  .rec .rec-bloom{width:54px;flex:none;}
-  .rec h4{font-family:var(--serif);font-weight:500;margin:0 0 3px;font-size:17px;}
-  .rec p{margin:0;font-size:12.5px;color:var(--clay);}
-  .stylist-foot{font-size:11px;color:var(--muted);margin-top:18px;letter-spacing:.04em;}
-
-  /* ---------- MUSES ---------- */
-  .muses{background:var(--oat);}
-  .muse-disclose{text-align:center;max-width:64ch;margin:0 auto 46px;font-size:13px;color:var(--clay);}
-  .muse-disclose strong{font-weight:500;}
-  .muse-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;}
-  .muse{background:var(--cream-2);border:1px solid var(--line);position:relative;overflow:hidden;}
-  .muse-photo{aspect-ratio:4/5;overflow:hidden;background:var(--oat) center 18%/cover no-repeat;}
-  .muse-photo.empty{display:flex;align-items:center;justify-content:center;text-align:center;
-    background:repeating-linear-gradient(135deg,var(--cream-2),var(--cream-2) 12px,#f6f1e6 12px,#f6f1e6 24px);}
-  .muse-photo.empty span{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);padding:0 24px;}
-  .muse-body{padding:26px 30px 32px;}
-  .muse-body .ai{display:block;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
-  .ai-badge{position:absolute;top:20px;right:20px;font-size:9px;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--muted);font-weight:400;}
-  .muse h3{font-family:var(--serif);font-size:30px;font-weight:400;letter-spacing:.12em;margin:0;}
-  .muse .role{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--clay);margin:6px 0 18px;}
-  .muse .pal{display:flex;gap:8px;margin:18px 0;}
-  .muse .pal i{width:26px;height:26px;display:block;border:1px solid rgba(0,0,0,.08);}
-  .muse p.bio{font-size:13.5px;color:var(--ink);margin:0;}
-
-  /* ---------- STORY ---------- */
-  .story{background:linear-gradient(180deg,var(--cream),#e9e1d2);text-align:center;}
-  .story .big{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(24px,3.4vw,38px);
-    line-height:1.4;max-width:24ch;margin:24px auto 0;}
-  .story .body{max-width:54ch;margin:28px auto 0;color:var(--clay);}
-
-  /* ---------- LOOKBOOK ---------- */
-  .lookbook{background:var(--cream-2);}
-  .lb-intro{max-width:64ch;margin:-30px auto 44px;text-align:center;font-size:11.5px;letter-spacing:.05em;color:var(--muted);}
-  .lb-feature{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line);
-    background:var(--oat) center 14%/cover no-repeat;display:flex;align-items:flex-end;margin-bottom:18px;}
-  .lb-feature::after{content:"";position:absolute;inset:0;z-index:1;
-    background:linear-gradient(180deg,rgba(42,59,82,0) 45%,rgba(42,59,82,.5));}
-  .lb-feature .cap{position:relative;z-index:2;padding:28px 32px;color:#fff;}
-  .lb-feature .cap .k{font-size:11px;letter-spacing:.28em;text-transform:uppercase;opacity:.92;}
-  .lb-feature .cap .t{font-family:var(--serif);font-size:clamp(20px,3vw,32px);margin:5px 0 0;}
-  .lb-feature .ai-corner{position:absolute;top:14px;right:16px;z-index:2;font-size:9px;letter-spacing:.2em;
-    text-transform:uppercase;color:#fff;background:rgba(42,59,82,.5);padding:4px 9px;}
-  .lb-products{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin:30px 0;}
-  .lp{background:var(--cream);border:1px solid var(--line);}
-  .lp .ph{aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;
-    background:linear-gradient(160deg,#FBF8F2,#dfe7ee);}
-  .lp .ph .mono{font-family:var(--serif);font-size:38px;color:var(--ink);opacity:.45;}
-  .lp .info{padding:13px 15px 17px;}
-  .lp h4{font-family:var(--serif);font-weight:500;font-size:15px;margin:0;}
-  .lp .pr{font-size:12px;color:var(--clay);margin-top:3px;}
-  .lp .sw{display:flex;gap:6px;margin-top:10px;}
-  .lp .sw i{width:15px;height:15px;border-radius:50%;border:1px solid rgba(0,0,0,.18);display:block;}
-  .lb-loc{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px;}
-  .lb-slot{aspect-ratio:4/5;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
-    text-align:center;color:var(--muted);
-    background:repeating-linear-gradient(135deg,var(--cream),var(--cream) 12px,#f3ede0 12px,#f3ede0 24px);}
-  .lb-slot span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:0 18px;line-height:1.7;}
-
-  /* ---------- OUR WORLD / MOODBOARD ---------- */
-  .world{background:linear-gradient(180deg,#e7eef3,#dfe7ea);}
-  .moodgrid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:158px;gap:14px;}
-  .tile{border:1px solid rgba(255,255,255,.55);overflow:hidden;position:relative;}
-  .tile.big{grid-column:span 2;grid-row:span 2;}
-  .tile.tall{grid-row:span 2;}
-  .tile.img{background-size:cover;background-position:center 20%;}
-  .tile .ai{position:absolute;bottom:7px;left:9px;font-size:8px;letter-spacing:.16em;text-transform:uppercase;
-    color:#fff;background:rgba(42,59,82,.45);padding:2px 6px;}
-  .tile.script{background:var(--cream-2);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;}
-  .tile.script span{font-family:var(--serif);font-style:italic;font-size:23px;color:var(--sky-deep);line-height:1.3;}
-  .tile.stripe{background:repeating-linear-gradient(180deg,#2A3B52,#2A3B52 14px,#FBF8F2 14px,#FBF8F2 28px);}
-  .tile.gingham{background-color:#fff;background-image:
-    linear-gradient(90deg,rgba(143,176,203,.55) 50%,transparent 50%),
-    linear-gradient(rgba(143,176,203,.55) 50%,transparent 50%);background-size:30px 30px;}
-  .tile.pal{display:flex;}
-  .tile.pal i{flex:1;}
-  .tile.label{background:var(--ink);color:var(--cream);display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;}
-  .tile.label span{font-size:11px;letter-spacing:.22em;text-transform:uppercase;}
-  .tile.empty{display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);
-    background:repeating-linear-gradient(135deg,#eef3f5,#eef3f5 12px,#e6edf0 12px,#e6edf0 24px);}
-  .tile.empty span{font-size:9px;letter-spacing:.2em;text-transform:uppercase;padding:0 12px;line-height:1.6;}
-  @media(max-width:820px){
-    .lb-products{grid-template-columns:repeat(2,1fr);}
-    .lb-loc{grid-template-columns:1fr;}
-    .moodgrid{grid-template-columns:repeat(2,1fr);grid-auto-rows:132px;}
-  }
-
-  /* ---------- FOOTER ---------- */
-  footer{background:var(--ink);color:var(--cream);padding:72px 0 36px;}
-  .foot-top{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:44px;}
-  .foot-brand .fm{font-family:var(--serif);font-size:26px;letter-spacing:.4em;padding-left:.4em;}
-  .foot-brand p{color:#bcccd9;font-size:13px;max-width:34ch;margin-top:14px;}
-  .news{display:flex;border:1px solid rgba(255,255,255,.3);margin-top:18px;max-width:340px;}
-  .news input{flex:1;background:transparent;border:none;color:var(--cream);padding:12px 14px;font-family:var(--sans);font-size:13px;}
-  .news input::placeholder{color:#8ea0b4;}
-  .news button{background:var(--sky);border:none;color:var(--ink);padding:0 18px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;}
-  .foot-col h5{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--sky);margin:0 0 16px;font-weight:400;}
-  .foot-col a{display:block;color:#cdd7e2;font-size:13px;margin-bottom:11px;}
-  .foot-col a:hover{color:var(--cream);}
-  .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;padding-top:26px;font-size:11px;color:#8ea0b4;letter-spacing:.06em;}
-
-  /* ---------- MODAL TOAST ---------- */
-  .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(140%);
-    background:var(--ink);color:var(--cream);padding:14px 24px;font-size:12px;letter-spacing:.1em;
-    z-index:200;transition:transform .4s cubic-bezier(.2,.8,.2,1);border:1px solid var(--sky);}
-  .toast.show{transform:translateX(-50%) translateY(0);}
-
-  /* ---------- RESPONSIVE ---------- */
-  @media(max-width:920px){
-    .grid{grid-template-columns:repeat(2,1fr);}
-    .studio{grid-template-columns:1fr;}
-    .foot-top{grid-template-columns:1fr;}
-    .muse-grid{grid-template-columns:1fr;}
-  }
-  @media(max-width:680px){
-    .nav-links,.nav-right{display:none;}
-    .nav-inner{grid-template-columns:1fr auto 1fr;}
-    .nav-toggle{display:block;justify-self:start;}
-    .nav-cart{display:block;justify-self:end;font-size:12px;letter-spacing:.18em;text-transform:uppercase;}
-    section{padding:64px 0;}
-    .grid{grid-template-columns:1fr 1fr;gap:14px;}
-    .card h3{font-size:16px;}
-  }
-  @media(prefers-reduced-motion:reduce){
-    *{animation:none!important;transition:none!important;scroll-behavior:auto;}
-  }
-</style>
+<link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 
@@ -282,24 +18,27 @@
     <button class="nav-toggle" aria-label="Menu">Menu</button>
     <nav class="nav-links" aria-label="Primary">
       <a href="#edit">The Edit</a>
+      <a href="#lookbook">Lookbook</a>
+      <a href="#journal">Journal</a>
       <a href="#tryon">Try On</a>
       <a href="#stylist">Stylist</a>
-      <a href="#lookbook">Lookbook</a>
     </nav>
     <a class="brandmark" href="#top">MAREN</a>
     <div class="nav-right">
       <a href="#muses">The Muses</a>
       <a href="#world">World</a>
-      <a href="#story">Our Story</a>
-      <a href="#" class="nav-cart">Bag (0)</a>
+      <button id="open-wish" type="button">Saved <span class="count-badge" id="wish-count">(0)</span></button>
+      <button id="open-cart" type="button">Bag <span class="count-badge" id="bag-count">(0)</span></button>
     </div>
-    <a class="nav-cart" href="#" style="display:none">Bag</a>
   </div>
 </header>
 
-<!-- ============ HERO ============ -->
+<!-- ============ HERO (video) ============ -->
 <a id="top"></a>
-<section class="hero" style="padding-top:0;">
+<section class="hero" id="hero" style="padding-top:0;">
+  <video class="hero-video" id="hero-video" data-autoplay muted loop playsinline poster="assets/muses/cami.jpg">
+    <source src="assets/video/hero.mp4" type="video/mp4">
+  </video>
   <div class="sea"></div>
   <div class="wrap hero-content">
     <h1>MAREN</h1>
@@ -307,9 +46,10 @@
     <p class="sub">Linen and cotton, for slow days by the sea.</p>
     <div class="cta-row">
       <a class="btn solid" href="#edit">Shop the Edit</a>
-      <a class="btn" href="#tryon">Try it on</a>
+      <a class="btn" href="#lookbook">The Lookbook</a>
     </div>
   </div>
+  <button class="media-toggle" id="media-toggle" aria-label="Play or pause hero video">▶</button>
 </section>
 
 <!-- ============ THE EDIT ============ -->
@@ -319,8 +59,56 @@
       <div class="eyebrow">Spring / Summer</div>
       <h2>The Edit</h2>
     </div>
-    <p class="note">Placeholder collection — product names, prices and copy are sample content for layout only, to be replaced with your real range. No claims here are live.</p>
+    <p class="note">Placeholder collection — names, prices and copy are sample content for layout only, to be replaced with your real range.</p>
+    <div class="edit-tools" id="edit-tools"></div>
     <div class="grid" id="product-grid"></div>
+  </div>
+</section>
+
+<!-- ============ LOOKBOOK (shoppable + film) ============ -->
+<section id="lookbook" class="lookbook">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Spring / Summer 2026</div><h2>The Lookbook</h2></div>
+    <p class="intro-line">Shoppable looks and lookbook film. Tap a <strong>+</strong> on the image to shop the piece. Muse imagery is AI-generated; film and on-location frames are ready for your own footage.</p>
+
+    <!-- shoppable feature: Cami -->
+    <div class="lb-feature" id="feature-cami" style="background-image:var(--cami-img)">
+      <span class="ai-corner">AI-generated</span>
+      <div class="cap"><div class="k">The Linen Shirt</div><div class="t">Clean lines, by the water.</div></div>
+    </div>
+
+    <!-- hero product row (shoppable) -->
+    <div class="lb-products" id="lb-products"></div>
+
+    <!-- lookbook film -->
+    <div class="lb-feature film">
+      <span class="ai-corner">Film slot</span>
+      <video data-autoplay muted loop playsinline poster="assets/muses/vivi.jpg">
+        <source src="assets/video/lookbook.mp4" type="video/mp4">
+      </video>
+      <div class="cap"><div class="k">SS26 Film</div><div class="t">Sun, stripes, salt air.</div></div>
+    </div>
+
+    <!-- shoppable feature: Vivi -->
+    <div class="lb-feature" id="feature-vivi" style="background-image:var(--vivi-img)">
+      <span class="ai-corner">AI-generated</span>
+      <div class="cap"><div class="k">Off-duty</div><div class="t">Golden hour on the deck.</div></div>
+    </div>
+
+    <div class="lb-loc">
+      <div class="lb-slot"><span>On location<br>Vivi on the boat<br>(your shot &middot; 4:5)</span></div>
+      <div class="lb-slot"><span>On location<br>Cami, countryside &amp; Land Rover<br>(your shot &middot; 4:5)</span></div>
+      <div class="lb-slot"><span>On location<br>by the sea<br>(your shot &middot; 4:5)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE JOURNAL ============ -->
+<section id="journal" class="journal">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Trends &amp; stories</div><h2>The Journal</h2></div>
+    <p class="intro-line">Seasonal trends, fabric notes and how-to-wear stories — data-driven, so it’s quick to keep current.</p>
+    <div class="jrn-grid" id="jrn-grid"></div>
   </div>
 </section>
 
@@ -331,11 +119,10 @@
       <div class="eyebrow">The Fitting Room</div>
       <h2>Virtual Try-On</h2>
     </div>
-    <p class="tryon-lead">See a piece on a model, or on you. Choose a fit below, then layer a garment — this is an interactive prototype of the experience; the production build is outlined beneath it.</p>
+    <p class="tryon-lead">See a piece on a model, or on you. Choose a fit, then layer a garment — this is an interactive prototype; real photorealistic try-on is the next build (it needs a server-side engine, a per-image budget and a privacy/GDPR review).</p>
     <div class="studio">
       <div class="stage" id="stage" aria-live="polite">
         <span class="placeholder-text" id="stage-empty">Choose a model or add a photo to begin</span>
-        <!-- model silhouettes -->
         <svg class="silhouette" id="sil-a" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
           <g fill="#cdd7e2"><ellipse cx="100" cy="44" rx="30" ry="36"/>
           <path d="M62,300 C70,150 80,108 100,108 C120,108 130,150 138,300 Z"/></g>
@@ -345,7 +132,6 @@
           <path d="M66,300 C74,160 84,112 100,112 C116,112 126,160 134,300 Z"/></g>
         </svg>
         <img class="uploaded" id="uploaded-img" alt="" style="display:none">
-        <!-- garment overlay -->
         <svg class="garment" id="garment" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path id="garment-shape" d="M20,30 L40,12 L80,12 L100,30 L88,48 L88,140 L32,140 L32,48 Z" fill="#F2ECDF" stroke="#2A3B52" stroke-width="1.2" opacity="0.96"/>
         </svg>
@@ -367,11 +153,10 @@
           <div class="chip-row" id="garment-chips"></div>
         </div>
         <button class="btn light" id="reset-stage" style="font-size:11px;">Reset fitting room</button>
-
         <details class="how">
           <summary>How the production version works</summary>
-          <p>This prototype layers a flat garment graphic over a chosen figure to demonstrate the flow and UI. A live build would route the customer's photo (or a chosen body model) and the garment's 3D/2D asset through a try-on engine — either a specialist virtual try-on API/SDK, or an in-house diffusion/pose-estimation pipeline — returning a photorealistic composite. The garment catalogue, sizing logic and "add to bag" handoff wire into the same product data used by The Edit.</p>
-          <p class="privacy-flag">Privacy note: any feature that ingests a customer photo processes personal (and arguably biometric) data. Under UK GDPR you'll need a clear lawful basis, a privacy notice covering it, retention limits, and ideally on-device or ephemeral processing. Worth confirming with counsel before launch.</p>
+          <p>This prototype layers a flat garment graphic over a chosen figure to demonstrate the flow. A live build routes the customer’s photo (or a body model) and the garment asset through a try-on engine — a specialist VTO API or an in-house diffusion/pose pipeline — returning a photorealistic composite, wired to the same product data as The Edit.</p>
+          <p class="privacy-flag">Privacy note: any feature ingesting a customer photo processes personal (and arguably biometric) data. Under UK GDPR you’ll need a lawful basis, a privacy notice, retention limits, and ideally on-device or ephemeral processing. Confirm with counsel before launch.</p>
         </details>
       </div>
     </div>
@@ -389,7 +174,7 @@
       <div id="stylist-quiz">
         <div class="q" data-q="occasion">
           <p>Where are you headed?</p>
-          <div class="chip-row" style="--chip-ink:1">
+          <div class="chip-row">
             <button class="chip s-chip" data-val="harbour">Harbour lunch</button>
             <button class="chip s-chip" data-val="town">Town &amp; errands</button>
             <button class="chip s-chip" data-val="evening">Evening by the water</button>
@@ -418,7 +203,7 @@
       <div class="eyebrow">Voices of the brand</div>
       <h2>The Muses</h2>
     </div>
-    <p class="muse-disclose">Cami and Vivi are MAREN's digital muses — AI-generated characters who give the label a consistent voice. They're storytelling, not real customers; any claim we make about a product is one we can stand behind.</p>
+    <p class="muse-disclose">Cami and Vivi are MAREN’s digital muses — AI-generated characters who give the label a consistent voice. They’re storytelling, not real customers; any claim we make about a product is one we can stand behind.</p>
     <div class="muse-grid">
       <article class="muse">
         <div class="muse-photo" style="background-image:var(--cami-img)"></div>
@@ -444,43 +229,11 @@
   </div>
 </section>
 
-<!-- ============ LOOKBOOK ============ -->
-<section id="lookbook" class="lookbook">
-  <div class="wrap">
-    <div class="sec-head"><div class="eyebrow">Spring / Summer 2026</div><h2>The Lookbook</h2></div>
-    <p class="lb-intro">Hero pieces, shown on the muses and on location. Product imagery is placeholder; the muse imagery is AI-generated; the on-location frames are ready for your own shots.</p>
-
-    <div class="lb-feature" style="background-image:var(--cami-img)">
-      <span class="ai-corner">AI-generated</span>
-      <div class="cap"><div class="k">The Linen Shirt</div><div class="t">Clean lines, by the water.</div></div>
-    </div>
-
-    <div class="lb-products">
-      <article class="lp"><div class="ph"><span class="mono">M</span></div><div class="info"><h4>The Harbour Cap</h4><div class="pr">&pound;38</div></div></article>
-      <article class="lp"><div class="ph"><span class="mono">M</span></div><div class="info"><h4>The Linen Shirt</h4><div class="pr">&pound;88</div></div></article>
-      <article class="lp"><div class="ph"><span class="mono">M</span></div><div class="info"><h4>The Linen Dress</h4><div class="pr">&pound;128</div><div class="sw" title="White, Black, Navy, Brown"><i style="background:#FBF8F2"></i><i style="background:#2A2A2A"></i><i style="background:#2A3B52"></i><i style="background:#6E5847"></i></div></div></article>
-      <article class="lp"><div class="ph"><span class="mono">M</span></div><div class="info"><h4>The Cotton Shorts</h4><div class="pr">&pound;62</div></div></article>
-      <article class="lp"><div class="ph"><span class="mono">M</span></div><div class="info"><h4>The Knit Jumper</h4><div class="pr">&pound;138</div></div></article>
-    </div>
-
-    <div class="lb-feature" style="background-image:var(--vivi-img)">
-      <span class="ai-corner">AI-generated</span>
-      <div class="cap"><div class="k">Off-duty</div><div class="t">Sun, stripes, salt air.</div></div>
-    </div>
-
-    <div class="lb-loc">
-      <div class="lb-slot"><span>On location<br>Vivi on the boat<br>(your shot &middot; 4:5)</span></div>
-      <div class="lb-slot"><span>On location<br>Cami, countryside &amp; Land Rover<br>(your shot &middot; 4:5)</span></div>
-      <div class="lb-slot"><span>On location<br>by the sea<br>(your shot &middot; 4:5)</span></div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ OUR WORLD / MOODBOARD ============ -->
 <section id="world" class="world">
   <div class="wrap">
     <div class="sec-head"><div class="eyebrow">The world of MAREN</div><h2>Our World</h2></div>
-    <p class="lb-intro">The mood the label lives in &mdash; coastal blues, linen, gingham, slow mornings. Each tile is a slot you can swap for your own imagery; the muse tiles are AI-generated.</p>
+    <p class="intro-line">The mood the label lives in &mdash; coastal blues, linen, gingham, slow mornings. Each tile is a slot you can swap for your own imagery; the muse tiles are AI-generated.</p>
     <div class="moodgrid">
       <div class="tile big img" style="background-image:var(--cami-img)"><span class="ai">AI</span></div>
       <div class="tile script"><span>slow living<br>by the sea</span></div>
@@ -500,7 +253,7 @@
 <section id="story" class="story">
   <div class="wrap">
     <div class="eyebrow">Est. 2026 · By the sea</div>
-    <p class="big">"Slow living by the sea — fewer things, chosen well, and worn until they soften."</p>
+    <p class="big">“Slow living by the sea — fewer things, chosen well, and worn until they soften.”</p>
     <p class="body">MAREN began with a simple idea: a small wardrobe of linen and cotton essentials that look better with wear, not worse. Made to be lived in, packed for the coast, and kept for years.</p>
     <div class="divider" style="margin-top:34px;"><span class="ln"></span><span class="serif" style="font-style:italic;color:var(--clay)">Maren</span><span class="ln"></span></div>
   </div>
@@ -520,13 +273,13 @@
       </div>
       <div class="foot-col">
         <h5>Shop</h5>
-        <a href="#edit">The Edit</a><a href="#tryon">Virtual Try-On</a>
-        <a href="#stylist">Find Your Fit</a><a href="#">Gift Cards</a>
+        <a href="#edit">The Edit</a><a href="#lookbook">Lookbook</a>
+        <a href="#stylist">Find Your Fit</a><a href="#" id="open-size-foot">Size &amp; Fit</a>
       </div>
       <div class="foot-col">
         <h5>House</h5>
-        <a href="#story">Our Story</a><a href="#muses">The Muses</a>
-        <a href="#">Fabric &amp; Care</a><a href="#">Contact</a>
+        <a href="#journal">The Journal</a><a href="#muses">The Muses</a>
+        <a href="#story">Our Story</a><a href="#world">Our World</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -536,193 +289,43 @@
   </div>
 </footer>
 
+<!-- ============ PANELS ============ -->
+<div class="overlay" id="overlay"></div>
+
+<aside class="drawer" id="cart" aria-label="Shopping bag">
+  <div class="drawer-head"><h3>Your Bag</h3><button class="drawer-close" data-close aria-label="Close">&times;</button></div>
+  <div class="drawer-body" id="cart-body"></div>
+  <div class="drawer-foot">
+    <div class="row"><span>Subtotal</span><b id="cart-total">£0</b></div>
+    <button class="btn solid" id="checkout">Checkout</button>
+  </div>
+</aside>
+
+<aside class="drawer" id="wish" aria-label="Saved items">
+  <div class="drawer-head"><h3>Saved</h3><button class="drawer-close" data-close aria-label="Close">&times;</button></div>
+  <div class="drawer-body" id="wish-body"></div>
+</aside>
+
+<div class="modal" id="quickview" role="dialog" aria-label="Product detail">
+  <div class="modal-card"><button class="modal-close" data-close aria-label="Close">&times;</button>
+    <div class="pdp" id="pdp"></div>
+  </div>
+</div>
+
+<div class="modal" id="articlemodal" role="dialog" aria-label="Journal article">
+  <div class="modal-card article-card"><button class="modal-close" data-close aria-label="Close">&times;</button>
+    <div id="article"></div>
+  </div>
+</div>
+
+<div class="modal" id="sizeguide" role="dialog" aria-label="Size and fit guide">
+  <div class="modal-card size-card"><button class="modal-close" data-close aria-label="Close">&times;</button>
+    <div class="size-body" id="size-body"></div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
-<script>
-(function(){
-  "use strict";
-
-  // ---- Catalogue (placeholder data — replace with real range) ----
-  var products = [
-    {id:'shift',  name:'The Linen Shift',  price:'£128', desc:'Sleeveless, A-line, washed linen', g:'dress',  blooms:'#AFC7DA', pal:['blues','neutrals'],  occ:['harbour','town']},
-    {id:'breton', name:'Breton Long-Sleeve',price:'£72',  desc:'Cotton jersey, navy stripe',       g:'top',    blooms:'#8FB0CB', pal:['stripe','blues'],     occ:['town','rest']},
-    {id:'set',    name:'Gingham Boxer Set', price:'£86',  desc:'Cotton shorts and scrunchie',      g:'set',    blooms:'#C3D5E2', pal:['neutrals','blues'],   occ:['rest','harbour']},
-    {id:'pj',     name:'The Sea Pyjama',    price:'£94',  desc:'Brushed cotton, floral sprig',     g:'top',    blooms:'#E2D7C3', pal:['neutrals'],           occ:['rest']},
-    {id:'babydoll',name:'Babydoll Mini',    price:'£110', desc:'Tiered cotton, broderie hem',      g:'dress',  blooms:'#AFC7DA', pal:['neutrals','blues'],   occ:['evening','harbour']},
-    {id:'knit',   name:'Cable Cardigan',    price:'£148', desc:'Cotton cable knit, sky blue',      g:'top',    blooms:'#8FB0CB', pal:['blues'],              occ:['evening','rest']},
-    {id:'shirt',  name:'Coastal Oversize Shirt',price:'£88',desc:'Striped cotton poplin',          g:'top',    blooms:'#C3D5E2', pal:['stripe','neutrals'],  occ:['town','harbour']},
-    {id:'scallop',name:'Scallop Linen Mini',price:'£124', desc:'Strapless, scalloped edge, ink',   g:'dress',  blooms:'#2A3B52', pal:['blues','neutrals'],   occ:['evening']}
-  ];
-
-  // garment overlay shapes for the fitting room
-  var shapes = {
-    dress:'M20,30 L40,12 L80,12 L100,30 L94,52 L98,140 L22,140 L26,52 Z',
-    top:  'M16,32 L40,12 L80,12 L104,32 L92,52 L92,96 L28,96 L28,52 Z',
-    set:  'M22,34 L42,16 L78,16 L98,34 L90,54 L90,84 L30,84 L30,54 Z M34,92 L86,92 L84,138 L62,138 L62,104 L58,104 L58,138 L36,138 Z'
-  };
-
-  function bloomSVG(color){
-    // Circle-M monogram (from the MAREN logo system) — replaces the hydrangea motif
-    return '<svg class="bloom" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'+
-      '<circle cx="60" cy="60" r="54" fill="none" stroke="#2A3B52" stroke-width="1.4"/>'+
-      '<circle cx="60" cy="60" r="47" fill="none" stroke="'+color+'" stroke-width="0.8"/>'+
-      '<text x="60" y="80" text-anchor="middle" font-family="\'Playfair Display\',Georgia,serif" font-size="56" fill="#2A3B52">M</text>'+
-      '</svg>';
-  }
-
-  // ---- Build product grid ----
-  var grid = document.getElementById('product-grid');
-  products.forEach(function(p){
-    var card = document.createElement('article');
-    card.className = 'card';
-    card.innerHTML =
-      '<div class="swatch" style="background:linear-gradient(160deg,#FBF8F2,'+p.blooms+'33);">'+
-        '<span class="label-tag">Linen · Cotton</span>'+ bloomSVG(p.blooms) +
-      '</div>'+
-      '<div class="meta"><h3>'+p.name+'</h3><div class="price">'+p.price+'</div>'+
-      '<div class="desc">'+p.desc+'</div></div>'+
-      '<button class="btn tryon" data-product="'+p.id+'" data-garment="'+p.g+'">Try it on</button>';
-    grid.appendChild(card);
-  });
-
-  // ---- Fitting room ----
-  var stage = document.getElementById('stage');
-  var empty = document.getElementById('stage-empty');
-  var silA = document.getElementById('sil-a');
-  var silB = document.getElementById('sil-b');
-  var uploaded = document.getElementById('uploaded-img');
-  var garment = document.getElementById('garment');
-  var garmentShape = document.getElementById('garment-shape');
-  var chipsBox = document.getElementById('garment-chips');
-
-  function setModel(which){
-    empty.style.display='none';
-    uploaded.style.display='none';
-    silA.style.display = which==='a' ? 'block':'none';
-    silB.style.display = which==='b' ? 'block':'none';
-    document.querySelectorAll('[data-model]').forEach(function(b){
-      b.classList.toggle('active', b.getAttribute('data-model')===which);
-    });
-  }
-
-  document.querySelectorAll('[data-model]').forEach(function(btn){
-    btn.addEventListener('click', function(){ setModel(btn.getAttribute('data-model')); });
-  });
-
-  document.getElementById('photo').addEventListener('change', function(e){
-    var file = e.target.files[0]; if(!file) return;
-    var reader = new FileReader();
-    reader.onload = function(ev){
-      uploaded.src = ev.target.result; uploaded.style.display='block';
-      silA.style.display='none'; silB.style.display='none'; empty.style.display='none';
-      document.querySelectorAll('[data-model]').forEach(function(b){b.classList.remove('active');});
-    };
-    reader.readAsDataURL(file);
-  });
-
-  // garment chips
-  var garmentBtns = [
-    {g:'dress',label:'Linen Shift',color:'#F2ECDF'},
-    {g:'top',  label:'Breton Top', color:'#dfe7ee'},
-    {g:'top',  label:'Cable Knit', color:'#AFC7DA'},
-    {g:'set',  label:'Boxer Set',  color:'#cdd9e6'},
-    {g:'dress',label:'Scallop Mini',color:'#2A3B52'}
-  ];
-  garmentBtns.forEach(function(o,i){
-    var b=document.createElement('button');
-    b.className='chip'; b.textContent=o.label;
-    b.addEventListener('click', function(){
-      if(silA.style.display==='none' && silB.style.display==='none' && uploaded.style.display==='none'){
-        setModel('a');
-      }
-      garmentShape.setAttribute('d', shapes[o.g]);
-      garmentShape.setAttribute('fill', o.color);
-      garment.classList.add('on');
-      chipsBox.querySelectorAll('.chip').forEach(function(c){c.classList.remove('active');});
-      b.classList.add('active');
-    });
-    chipsBox.appendChild(b);
-  });
-
-  document.getElementById('reset-stage').addEventListener('click', function(){
-    garment.classList.remove('on');
-    silA.style.display='none'; silB.style.display='none'; uploaded.style.display='none';
-    uploaded.src=''; empty.style.display='block';
-    document.querySelectorAll('.chip').forEach(function(c){c.classList.remove('active');});
-  });
-
-  // "Try it on" from product cards -> jump to fitting room and preload garment
-  document.querySelectorAll('.tryon').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var g = btn.getAttribute('data-garment');
-      document.getElementById('tryon').scrollIntoView({behavior:'smooth'});
-      setTimeout(function(){
-        setModel('a');
-        garmentShape.setAttribute('d', shapes[g]||shapes.dress);
-        garmentShape.setAttribute('fill', g==='dress'?'#F2ECDF':'#dfe7ee');
-        garment.classList.add('on');
-      }, 500);
-    });
-  });
-
-  // ---- Stylist quiz (rule-based demo) ----
-  var answers = {};
-  document.querySelectorAll('.s-chip').forEach(function(chip){
-    chip.addEventListener('click', function(){
-      var q = chip.closest('.q').getAttribute('data-q');
-      answers[q] = chip.getAttribute('data-val');
-      chip.closest('.q').querySelectorAll('.s-chip').forEach(function(c){c.classList.remove('active');});
-      chip.classList.add('active');
-    });
-  });
-
-  document.getElementById('stylist-go').addEventListener('click', function(){
-    var occ = answers.occasion, pal = answers.palette;
-    var picks = products.filter(function(p){
-      return (occ ? p.occ.indexOf(occ)>-1 : true) && (pal ? p.pal.indexOf(pal)>-1 : true);
-    });
-    if(picks.length<2){
-      picks = products.filter(function(p){ return pal ? p.pal.indexOf(pal)>-1 : true; });
-    }
-    if(picks.length<2){ picks = products.slice(0,3); }
-    picks = picks.slice(0,3);
-
-    var reasons = {
-      harbour:'easy enough for lunch on the water', town:'put-together for town without trying',
-      evening:'a quiet step up for the evening', rest:'soft and unhurried for a slow day'
-    };
-    var why = reasons[occ] || 'an easy MAREN staple';
-
-    var out = document.getElementById('stylist-out');
-    var html = '<p class="serif" style="font-size:22px;margin:0 0 6px;">Your edit</p>'+
-               '<p style="font-size:13px;color:var(--clay);margin:0 0 10px;">Chosen because it\'s '+why+'.</p>';
-    picks.forEach(function(p){
-      html += '<div class="rec"><div class="rec-bloom">'+bloomSVG(p.blooms)+'</div>'+
-              '<div><h4>'+p.name+'</h4><p>'+p.desc+' · '+p.price+'</p></div></div>';
-    });
-    html += '<p class="stylist-foot">Demo stylist — these picks are matched from the sample catalogue by simple rules. In production this is where a styling model would generate richer, personalised recommendations from your live range and the shopper\'s history.</p>';
-    out.innerHTML = html;
-    out.classList.add('show');
-    out.scrollIntoView({behavior:'smooth', block:'nearest'});
-  });
-
-  // ---- Newsletter + toast (no real submit) ----
-  var toast = document.getElementById('toast');
-  var toastTimer;
-  function showToast(msg){
-    toast.textContent = msg; toast.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 3200);
-  }
-  document.getElementById('news-btn').addEventListener('click', function(){
-    var v = document.getElementById('news-email').value.trim();
-    if(v && v.indexOf('@')>-1){ showToast('Thanks — you\'re on the list (demo, not stored).'); document.getElementById('news-email').value=''; }
-    else { showToast('Please enter a valid email.'); }
-  });
-  document.querySelector('.nav-cart').addEventListener('click', function(e){
-    e.preventDefault(); showToast('Bag and checkout are not wired up in this prototype.');
-  });
-})();
-</script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>
