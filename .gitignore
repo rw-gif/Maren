@@ -1,2 +1,5 @@
 # Local scratch / preview downloads (not part of the build)
 .muse-previews/
+
+# Local preview screenshots (not part of the build)
+.preview/
