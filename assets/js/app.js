@@ -18,7 +18,7 @@
       desc:'Washed-cotton six-panel, embroidered wordmark', colors:[{name:'Navy',hex:'#2A3B52'},{name:'Stone',hex:'#C9BBA1'}],
       fabric:'Unstructured six-panel cap in soft washed cotton with a low crown, curved brim and an embroidered MAREN wordmark.', care:'Spot clean and air dry. Do not machine wash.'},
     {id:'shirt',    name:'The Linen Shirt',     price:88,  cat:'Shirts',      g:'top',   blooms:'#AFC7DA', hero:true, pal:['neutrals','blues'], occ:['town','harbour'],
-      desc:'Pre-washed cream linen, mother-of-pearl buttons', colors:[{name:'Cream',hex:'#F2ECDF'},{name:'White',hex:'#FBF8F2'},{name:'Sky',hex:'#AFC7DA'}],
+      desc:'Pre-washed linen, mother-of-pearl buttons', colors:[{name:'White',hex:'#FBF8F2'},{name:'Sky',hex:'#AFC7DA',img:'shirt-sky'},{name:'Navy',hex:'#2A3B52',img:'shirt-navy'},{name:'Cream',hex:'#F2ECDF'}],
       fabric:'Pre-washed pure linen with a relaxed cut, soft natural creases and mother-of-pearl buttons. Woven MAREN collar label.', care:'Machine wash cold, line dry, warm iron — or wear creased.'},
     {id:'dress',    name:'The Linen Dress',     price:128, cat:'Dresses',     g:'dress', blooms:'#AFC7DA', hero:true, pal:['neutrals','blues'], occ:['harbour','evening'],
       desc:'Square-neck linen midi, easy drape', colors:[{name:'White',hex:'#FBF8F2'},{name:'Natural',hex:'#C9BBA1',img:'dress-oat'},{name:'Brown',hex:'#6E5847',img:'dress-brown'}],
