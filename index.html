@@ -151,14 +151,17 @@
 
   /* ---------- MUSES ---------- */
   .muses{background:var(--oat);}
-  .muse-disclose{text-align:center;max-width:64ch;margin:0 auto 46px;font-size:13px;color:var(--clay);}
-  .muse-disclose strong{font-weight:500;}
+  .muse-intro{text-align:center;max-width:60ch;margin:0 auto 46px;font-size:14px;color:var(--clay);}
   .muse-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;}
-  .muse{background:var(--cream-2);border:1px solid var(--line);padding:34px;position:relative;}
-  .ai-badge{position:absolute;top:20px;right:20px;font-size:9px;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--muted);font-weight:400;}
+  .muse{background:var(--cream-2);border:1px solid var(--line);overflow:hidden;position:relative;}
+  .muse-portrait{position:relative;aspect-ratio:4/5;overflow:hidden;
+    background:linear-gradient(160deg,#FBF8F2,var(--sky));display:flex;align-items:center;justify-content:center;}
+  .muse-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;}
+  .muse-portrait .ph{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding:0 20px;
+    color:var(--muted);font-size:10px;letter-spacing:.22em;text-transform:uppercase;}
+  .muse-body{padding:28px 32px 34px;}
   .muse h3{font-family:var(--serif);font-size:30px;font-weight:400;letter-spacing:.12em;margin:0;}
-  .muse .role{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--clay);margin:6px 0 18px;}
+  .muse .role{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--clay);margin:7px 0 0;}
   .muse .pal{display:flex;gap:8px;margin:18px 0;}
   .muse .pal i{width:26px;height:26px;display:block;border:1px solid rgba(0,0,0,.08);}
   .muse p.bio{font-size:13.5px;color:var(--ink);margin:0;}
@@ -349,25 +352,41 @@
 <section id="muses" class="muses">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">Voices of the brand</div>
+      <div class="eyebrow">The faces of the brand</div>
       <h2>The Muses</h2>
     </div>
-    <p class="muse-disclose">Cami and Vivi are MAREN's digital muses — AI-generated characters who give the label a consistent voice. They're storytelling, not real customers; any claim we make about a product is one we can stand behind.</p>
+    <p class="muse-intro">Cami and Vivi are the two women MAREN is cut for — the same easy, sunlit life in two registers. Cami carries the considered edit; Vivi carries the everyday.</p>
     <div class="muse-grid">
-      <div class="muse">
-        <span class="ai-badge">AI-generated</span>
-        <h3>CAMI</h3>
-        <div class="role">The Curator · New England cool</div>
-        <div class="pal"><i style="background:#2A3B52"></i><i style="background:#F2ECDF"></i><i style="background:#AFC7DA"></i><i style="background:#C9BBA1"></i></div>
-        <p class="bio">Structured linen, a crisp white shirt, a Breton top. Cool, clean and editorial — Cami frames the considered side of MAREN: buy well, wear it for years.</p>
-      </div>
-      <div class="muse">
-        <span class="ai-badge">AI-generated</span>
-        <h3>VIVI</h3>
-        <div class="role">The Spark · Mediterranean warm</div>
-        <div class="pal"><i style="background:#E2D7C3"></i><i style="background:#6E5847"></i><i style="background:#AFC7DA"></i><i style="background:#E9D9A6"></i></div>
-        <p class="bio">Gingham, golden hour, barefoot on the deck. Warm and easy — Vivi carries the sunlit, off-duty mood of the collection.</p>
-      </div>
+      <article class="muse">
+        <div class="muse-portrait">
+          <div class="ph">
+            <svg viewBox="0 0 120 120" width="74" height="74" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="60" cy="60" r="54" fill="none" stroke="#2A3B52" stroke-width="1.4"/><text x="60" y="80" text-anchor="middle" font-family="'Playfair Display',Georgia,serif" font-size="56" fill="#2A3B52">M</text></svg>
+            <span>Portrait — add cami.jpg</span>
+          </div>
+          <img src="assets/muses/cami.jpg" alt="Cami — MAREN muse" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="muse-body">
+          <h3>CAMI</h3>
+          <div class="role">The Curator · Cool &amp; composed</div>
+          <div class="pal"><i style="background:#2A3B52"></i><i style="background:#FBF8F2"></i><i style="background:#AFC7DA"></i><i style="background:#C9C2B4"></i></div>
+          <p class="bio">Cool icy-blonde, porcelain-calm and quietly put-together. Cami is MAREN's editorial register — a crisp white linen shirt, tailored neutrals, clean lines and a steady gaze. She carries the considered pieces: buy well, wear them for years.</p>
+        </div>
+      </article>
+      <article class="muse">
+        <div class="muse-portrait">
+          <div class="ph">
+            <svg viewBox="0 0 120 120" width="74" height="74" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="60" cy="60" r="54" fill="none" stroke="#2A3B52" stroke-width="1.4"/><text x="60" y="80" text-anchor="middle" font-family="'Playfair Display',Georgia,serif" font-size="56" fill="#2A3B52">M</text></svg>
+            <span>Portrait — add vivi.jpg</span>
+          </div>
+          <img src="assets/muses/vivi.jpg" alt="Vivi — MAREN muse" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="muse-body">
+          <h3>VIVI</h3>
+          <div class="role">The Spark · Golden &amp; sun-kissed</div>
+          <div class="pal"><i style="background:#E9D9A6"></i><i style="background:#E2D7C3"></i><i style="background:#AFC7DA"></i><i style="background:#6E5847"></i></div>
+          <p class="bio">Golden-blonde and sun-kissed, freckles and an easy mid-laugh. Vivi is the everyday heart of MAREN — breton stripes, gingham and washed cotton, barefoot on the deck in the late light. Warm, candid and unfussy, she makes an ordinary morning feel like a holiday.</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -407,7 +426,7 @@
     </div>
     <div class="foot-bottom">
       <span>© 2026 MAREN. Sample storefront — placeholder content.</span>
-      <span>Brand imagery and characters on this site are AI-generated.</span>
+      <span>Coastal essentials in linen &amp; cotton · Designed by the sea.</span>
     </div>
   </div>
 </footer>
