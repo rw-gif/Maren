@@ -12,7 +12,7 @@
   var SIZES = ['XS','S','M','L','XL'];
   var products = [
     {id:'crewneck', name:'The Cotton Crewneck', price:138, cat:'Sweats',      g:'top',   blooms:'#C9C2B4', hero:true, pal:['neutrals'], occ:['rest','town'],
-      desc:'Oversized marl cotton fleece, chest pocket', colors:[{name:'Marl Grey',hex:'#C9C2B4'},{name:'Cream',hex:'#F2ECDF'}],
+      desc:'Oversized marl cotton fleece, chest pocket', colors:[{name:'Marl Grey',hex:'#C9C2B4'},{name:'Navy',hex:'#2A3B52',img:'crewneck-navy'},{name:'Cream',hex:'#F2ECDF'}],
       fabric:'Heavyweight brushed-back cotton fleece with a soft marl. Dropped shoulders, ribbed neck, cuffs and hem, with a patch chest pocket and an embroidered MAREN wordmark.', care:'Machine wash cold inside out; dry flat to keep its shape.'},
     {id:'cap',      name:'The MAREN Cap',       price:42,  cat:'Accessories', g:'top',   blooms:'#2A3B52', hero:true, sizes:['One size'], pal:['blues','neutrals'], occ:['harbour','town'],
       desc:'Washed-cotton six-panel, embroidered wordmark', colors:[{name:'Navy',hex:'#2A3B52'},{name:'Stone',hex:'#C9BBA1'}],
@@ -21,7 +21,7 @@
       desc:'Pre-washed cream linen, mother-of-pearl buttons', colors:[{name:'Cream',hex:'#F2ECDF'},{name:'White',hex:'#FBF8F2'},{name:'Sky',hex:'#AFC7DA'}],
       fabric:'Pre-washed pure linen with a relaxed cut, soft natural creases and mother-of-pearl buttons. Woven MAREN collar label.', care:'Machine wash cold, line dry, warm iron — or wear creased.'},
     {id:'dress',    name:'The Linen Dress',     price:128, cat:'Dresses',     g:'dress', blooms:'#AFC7DA', hero:true, pal:['neutrals','blues'], occ:['harbour','evening'],
-      desc:'Square-neck linen midi, easy drape', colors:[{name:'White',hex:'#FBF8F2'},{name:'Oat',hex:'#E2D7C3'}],
+      desc:'Square-neck linen midi, easy drape', colors:[{name:'White',hex:'#FBF8F2'},{name:'Natural',hex:'#C9BBA1',img:'dress-oat'},{name:'Brown',hex:'#6E5847',img:'dress-brown'}],
       fabric:'Easy midi dress in pure washed linen with a square neckline, fine straps and a soft natural drape. Woven MAREN inner label.', care:'Machine wash cold, line dry, cool iron.'},
     {id:'shorts',   name:'The Gingham Shorts',  price:62,  cat:'Shorts',      g:'set',   blooms:'#8FB0CB', hero:true, pal:['blues','stripe'], occ:['rest','harbour'],
       desc:'Pull-on linen, navy-and-cream gingham', colors:[{name:'Navy gingham',hex:'#2A3B52'},{name:'Sky stripe',hex:'#AFC7DA'}],
@@ -31,6 +31,11 @@
 
   // Product imagery: drop assets/products/<id>.jpg (and -2/-3 for gallery).
   function imgFor(id,n){ return 'assets/products/'+id+(n?('-'+n):'')+'.jpg'; }
+  // Per-colour image (e.g. crewneck-navy.jpg); falls back to the product's main image.
+  function imgForColor(p,colorName){
+    var c = p.colors.filter(function(x){return x.name===colorName;})[0];
+    return (c && c.img) ? ('assets/products/'+c.img+'.jpg') : imgFor(p.id);
+  }
 
   // Seeded reviews (sample). Customer-submitted reviews merge from localStorage.
   var seededReviews = {
@@ -296,7 +301,7 @@
     var host = $('#pdp'); if(!host) return;
     host.innerHTML =
       '<div class="pdp-gallery">'+
-        '<div class="pdp-main" style="background:'+gradient(p.blooms)+'"><span class="mono">M</span><img class="prod-img" src="'+imgFor(id)+'" alt="'+p.name+'" onerror="this.remove()"></div>'+
+        '<div class="pdp-main" style="background:'+gradient(p.blooms)+'"><span class="mono">M</span><img class="prod-img" id="pdp-main-img" src="'+imgForColor(p,pdpState.color)+'" alt="'+p.name+'" onerror="this.style.display=\'none\'" onload="this.style.display=\'\'"></div>'+
         '<div class="pdp-thumbs">'+
           '<i style="background:'+gradient(p.blooms)+'"></i>'+
           '<i style="background:linear-gradient(160deg,#FBF8F2,#dfe7ee)"></i>'+
@@ -502,7 +507,9 @@
       var c = e.target.closest('[data-color]'); if(c){
         $all('#pdp-colors button').forEach(function(b){b.classList.remove('active');});
         c.classList.add('active'); pdpState.color = c.getAttribute('data-color');
-        var nm = $('#pdp-colorname'); if(nm) nm.textContent = pdpState.color; return;
+        var nm = $('#pdp-colorname'); if(nm) nm.textContent = pdpState.color;
+        var mi = $('#pdp-main-img'); if(mi){ mi.style.display=''; mi.src = imgForColor(byId[pdpState.id], pdpState.color); }
+        return;
       }
       var s = e.target.closest('[data-size]'); if(s){
         $all('#pdp-sizes button').forEach(function(b){b.classList.remove('active');});
