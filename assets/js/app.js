@@ -27,13 +27,13 @@
       desc:'Pull-on gingham linen in washed navy and cream', colors:[{name:'Navy gingham',hex:'#2A3B52',m:'shorts'}],
       fabric:'Relaxed pull-on shorts in lightweight gingham linen with a gathered elastic waist, button fly and a woven MAREN hem label.', care:'Machine wash cold, line dry, warm iron.'},
     {id:'skirt',    name:'The Linen Mini Skirt', price:78, cat:'Skirts',       g:'set',   blooms:'#C9C2B4', hero:false, pal:['neutrals'], occ:['town','harbour'],
-      desc:'A-line washed-linen mini with a clean waistband', colors:[{name:'White',hex:'#FBF8F2',m:'skirt-white'},{name:'Navy',hex:'#2A3B52',img:'skirt-navy'},{name:'Brown',hex:'#6E5847',img:'skirt-brown',m:'skirt-brown'}],
+      desc:'A-line washed-linen mini with a clean waistband', colors:[{name:'White',hex:'#FBF8F2',m:'skirt-white'},{name:'Navy',hex:'#2A3B52',img:'skirt-navy',m:['skirt-navy','skirt-navy-2']},{name:'Brown',hex:'#6E5847',img:'skirt-brown',m:'skirt-brown'}],
       fabric:'Clean A-line mini in structured washed linen with a smooth waistband and a woven MAREN label.', care:'Machine wash cold, line dry, cool iron.'},
     {id:'vest',     name:'The Linen Waistcoat',  price:92, cat:'Waistcoats',   g:'top',   blooms:'#E2D7C3', hero:false, pal:['neutrals'], occ:['town','evening'],
-      desc:'Tailored sleeveless linen with a covered-button front', colors:[{name:'Natural',hex:'#F2ECDF',m:'vest-natural'},{name:'Navy',hex:'#2A3B52',img:'vest-navy'},{name:'Brown',hex:'#6E5847',img:'vest-brown',m:'vest-brown'}],
+      desc:'Tailored sleeveless linen with a covered-button front', colors:[{name:'Natural',hex:'#F2ECDF',m:'vest-natural'},{name:'Navy',hex:'#2A3B52',img:'vest-navy',m:['vest-navy','vest-navy-2']},{name:'Brown',hex:'#6E5847',img:'vest-brown',m:'vest-brown'}],
       fabric:'A fitted sleeveless waistcoat in washed linen with a rounded neck, covered buttons and a woven MAREN label.', care:'Machine wash cold or hand wash; line dry, cool iron.'},
     {id:'set',      name:'The Linen Set',        price:160, cat:'Sets',        g:'dress', blooms:'#E2D7C3', hero:true,  pal:['neutrals'], occ:['town','evening'],
-      desc:'Linen waistcoat and mini skirt, made to wear together', colors:[{name:'White',hex:'#FBF8F2',m:'set-white'},{name:'Navy',hex:'#2A3B52',img:'set-navy'},{name:'Brown',hex:'#6E5847',img:'set-brown',m:'set-brown'}],
+      desc:'Linen waistcoat and mini skirt, made to wear together', colors:[{name:'White',hex:'#FBF8F2',m:'set-white'},{name:'Navy',hex:'#2A3B52',img:'set-navy',m:['set-navy','set-navy-2']},{name:'Brown',hex:'#6E5847',img:'set-brown',m:'set-brown'}],
       fabric:'The Linen Waistcoat and Mini Skirt as a tailored co-ord — washed linen, worn together. A saving on buying the pieces separately.', care:'Machine wash cold or hand wash; line dry, cool iron.'},
     {id:'pants',    name:'The Fold-Over Flares', price:88,  cat:'Trousers',    g:'set',   blooms:'#8FB0CB', hero:false, pal:['neutrals','blues'], occ:['rest','town'],
       desc:'Fold-over waist flares in soft, drapey jersey', colors:[{name:'Navy',hex:'#2A3B52',m:'pants-navy'},{name:'Brown',hex:'#6E5847',img:'pants-brown',m:'pants-brown'}],
@@ -51,18 +51,18 @@
     var c = p.colors.filter(function(x){return x.name===colorName;})[0];
     return (c && c.img) ? ('assets/products/'+c.img+'.jpg') : imgFor(p.id);
   }
-  // On-model lifestyle shot for a colour (assets/muses/edit/<m>.jpg), or null.
-  function modelForColor(p,colorName){
+  // On-model lifestyle shots for a colour (assets/muses/edit/<m>.jpg). `m` may be a
+  // single basename or an array. Returns an ordered list of paths (may be empty).
+  function modelsForColor(p,colorName){
     var c = p.colors.filter(function(x){return x.name===colorName;})[0];
-    return (c && c.m) ? ('assets/muses/edit/'+c.m+'.jpg') : null;
+    if(!c || !c.m) return [];
+    var arr = (typeof c.m === 'string') ? [c.m] : c.m;
+    return arr.map(function(b){ return 'assets/muses/edit/'+b+'.jpg'; });
   }
-  // PDP gallery for a colour: the flat product shot first, then the on-model shot.
-  function galleryForColor(p,colorName){
-    var out = [imgForColor(p,colorName)];
-    var m = modelForColor(p,colorName);
-    if(m) out.push(m);
-    return out;
-  }
+  // The primary on-model shot for a colour (used for the card hover), or null.
+  function modelForColor(p,colorName){ var m = modelsForColor(p,colorName); return m.length ? m[0] : null; }
+  // PDP gallery for a colour: the flat product shot first, then every on-model shot.
+  function galleryForColor(p,colorName){ return [imgForColor(p,colorName)].concat(modelsForColor(p,colorName)); }
 
   // Seeded reviews (sample). Customer-submitted reviews merge from localStorage.
   var seededReviews = {
