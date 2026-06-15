@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=20260615d">
+<link rel="stylesheet" href="assets/css/styles.css?v=20260615e">
 </head>
 <body>
 
@@ -72,11 +72,8 @@
     <div class="sec-head"><div class="eyebrow">Spring / Summer 2026</div><h2>The Lookbook</h2></div>
     <p class="intro-line">Shoppable looks and lookbook film. Tap a <strong>+</strong> on the image to shop the piece. Muse imagery is AI-generated; film and on-location frames are ready for your own footage.</p>
 
-    <!-- shoppable feature: Cami -->
-    <div class="lb-feature tall" id="feature-cami" style="background-image:var(--cami-look-img)">
-      <span class="ai-corner">AI-generated</span>
-      <div class="cap"><div class="k">The Linen Set</div><div class="t">Quiet tailoring, by the water.</div></div>
-    </div>
+    <!-- shoppable looks grid -->
+    <div class="lb-grid" id="lb-looks"></div>
 
     <!-- hero product row (shoppable) -->
     <div class="lb-products" id="lb-products"></div>
@@ -84,22 +81,10 @@
     <!-- lookbook film -->
     <div class="lb-feature film">
       <span class="ai-corner">Film slot</span>
-      <video data-autoplay muted loop playsinline poster="assets/muses/vivi.jpg">
+      <video data-autoplay muted loop playsinline poster="assets/muses/vivi-look.jpg">
         <source src="assets/video/lookbook.mp4" type="video/mp4">
       </video>
       <div class="cap"><div class="k">SS26 Film</div><div class="t">Sun, stripes, salt air.</div></div>
-    </div>
-
-    <!-- shoppable feature: Vivi -->
-    <div class="lb-feature tall" id="feature-vivi" style="background-image:var(--vivi-look-img)">
-      <span class="ai-corner">AI-generated</span>
-      <div class="cap"><div class="k">Off-duty</div><div class="t">Golden hour on the deck.</div></div>
-    </div>
-
-    <div class="lb-loc">
-      <div class="lb-slot"><span>On location<br>Vivi on the boat<br>(your shot &middot; 4:5)</span></div>
-      <div class="lb-slot"><span>On location<br>Cami, countryside &amp; Land Rover<br>(your shot &middot; 4:5)</span></div>
-      <div class="lb-slot"><span>On location<br>by the sea<br>(your shot &middot; 4:5)</span></div>
     </div>
   </div>
 </section>
@@ -120,7 +105,7 @@
     <p class="intro-line">Campaign films, fabric stories and behind-the-seams. Drop your clips into <code>/assets/video</code> and they play here — posters hold the space until then.</p>
     <div class="film-hero">
       <span class="vslot-badge">Promo film slot</span>
-      <video data-autoplay muted loop playsinline poster="assets/muses/cami.jpg"><source src="assets/video/promo-hero.mp4" type="video/mp4"></video>
+      <video data-autoplay muted loop playsinline poster="assets/muses/cami-look.jpg"><source src="assets/video/promo-hero.mp4" type="video/mp4"></video>
       <div class="cap"><div class="k">Campaign</div><div class="t">MAREN — Spring / Summer 2026</div></div>
     </div>
     <div class="films-grid" id="films-grid"></div>
@@ -199,16 +184,16 @@
     <div class="sec-head"><div class="eyebrow">The world of MAREN</div><h2>Our World</h2></div>
     <p class="intro-line">The mood the label lives in &mdash; coastal blues, linen, gingham, slow mornings. Each tile is a slot you can swap for your own imagery; the muse tiles are AI-generated.</p>
     <div class="moodgrid">
-      <div class="tile big img" style="background-image:var(--cami-img)"><span class="ai">AI</span></div>
+      <div class="tile big img" style="background-image:url('assets/muses/lib/world-1.jpg')"><span class="ai">AI</span></div>
       <div class="tile script"><span>slow living<br>by the sea</span></div>
       <div class="tile stripe"></div>
       <div class="tile gingham"></div>
-      <div class="tile tall img" style="background-image:var(--vivi-img)"><span class="ai">AI</span></div>
+      <div class="tile tall img" style="background-image:url('assets/muses/lib/world-2.jpg')"><span class="ai">AI</span></div>
       <div class="tile label"><span>Linen &amp; Cotton</span></div>
       <div class="tile pal"><i style="background:#2A3B52"></i><i style="background:#AFC7DA"></i><i style="background:#E2D7C3"></i><i style="background:#6E5847"></i></div>
-      <div class="tile empty"><span>Your image<br>seaside</span></div>
-      <div class="tile empty"><span>Your image<br>linen flat-lay</span></div>
-      <div class="tile empty"><span>Your image<br>countryside</span></div>
+      <div class="tile img" style="background-image:url('assets/muses/lib/world-3.jpg')"><span class="ai">AI</span></div>
+      <div class="tile img" style="background-image:url('assets/muses/lib/world-4.jpg')"><span class="ai">AI</span></div>
+      <div class="tile img" style="background-image:url('assets/muses/lib/world-5.jpg')"><span class="ai">AI</span></div>
     </div>
   </div>
 </section>
@@ -313,6 +298,6 @@
 
 <div class="toast" id="toast"></div>
 
-<script src="assets/js/app.js?v=20260615d"></script>
+<script src="assets/js/app.js?v=20260615e"></script>
 </body>
 </html>

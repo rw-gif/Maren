@@ -88,26 +88,34 @@
 
   // Shoppable lookbook looks — hotspots map x/y% to catalogue ids.
   var looks = [
-    {muse:'cami', k:'The Linen Set', t:'Quiet tailoring, by the water.',
-      hotspots:[{x:50,y:38,id:'vest'},{x:50,y:70,id:'skirt'}]},
-    {muse:'vivi', k:'Off-duty', t:'Golden hour on the deck.',
-      hotspots:[{x:50,y:42,id:'breton'},{x:50,y:80,id:'pants'}]}
+    {img:'assets/muses/cami-look.jpg', k:'The Linen Set', t:'Quiet tailoring, by the water.',
+      hotspots:[{x:50,y:36,id:'vest'},{x:50,y:72,id:'skirt'}]},
+    {img:'assets/muses/looks/shirt-cap.jpg', k:'Harbour Whites', t:'Linen, and a cap.',
+      hotspots:[{x:50,y:16,id:'cap'},{x:50,y:54,id:'shirt'}]},
+    {img:'assets/muses/looks/navy-set.jpg', k:'Easy Navy', t:'Top to toe, off the boat.',
+      hotspots:[{x:50,y:40,id:'crewneck'},{x:50,y:78,id:'pants'}]},
+    {img:'assets/muses/vivi-look.jpg', k:'Off-duty', t:'Golden hour on the deck.',
+      hotspots:[{x:50,y:40,id:'breton'},{x:50,y:80,id:'pants'}]},
+    {img:'assets/muses/looks/brown-vest-flares.jpg', k:'Tonal Brown', t:'Tailored, then softened.',
+      hotspots:[{x:50,y:38,id:'vest'},{x:50,y:80,id:'pants'}]},
+    {img:'assets/muses/looks/shorts.jpg', k:'Slow Mornings', t:'Gingham, always.',
+      hotspots:[{x:50,y:72,id:'shorts'}]}
   ];
 
   // The Journal — trend & editorial entries.
   var journal = [
-    {tag:'Trend', date:'June 2026', cover:'cami', title:'The Quiet Coast: linen as a uniform',
+    {tag:'Trend', date:'June 2026', coverImg:'assets/muses/lib/journal-1.jpg', title:'The Quiet Coast: linen as a uniform',
       excerpt:'Why a small wardrobe of washed linen is the season’s most considered choice — and how to wear it from harbour to evening.',
       body:['This summer the loudest thing in the room is restraint. The coastal wardrobe has narrowed to a handful of washed-linen staples worn on repeat, and looking better for it.',
             'Start with a shift in cream, layer a cropped knit for the evening drop in temperature, and let the fabric crease — that’s the point. Linen earns its character.',
             'Three ways to wear it: open over a swimsuit at the harbour, belted for town, or under the Scallop Mini’s structured line when the sun goes down.'],
       tags:['Linen','Capsule','How to wear']},
-    {tag:'Edit', date:'June 2026', cover:'mono', title:'Breton, reconsidered',
+    {tag:'Edit', date:'June 2026', coverImg:'assets/muses/lib/journal-2.jpg', title:'Breton, reconsidered',
       excerpt:'The stripe is a classic for a reason. A short history, and the five pieces it pairs with this season.',
       body:['The Breton has survived a century of trends because it refuses to try too hard. Navy on cream, a boat neck, three-quarter sleeves: it is the original off-duty uniform.',
             'Pair it with the Gingham Boxer Set for slow mornings, or tuck it into tailored shorts for town. Keep the rest quiet and let the stripe do the talking.'],
       tags:['Breton','Stripe','Styling']},
-    {tag:'Fabric', date:'May 2026', cover:'mono', title:'Why washed linen wins',
+    {tag:'Fabric', date:'May 2026', coverImg:'assets/muses/lib/journal-3.jpg', title:'Why washed linen wins',
       excerpt:'Breathability, longevity and that lived-in hand-feel. A short note on the fibre we build the label around.',
       body:['Linen is spun from flax — a crop that needs little water and no irrigation in the right climates. Garment-washed, it loses its starchy stiffness and gains a soft, rumpled drape.',
             'It breathes in heat, wicks moisture, and grows more comfortable with every wash. Buy fewer, wash cold, line dry, and a linen piece will outlast a decade of fast fashion.'],
@@ -116,9 +124,9 @@
 
   // Promotional films — drop matching files into /assets/video to play.
   var films = [
-    {kind:'Campaign',         title:'SS26 — By the Sea',  poster:'vivi', src:'assets/video/promo-campaign.mp4'},
-    {kind:'Fabric story',     title:'The Linen Story',    poster:'mono', src:'assets/video/promo-linen.mp4'},
-    {kind:'Behind the seams', title:'In the Studio',      poster:'cami', src:'assets/video/promo-studio.mp4'}
+    {kind:'Campaign',         title:'SS26 — By the Sea',  posterImg:'assets/muses/lib/film-1.jpg', src:'assets/video/promo-campaign.mp4'},
+    {kind:'Fabric story',     title:'The Linen Story',    posterImg:'assets/muses/lib/film-2.jpg', src:'assets/video/promo-linen.mp4'},
+    {kind:'Behind the seams', title:'In the Studio',      posterImg:'assets/muses/lib/film-3.jpg', src:'assets/video/promo-studio.mp4'}
   ];
 
   // Size chart (cm) and fit-finder logic.
@@ -251,24 +259,22 @@
           '<div class="sw">'+sw+'</div></div></article>';
       }).join('');
     },
-    hotspots:function(){
-      looks.forEach(function(look){
-        var host = $('#feature-'+look.muse); if(!host) return;
-        look.hotspots.forEach(function(h){
-          var b = document.createElement('button');
-          b.className='hotspot'; b.style.left=h.x+'%'; b.style.top=h.y+'%';
-          b.setAttribute('data-quick',h.id);
-          b.setAttribute('aria-label','Shop '+(byId[h.id]?byId[h.id].name:'product'));
-          b.textContent='+';
-          host.appendChild(b);
-        });
-      });
+    looks:function(){
+      var host = $('#lb-looks'); if(!host) return;
+      host.innerHTML = looks.map(function(lk){
+        var hs = lk.hotspots.map(function(h){
+          return '<button class="hotspot" style="left:'+h.x+'%;top:'+h.y+'%" data-quick="'+h.id+'" aria-label="Shop '+(byId[h.id]?byId[h.id].name:'product')+'">+</button>';
+        }).join('');
+        return '<figure class="lb-look" style="background-image:url(\''+lk.img+'\')">'+
+          '<span class="ai-corner">AI-generated</span>'+ hs +
+          '<figcaption class="cap"><div class="k">'+lk.k+'</div><div class="t">'+lk.t+'</div></figcaption>'+
+        '</figure>';
+      }).join('');
     },
     journal:function(){
       var grid = $('#jrn-grid'); if(!grid) return;
       grid.innerHTML = journal.map(function(a,i){
-        var cover = a.cover==='cami' ? '<div class="jrn-cover" style="background-image:var(--cami-img)"><span class="jrn-tag">'+a.tag+'</span></div>'
-                  : a.cover==='vivi' ? '<div class="jrn-cover" style="background-image:var(--vivi-img)"><span class="jrn-tag">'+a.tag+'</span></div>'
+        var cover = a.coverImg ? '<div class="jrn-cover" style="background-image:url(\''+a.coverImg+'\')"><span class="jrn-tag">'+a.tag+'</span></div>'
                   : '<div class="jrn-cover mono"><span class="jrn-tag">'+a.tag+'</span><span class="m">M</span></div>';
         return '<article class="jrn-card" data-article="'+i+'">'+cover+
           '<div class="jrn-body"><div class="date">'+a.date+'</div><h3>'+a.title+'</h3>'+
@@ -278,8 +284,7 @@
     films:function(){
       var grid = $('#films-grid'); if(!grid) return;
       grid.innerHTML = films.map(function(f){
-        var media = f.poster==='cami' ? '<div class="vmedia" style="background-image:var(--cami-img)">'
-                  : f.poster==='vivi' ? '<div class="vmedia" style="background-image:var(--vivi-img)">'
+        var media = f.posterImg ? '<div class="vmedia" style="background-image:url(\''+f.posterImg+'\')">'
                   : '<div class="vmedia mono">';
         return '<figure class="vcard">'+ media +
             '<span class="vslot-badge">Film slot</span>'+
@@ -519,7 +524,7 @@
     render.filters();
     render.grid('All');
     render.lookbookProducts();
-    render.hotspots();
+    render.looks();
     render.journal();
     render.films();
     render.counts();
@@ -676,8 +681,7 @@
   function openArticle(i){
     var a = journal[i]; if(!a) return;
     var host = $('#article'); if(!host) return;
-    var cover = a.cover==='cami' ? '<div class="a-cover" style="background-image:var(--cami-img)"></div>'
-              : a.cover==='vivi' ? '<div class="a-cover" style="background-image:var(--vivi-img)"></div>'
+    var cover = a.coverImg ? '<div class="a-cover" style="background-image:url(\''+a.coverImg+'\')"></div>'
               : '<div class="a-cover mono"><span class="m">M</span></div>';
     host.innerHTML = cover + '<div class="article-body"><div class="date">'+a.tag+' &middot; '+a.date+'</div>'+
       '<h2>'+a.title+'</h2>'+ a.body.map(function(p){return '<p>'+p+'</p>';}).join('')+
