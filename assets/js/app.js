@@ -12,7 +12,7 @@
   var SIZES = ['XS','S','M','L','XL'];
   var products = [
     {id:'crewneck', name:'The Cotton Crewneck', price:138, cat:'Sweats',      g:'top',   blooms:'#C9C2B4', hero:true, pal:['neutrals'], occ:['rest','town'],
-      desc:'Heavyweight marl cotton, oversized with a chest pocket', colors:[{name:'Marl Grey',hex:'#C9C2B4'},{name:'Navy',hex:'#2A3B52',img:'crewneck-navy',m:'crewneck-navy'}],
+      desc:'Heavyweight marl cotton, oversized with a chest pocket', colors:[{name:'Marl Grey',hex:'#C9C2B4',m:['crewneck-marl','crewneck-marl-2']},{name:'Navy',hex:'#2A3B52',img:'crewneck-navy',m:'crewneck-navy'}],
       fabric:'Heavyweight brushed-back cotton fleece with a soft marl. Dropped shoulders, ribbed neck, cuffs and hem, with a patch chest pocket and an embroidered MAREN wordmark.', care:'Machine wash cold inside out; dry flat to keep its shape.'},
     {id:'cap',      name:'The MAREN Cap',       price:42,  cat:'Accessories', g:'top',   blooms:'#2A3B52', hero:true, sizes:['One size'], pal:['blues','neutrals'], occ:['harbour','town'],
       desc:'Soft washed-cotton six-panel with an embroidered wordmark', colors:[{name:'Navy',hex:'#2A3B52',m:'cap-navy'},{name:'White',hex:'#FBF8F2',img:'cap-white',m:'cap-white'}],
@@ -99,7 +99,31 @@
     {img:'assets/muses/looks/brown-vest-flares.jpg', k:'Tonal Brown', t:'Tailored, then softened.',
       hotspots:[{x:50,y:48,id:'vest'},{x:50,y:84,id:'pants'}]},
     {img:'assets/muses/looks/shorts.jpg', k:'Slow Mornings', t:'Gingham, always.',
-      hotspots:[{x:50,y:72,id:'shorts'}]}
+      hotspots:[{x:50,y:72,id:'shorts'}]},
+    {img:'assets/muses/edit/crewneck-marl.jpg', k:'The Crewneck', t:'Marl, harbourside.',
+      hotspots:[{x:50,y:50,id:'crewneck'}]},
+    {img:'assets/muses/edit/crewneck-navy.jpg', k:'Navy Crewneck', t:'Pocket detail.',
+      hotspots:[{x:50,y:50,id:'crewneck'}]},
+    {img:'assets/muses/edit/shirt-white.jpg', k:'White Linen Shirt', t:'Crisp and easy.',
+      hotspots:[{x:50,y:46,id:'shirt'}]},
+    {img:'assets/muses/edit/shirt-sky.jpg', k:'Sky Linen Shirt', t:'Soft blue.',
+      hotspots:[{x:50,y:46,id:'shirt'}]},
+    {img:'assets/muses/edit/shirt-navy.jpg', k:'Navy Linen Shirt', t:'Deep and off-duty.',
+      hotspots:[{x:50,y:46,id:'shirt'}]},
+    {img:'assets/muses/edit/dress-white.jpg', k:'Linen Pinafore', t:'Square-neck white.',
+      hotspots:[{x:50,y:52,id:'dress'}]},
+    {img:'assets/muses/edit/dress-oat.jpg', k:'Natural Pinafore', t:'Oat tones.',
+      hotspots:[{x:50,y:52,id:'dress'}]},
+    {img:'assets/muses/edit/dress-brown.jpg', k:'Brown Pinafore', t:'Evening light.',
+      hotspots:[{x:50,y:52,id:'dress'}]},
+    {img:'assets/muses/edit/vest-natural.jpg', k:'Natural Waistcoat', t:'Quietly tailored.',
+      hotspots:[{x:50,y:46,id:'vest'}]},
+    {img:'assets/muses/edit/vest-navy.jpg', k:'Navy Waistcoat', t:'Sharp, then soft.',
+      hotspots:[{x:50,y:46,id:'vest'}]},
+    {img:'assets/muses/edit/skirt-navy.jpg', k:'Navy Mini', t:'Clean A-line.',
+      hotspots:[{x:50,y:72,id:'skirt'}]},
+    {img:'assets/muses/edit/set-navy.jpg', k:'Navy Co-ord', t:'Top to toe navy.',
+      hotspots:[{x:50,y:40,id:'vest'},{x:50,y:74,id:'skirt'}]}
   ];
 
   // The Journal — trend & editorial entries.
