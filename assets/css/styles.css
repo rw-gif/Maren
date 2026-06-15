@@ -21,6 +21,8 @@
      (index.html), not this stylesheet — so paths are document-relative. */
   --cami-img:url("assets/muses/cami.jpg");
   --vivi-img:url("assets/muses/vivi.jpg");
+  --cami-look-img:url("assets/muses/cami-look.jpg");
+  --vivi-look-img:url("assets/muses/vivi-look.jpg");
   --z-drawer:300;
   --z-modal:320;
   --z-toast:340;
@@ -170,6 +172,8 @@ section{padding:96px 0;}
 .lb-feature{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line);
   background:var(--oat) center 14%/cover no-repeat;display:flex;align-items:flex-end;margin-bottom:18px;}
 .lb-feature.film{cursor:default;}
+.lb-feature.tall{aspect-ratio:4/5;max-width:480px;margin-left:auto;margin-right:auto;
+  background-position:center top;}
 .lb-feature video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
 .lb-feature::after{content:"";position:absolute;inset:0;z-index:1;
   background:linear-gradient(180deg,rgba(42,59,82,0) 45%,rgba(42,59,82,.5));}

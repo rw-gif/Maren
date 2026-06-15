@@ -76,10 +76,10 @@
 
   // Shoppable lookbook looks — hotspots map x/y% to catalogue ids.
   var looks = [
-    {muse:'cami', k:'The Linen Shirt', t:'Clean lines, by the water.',
-      hotspots:[{x:46,y:48,id:'shirt'},{x:58,y:76,id:'dress'}]},
-    {muse:'vivi', k:'Off-duty', t:'Sun, stripes, salt air.',
-      hotspots:[{x:50,y:58,id:'crewneck'},{x:46,y:82,id:'shorts'}]}
+    {muse:'cami', k:'The Linen Set', t:'Quiet tailoring, by the water.',
+      hotspots:[{x:50,y:38,id:'vest'},{x:50,y:70,id:'skirt'}]},
+    {muse:'vivi', k:'Off-duty', t:'Golden hour on the deck.',
+      hotspots:[{x:50,y:42,id:'breton'},{x:50,y:80,id:'pants'}]}
   ];
 
   // The Journal — trend & editorial entries.
