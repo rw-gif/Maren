@@ -12,34 +12,34 @@
   var SIZES = ['XS','S','M','L','XL'];
   var products = [
     {id:'crewneck', name:'The Cotton Crewneck', price:138, cat:'Sweats',      g:'top',   blooms:'#C9C2B4', hero:true, pal:['neutrals'], occ:['rest','town'],
-      desc:'Heavyweight marl cotton, oversized with a chest pocket', colors:[{name:'Marl Grey',hex:'#C9C2B4'},{name:'Navy',hex:'#2A3B52',img:'crewneck-navy'}],
+      desc:'Heavyweight marl cotton, oversized with a chest pocket', colors:[{name:'Marl Grey',hex:'#C9C2B4',m:'crewneck-marl'},{name:'Navy',hex:'#2A3B52',img:'crewneck-navy',m:'crewneck-navy'}],
       fabric:'Heavyweight brushed-back cotton fleece with a soft marl. Dropped shoulders, ribbed neck, cuffs and hem, with a patch chest pocket and an embroidered MAREN wordmark.', care:'Machine wash cold inside out; dry flat to keep its shape.'},
     {id:'cap',      name:'The MAREN Cap',       price:42,  cat:'Accessories', g:'top',   blooms:'#2A3B52', hero:true, sizes:['One size'], pal:['blues','neutrals'], occ:['harbour','town'],
-      desc:'Soft washed-cotton six-panel with an embroidered wordmark', colors:[{name:'Navy',hex:'#2A3B52'},{name:'White',hex:'#FBF8F2',img:'cap-white'}],
+      desc:'Soft washed-cotton six-panel with an embroidered wordmark', colors:[{name:'Navy',hex:'#2A3B52',m:'cap-navy'},{name:'White',hex:'#FBF8F2',img:'cap-white',m:'cap-white'}],
       fabric:'Unstructured six-panel cap in soft washed cotton with a low crown, curved brim and an embroidered MAREN wordmark.', care:'Spot clean and air dry. Do not machine wash.'},
     {id:'shirt',    name:'The Linen Shirt',     price:88,  cat:'Shirts',      g:'top',   blooms:'#AFC7DA', hero:true, pal:['neutrals','blues'], occ:['town','harbour'],
-      desc:'Relaxed pre-washed linen with mother-of-pearl buttons', colors:[{name:'White',hex:'#FBF8F2'},{name:'Sky',hex:'#AFC7DA',img:'shirt-sky'},{name:'Navy',hex:'#2A3B52',img:'shirt-navy'}],
+      desc:'Relaxed pre-washed linen with mother-of-pearl buttons', colors:[{name:'White',hex:'#FBF8F2',m:'shirt-white'},{name:'Sky',hex:'#AFC7DA',img:'shirt-sky',m:'shirt-sky'},{name:'Navy',hex:'#2A3B52',img:'shirt-navy',m:'shirt-navy'}],
       fabric:'Pre-washed pure linen with a relaxed cut, soft natural creases and mother-of-pearl buttons. Woven MAREN collar label.', care:'Machine wash cold, line dry, warm iron — or wear creased.'},
     {id:'dress',    name:'The Linen Dress',     price:128, cat:'Dresses',     g:'dress', blooms:'#AFC7DA', hero:true, pal:['neutrals','blues'], occ:['harbour','evening'],
-      desc:'Square-neck linen pinafore with an easy A-line', colors:[{name:'White',hex:'#FBF8F2'},{name:'Natural',hex:'#C9BBA1',img:'dress-oat'},{name:'Brown',hex:'#6E5847',img:'dress-brown'}],
+      desc:'Square-neck linen pinafore with an easy A-line', colors:[{name:'White',hex:'#FBF8F2',m:'dress-white'},{name:'Natural',hex:'#C9BBA1',img:'dress-oat',m:'dress-oat'},{name:'Brown',hex:'#6E5847',img:'dress-brown',m:'dress-brown'}],
       fabric:'A short pinafore dress in pure washed linen with a square neckline, wider straps and a soft A-line. Woven MAREN inner label.', care:'Machine wash cold, line dry, cool iron.'},
     {id:'shorts',   name:'The Gingham Shorts',  price:62,  cat:'Shorts',      g:'set',   blooms:'#8FB0CB', hero:true, pal:['blues','stripe'], occ:['rest','harbour'],
-      desc:'Pull-on gingham linen in washed navy and cream', colors:[{name:'Navy gingham',hex:'#2A3B52'}],
+      desc:'Pull-on gingham linen in washed navy and cream', colors:[{name:'Navy gingham',hex:'#2A3B52',m:'shorts'}],
       fabric:'Relaxed pull-on shorts in lightweight gingham linen with a gathered elastic waist, button fly and a woven MAREN hem label.', care:'Machine wash cold, line dry, warm iron.'},
     {id:'skirt',    name:'The Linen Mini Skirt', price:78, cat:'Skirts',       g:'set',   blooms:'#C9C2B4', hero:false, pal:['neutrals'], occ:['town','harbour'],
-      desc:'A-line washed-linen mini with a clean waistband', colors:[{name:'White',hex:'#FBF8F2'},{name:'Navy',hex:'#2A3B52',img:'skirt-navy'},{name:'Brown',hex:'#6E5847',img:'skirt-brown'}],
+      desc:'A-line washed-linen mini with a clean waistband', colors:[{name:'White',hex:'#FBF8F2',m:'skirt-white'},{name:'Navy',hex:'#2A3B52',img:'skirt-navy'},{name:'Brown',hex:'#6E5847',img:'skirt-brown',m:'skirt-brown'}],
       fabric:'Clean A-line mini in structured washed linen with a smooth waistband and a woven MAREN label.', care:'Machine wash cold, line dry, cool iron.'},
     {id:'vest',     name:'The Linen Waistcoat',  price:92, cat:'Waistcoats',   g:'top',   blooms:'#E2D7C3', hero:false, pal:['neutrals'], occ:['town','evening'],
-      desc:'Tailored sleeveless linen with a covered-button front', colors:[{name:'Natural',hex:'#F2ECDF'},{name:'Navy',hex:'#2A3B52',img:'vest-navy'},{name:'Brown',hex:'#6E5847',img:'vest-brown'}],
+      desc:'Tailored sleeveless linen with a covered-button front', colors:[{name:'Natural',hex:'#F2ECDF',m:'vest-natural'},{name:'Navy',hex:'#2A3B52',img:'vest-navy'},{name:'Brown',hex:'#6E5847',img:'vest-brown',m:'vest-brown'}],
       fabric:'A fitted sleeveless waistcoat in washed linen with a rounded neck, covered buttons and a woven MAREN label.', care:'Machine wash cold or hand wash; line dry, cool iron.'},
     {id:'set',      name:'The Linen Set',        price:160, cat:'Sets',        g:'dress', blooms:'#E2D7C3', hero:true,  pal:['neutrals'], occ:['town','evening'],
-      desc:'Linen waistcoat and mini skirt, made to wear together', colors:[{name:'White',hex:'#FBF8F2'},{name:'Navy',hex:'#2A3B52',img:'set-navy'},{name:'Brown',hex:'#6E5847',img:'set-brown'}],
+      desc:'Linen waistcoat and mini skirt, made to wear together', colors:[{name:'White',hex:'#FBF8F2',m:'set-white'},{name:'Navy',hex:'#2A3B52',img:'set-navy'},{name:'Brown',hex:'#6E5847',img:'set-brown',m:'set-brown'}],
       fabric:'The Linen Waistcoat and Mini Skirt as a tailored co-ord — washed linen, worn together. A saving on buying the pieces separately.', care:'Machine wash cold or hand wash; line dry, cool iron.'},
     {id:'pants',    name:'The Fold-Over Flares', price:88,  cat:'Trousers',    g:'set',   blooms:'#8FB0CB', hero:false, pal:['neutrals','blues'], occ:['rest','town'],
-      desc:'Fold-over waist flares in soft, drapey jersey', colors:[{name:'Navy',hex:'#2A3B52'},{name:'Brown',hex:'#6E5847',img:'pants-brown'}],
+      desc:'Fold-over waist flares in soft, drapey jersey', colors:[{name:'Navy',hex:'#2A3B52',m:'pants-navy'},{name:'Brown',hex:'#6E5847',img:'pants-brown',m:'pants-brown'}],
       fabric:'Soft brushed jersey lounge flares with a fold-over waistband and a wide, drapey leg. Woven MAREN waistband label.', care:'Machine wash cold, line dry; do not tumble.'},
     {id:'breton',   name:'The Breton Long-Sleeve', price:72, cat:'Tops',       g:'top',   blooms:'#8FB0CB', hero:false, pal:['stripe','blues'], occ:['town','rest'],
-      desc:'Oversized cotton in a yarn-dyed navy Breton stripe', colors:[{name:'Navy stripe',hex:'#2A3B52'}],
+      desc:'Oversized cotton in a yarn-dyed navy Breton stripe', colors:[{name:'Navy stripe',hex:'#2A3B52',m:'breton'}],
       fabric:'Oversized long-sleeve in heavyweight cotton jersey with a yarn-dyed navy-and-cream Breton stripe and a woven MAREN collar label.', care:'Machine wash cold, reshape damp, dry flat.'}
   ];
   var byId = {}; products.forEach(function(p){ byId[p.id]=p; });
@@ -50,6 +50,18 @@
   function imgForColor(p,colorName){
     var c = p.colors.filter(function(x){return x.name===colorName;})[0];
     return (c && c.img) ? ('assets/products/'+c.img+'.jpg') : imgFor(p.id);
+  }
+  // On-model lifestyle shot for a colour (assets/muses/edit/<m>.jpg), or null.
+  function modelForColor(p,colorName){
+    var c = p.colors.filter(function(x){return x.name===colorName;})[0];
+    return (c && c.m) ? ('assets/muses/edit/'+c.m+'.jpg') : null;
+  }
+  // PDP gallery for a colour: the flat product shot first, then the on-model shot.
+  function galleryForColor(p,colorName){
+    var out = [imgForColor(p,colorName)];
+    var m = modelForColor(p,colorName);
+    if(m) out.push(m);
+    return out;
   }
 
   // Seeded reviews (sample). Customer-submitted reviews merge from localStorage.
@@ -202,12 +214,14 @@
       products.filter(function(p){ return !filter || filter==='All' || p.cat===filter; }).forEach(function(p){
         var card = document.createElement('article');
         card.className='card'; card.setAttribute('data-id',p.id);
+        var model0 = modelForColor(p,p.colors[0].name);
         card.innerHTML =
-          '<div class="swatch" data-quick="'+p.id+'" style="background:'+gradient(p.blooms)+'">'+
+          '<div class="swatch'+(model0?' has-model':'')+'" data-quick="'+p.id+'" style="background:'+gradient(p.blooms)+'">'+
             '<span class="label-tag">'+p.cat+'</span>'+
             '<button class="wish'+(store.inWish(p.id)?' on':'')+'" data-wish="'+p.id+'" aria-label="Save">'+(store.inWish(p.id)?'♥':'♡')+'</button>'+
             bloomSVG(p.blooms)+
             '<img class="prod-img" src="'+imgForColor(p,p.colors[0].name)+'" alt="'+p.name+'" loading="lazy" onerror="this.style.display=\'none\'" onload="this.style.display=\'\'">'+
+            '<img class="prod-img model-img" src="'+(model0||'')+'" alt="'+p.name+' on model" loading="lazy"'+(model0?'':' style="display:none"')+' onerror="this.style.display=\'none\'">'+
           '</div>'+
           '<div class="meta"><h3>'+p.name+'</h3><div class="price">'+money(p.price)+'</div>'+
           '<div class="desc">'+p.desc+'</div>'+
@@ -318,20 +332,23 @@
   /* ---------------- PRODUCT QUICK VIEW (PDP) ---------------- */
   var pdpState = { id:null, size:null, color:null };
   var currentFilter = 'All';
+  // Build PDP thumbnail strip from a list of image sources.
+  function pdpThumbs(gal,active){
+    return gal.map(function(src,i){
+      return '<button class="pdp-thumb'+(i===active?' active':'')+'" data-img="'+src+'" style="background-image:url(\''+src+'\')" aria-label="View image '+(i+1)+'"></button>';
+    }).join('');
+  }
   function openPDP(id, colorName){
     var p = byId[id]; if(!p) return;
     var ci = 0;
     if(colorName){ for(var k=0;k<p.colors.length;k++){ if(p.colors[k].name===colorName){ ci=k; break; } } }
     pdpState = { id:id, size:null, color:p.colors[ci].name };
     var host = $('#pdp'); if(!host) return;
+    var gal = galleryForColor(p,pdpState.color);
     host.innerHTML =
       '<div class="pdp-gallery">'+
-        '<div class="pdp-main" style="background:'+gradient(p.blooms)+'"><span class="mono">M</span><img class="prod-img" id="pdp-main-img" src="'+imgForColor(p,pdpState.color)+'" alt="'+p.name+'" onerror="this.style.display=\'none\'" onload="this.style.display=\'\'"></div>'+
-        '<div class="pdp-thumbs">'+
-          '<i style="background:'+gradient(p.blooms)+'"></i>'+
-          '<i style="background:linear-gradient(160deg,#FBF8F2,#dfe7ee)"></i>'+
-          '<i style="background:linear-gradient(160deg,#FBF8F2,'+p.blooms+'55)"></i>'+
-        '</div>'+
+        '<div class="pdp-main" style="background:'+gradient(p.blooms)+'"><span class="mono">M</span><img class="prod-img" id="pdp-main-img" src="'+gal[0]+'" alt="'+p.name+'" onerror="this.style.display=\'none\'" onload="this.style.display=\'\'"></div>'+
+        '<div class="pdp-thumbs" id="pdp-thumbs">'+ pdpThumbs(gal,0) +'</div>'+
       '</div>'+
       '<div class="pdp-info">'+
         '<div class="cat">'+p.cat+' &middot; Linen / Cotton</div>'+
@@ -535,8 +552,15 @@
       e.stopPropagation();
       var card = w.closest('.card'); var p = byId[w.getAttribute('data-id')]; var color = w.getAttribute('data-pcolor');
       card.querySelectorAll('.cway').forEach(function(x){ x.classList.remove('active'); }); w.classList.add('active');
-      var img = card.querySelector('.swatch .prod-img');
+      var sw = card.querySelector('.swatch');
+      var img = card.querySelector('.swatch .prod-img:not(.model-img)');
       if(img){ img.style.display=''; img.src = imgForColor(p, color); }
+      var mimg = card.querySelector('.swatch .model-img');
+      var msrc = modelForColor(p, color);
+      if(mimg){
+        if(msrc){ mimg.style.display=''; mimg.src = msrc; sw.classList.add('has-model'); }
+        else { mimg.style.display='none'; sw.classList.remove('has-model'); }
+      }
     });
 
     // ----- PDP internal interactions (delegated to modal) -----
@@ -546,7 +570,15 @@
         $all('#pdp-colors button').forEach(function(b){b.classList.remove('active');});
         c.classList.add('active'); pdpState.color = c.getAttribute('data-color');
         var nm = $('#pdp-colorname'); if(nm) nm.textContent = pdpState.color;
-        var mi = $('#pdp-main-img'); if(mi){ mi.style.display=''; mi.src = imgForColor(byId[pdpState.id], pdpState.color); }
+        var gal = galleryForColor(byId[pdpState.id], pdpState.color);
+        var mi = $('#pdp-main-img'); if(mi){ mi.style.display=''; mi.src = gal[0]; }
+        var th = $('#pdp-thumbs'); if(th) th.innerHTML = pdpThumbs(gal,0);
+        return;
+      }
+      var thumb = e.target.closest('.pdp-thumb'); if(thumb){
+        $all('#pdp-thumbs .pdp-thumb').forEach(function(b){b.classList.remove('active');});
+        thumb.classList.add('active');
+        var mi2 = $('#pdp-main-img'); if(mi2){ mi2.style.display=''; mi2.src = thumb.getAttribute('data-img'); }
         return;
       }
       var s = e.target.closest('[data-size]'); if(s){
