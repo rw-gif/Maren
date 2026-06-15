@@ -21,7 +21,6 @@
       <a href="#lookbook">Lookbook</a>
       <a href="#films">Films</a>
       <a href="#journal">Journal</a>
-      <a href="#tryon">Try On</a>
       <a href="#stylist">Stylist</a>
     </nav>
     <a class="brandmark" href="#top">MAREN</a>
@@ -125,57 +124,6 @@
       <div class="cap"><div class="k">Campaign</div><div class="t">MAREN — Spring / Summer 2026</div></div>
     </div>
     <div class="films-grid" id="films-grid"></div>
-  </div>
-</section>
-
-<!-- ============ VIRTUAL TRY-ON ============ -->
-<section id="tryon" class="tryon-section">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">The Fitting Room</div>
-      <h2>Virtual Try-On</h2>
-    </div>
-    <p class="tryon-lead">See a piece on a model, or on you. Choose a fit, then layer a garment — this is an interactive prototype; real photorealistic try-on is the next build (it needs a server-side engine, a per-image budget and a privacy/GDPR review).</p>
-    <div class="studio">
-      <div class="stage" id="stage" aria-live="polite">
-        <span class="placeholder-text" id="stage-empty">Choose a model or add a photo to begin</span>
-        <svg class="silhouette" id="sil-a" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
-          <g fill="#cdd7e2"><ellipse cx="100" cy="44" rx="30" ry="36"/>
-          <path d="M62,300 C70,150 80,108 100,108 C120,108 130,150 138,300 Z"/></g>
-        </svg>
-        <svg class="silhouette" id="sil-b" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
-          <g fill="#e2d7c3"><ellipse cx="100" cy="46" rx="27" ry="33"/>
-          <path d="M66,300 C74,160 84,112 100,112 C116,112 126,160 134,300 Z"/></g>
-        </svg>
-        <img class="uploaded" id="uploaded-img" alt="" style="display:none">
-        <svg class="garment" id="garment" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path id="garment-shape" d="M20,30 L40,12 L80,12 L100,30 L88,48 L88,140 L32,140 L32,48 Z" fill="#F2ECDF" stroke="#2A3B52" stroke-width="1.2" opacity="0.96"/>
-        </svg>
-      </div>
-      <div class="controls">
-        <div class="group">
-          <label>1 · Choose a fit</label>
-          <div class="chip-row">
-            <button class="chip" data-model="a">Model — Coastal</button>
-            <button class="chip" data-model="b">Model — Sun</button>
-          </div>
-          <div class="upload-box" style="margin-top:12px;">
-            <label for="photo" class="pick">Upload your photo</label> to try it on yourself
-            <input type="file" id="photo" accept="image/*">
-          </div>
-        </div>
-        <div class="group">
-          <label>2 · Layer a garment</label>
-          <div class="chip-row" id="garment-chips"></div>
-        </div>
-        <button class="btn light" id="reset-stage" style="font-size:11px;">Reset fitting room</button>
-        <details class="how">
-          <summary>How the production version works</summary>
-          <p>This prototype layers a flat garment graphic over a chosen figure to demonstrate the flow. A live build routes the customer’s photo (or a body model) and the garment asset through a try-on engine — a specialist VTO API or an in-house diffusion/pose pipeline — returning a photorealistic composite, wired to the same product data as The Edit.</p>
-          <p class="privacy-flag">Privacy note: any feature ingesting a customer photo processes personal (and arguably biometric) data. Under UK GDPR you’ll need a lawful basis, a privacy notice, retention limits, and ideally on-device or ephemeral processing. Confirm with counsel before launch.</p>
-        </details>
-      </div>
-    </div>
   </div>
 </section>
 
