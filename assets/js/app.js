@@ -12,7 +12,7 @@
   var SIZES = ['XS','S','M','L','XL'];
   var products = [
     {id:'crewneck', name:'The Cotton Crewneck', price:138, cat:'Sweats',      g:'top',   blooms:'#C9C2B4', hero:true, pal:['neutrals'], occ:['rest','town'],
-      desc:'Heavyweight marl cotton, oversized with a chest pocket', colors:[{name:'Marl Grey',hex:'#C9C2B4',m:'crewneck-marl'},{name:'Navy',hex:'#2A3B52',img:'crewneck-navy',m:'crewneck-navy'}],
+      desc:'Heavyweight marl cotton, oversized with a chest pocket', colors:[{name:'Marl Grey',hex:'#C9C2B4'},{name:'Navy',hex:'#2A3B52',img:'crewneck-navy',m:'crewneck-navy'}],
       fabric:'Heavyweight brushed-back cotton fleece with a soft marl. Dropped shoulders, ribbed neck, cuffs and hem, with a patch chest pocket and an embroidered MAREN wordmark.', care:'Machine wash cold inside out; dry flat to keep its shape.'},
     {id:'cap',      name:'The MAREN Cap',       price:42,  cat:'Accessories', g:'top',   blooms:'#2A3B52', hero:true, sizes:['One size'], pal:['blues','neutrals'], occ:['harbour','town'],
       desc:'Soft washed-cotton six-panel with an embroidered wordmark', colors:[{name:'Navy',hex:'#2A3B52',m:'cap-navy'},{name:'White',hex:'#FBF8F2',img:'cap-white',m:'cap-white'}],
@@ -89,15 +89,15 @@
   // Shoppable lookbook looks — hotspots map x/y% to catalogue ids.
   var looks = [
     {img:'assets/muses/cami-look.jpg', k:'The Linen Set', t:'Quiet tailoring, by the water.',
-      hotspots:[{x:50,y:36,id:'vest'},{x:50,y:72,id:'skirt'}]},
+      hotspots:[{x:50,y:42,id:'vest'},{x:50,y:72,id:'skirt'}]},
     {img:'assets/muses/looks/shirt-cap.jpg', k:'Harbour Whites', t:'Linen, and a cap.',
       hotspots:[{x:50,y:16,id:'cap'},{x:50,y:54,id:'shirt'}]},
     {img:'assets/muses/looks/navy-set.jpg', k:'Easy Navy', t:'Top to toe, off the boat.',
-      hotspots:[{x:50,y:40,id:'crewneck'},{x:50,y:78,id:'pants'}]},
+      hotspots:[{x:50,y:54,id:'crewneck'},{x:50,y:82,id:'pants'}]},
     {img:'assets/muses/vivi-look.jpg', k:'Off-duty', t:'Golden hour on the deck.',
       hotspots:[{x:50,y:40,id:'breton'},{x:50,y:80,id:'pants'}]},
     {img:'assets/muses/looks/brown-vest-flares.jpg', k:'Tonal Brown', t:'Tailored, then softened.',
-      hotspots:[{x:50,y:38,id:'vest'},{x:50,y:80,id:'pants'}]},
+      hotspots:[{x:50,y:48,id:'vest'},{x:50,y:84,id:'pants'}]},
     {img:'assets/muses/looks/shorts.jpg', k:'Slow Mornings', t:'Gingham, always.',
       hotspots:[{x:50,y:72,id:'shorts'}]}
   ];
@@ -523,7 +523,6 @@
     store.load();
     render.filters();
     render.grid('All');
-    render.lookbookProducts();
     render.looks();
     render.journal();
     render.films();
