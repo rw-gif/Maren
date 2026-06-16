@@ -314,7 +314,6 @@
         var media = f.posterImg ? '<div class="vmedia" style="background-image:url(\''+f.posterImg+'\')">'
                   : '<div class="vmedia mono">';
         return '<figure class="vcard">'+ media +
-            '<span class="vslot-badge">Film slot</span>'+
             '<video playsinline preload="none"><source src="'+f.src+'" type="video/mp4"></video>'+
             '<button class="vplay" aria-label="Play '+f.title+'">&#9654;</button>'+
           '</div>'+
