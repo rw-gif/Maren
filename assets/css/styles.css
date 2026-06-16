@@ -264,7 +264,7 @@ section{padding:96px 0;}
 
 /* ---------- FOOTER ---------- */
 footer{background:var(--ink);color:var(--cream);padding:72px 0 36px;}
-.foot-top{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:44px;}
+.foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:36px;border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:44px;}
 .foot-brand .fm{font-family:var(--serif);font-size:26px;letter-spacing:.4em;padding-left:.4em;}
 .foot-brand p{color:#bcccd9;font-size:13px;max-width:34ch;margin-top:14px;}
 .news{display:flex;border:1px solid rgba(255,255,255,.3);margin-top:18px;max-width:340px;}

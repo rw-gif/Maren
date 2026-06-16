@@ -1,0 +1,58 @@
+{
+  "_instructions": "Single source of truth for Maren site variables. Fill each value before launch. Any value left empty will render as a visible [TOKEN] on the page so it cannot be missed. Do not publish while _status is 'DRAFT' or while any required value is blank.",
+  "_status": "DRAFT",
+
+  "business": {
+    "LEGAL_ENTITY": "",
+    "TRADING_NAME": "Maren",
+    "COMPANY_NUMBER": "",
+    "REGISTERED_ADDRESS": "",
+    "TRADING_ADDRESS": "",
+    "VAT_NUMBER": "",
+    "ICO_REG_NUMBER": "",
+    "DOMAIN": ""
+  },
+
+  "contact": {
+    "CONTACT_EMAIL": "",
+    "PRIVACY_EMAIL": "",
+    "RETURNS_ADDRESS": "",
+    "RESPONSE_TIME": ""
+  },
+
+  "shipping": {
+    "CARRIER": "",
+    "PROCESSING_DAYS": "",
+    "UK_STD_PRICE": "",
+    "UK_STD_DAYS": "",
+    "UK_EXPRESS_PRICE": "",
+    "UK_EXPRESS_DAYS": "",
+    "DISPATCH_CUTOFF": "",
+    "FREE_SHIP_THRESHOLD": "",
+    "INTERNATIONAL_REGIONS": "",
+    "DUTIES_MODEL": "e.g. DDP collected at checkout, or recipient pays on import"
+  },
+
+  "returns": {
+    "RETURN_WINDOW": "",
+    "RETURN_POSTAGE_WHO_PAYS": "e.g. customer for change-of-mind; Maren for faulty"
+  },
+
+  "platforms": {
+    "EMAIL_PLATFORM": "",
+    "PAYMENT_PROCESSOR": "",
+    "ANALYTICS": ""
+  },
+
+  "dates": {
+    "PRIVACY_LAST_UPDATED": "",
+    "COOKIE_LAST_UPDATED": "",
+    "TERMS_LAST_UPDATED": "",
+    "RETURNS_LAST_UPDATED": "",
+    "SHIPPING_LAST_UPDATED": ""
+  },
+
+  "marketing": {
+    "NEWSLETTER_INCENTIVE": "e.g. 10% off first order, or leave blank"
+  }
+}

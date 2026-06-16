@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=20260616a">
+<link rel="stylesheet" href="assets/css/styles.css?v=20260616b">
 </head>
 <body>
 
@@ -203,9 +203,10 @@
       <div class="foot-brand">
         <div class="fm">MAREN</div>
         <p>Coastal essentials in linen and cotton. Designed for slow days, by the sea.</p>
-        <div class="news">
-          <input type="email" id="news-email" placeholder="Your email" aria-label="Email for newsletter">
-          <button id="news-btn">Join</button>
+        <div class="news" data-newsletter>
+          <p class="nl-line">Sign up for early access, new arrivals and the occasional letter from Maren. You can unsubscribe at any time. See our <a href="legal/privacy-policy/">Privacy Policy</a>.</p>
+          <div class="nl-row"><input class="nl-email" type="email" placeholder="Your email" aria-label="Email for newsletter"><button class="nl-join" type="button">Join</button></div>
+          <label class="nl-consent-row"><input type="checkbox" class="nl-consent"> <span>Yes, please email me Maren updates. I have read the Privacy Policy.</span></label>
         </div>
       </div>
       <div class="foot-col">
@@ -214,14 +215,33 @@
         <a href="#stylist">Find Your Fit</a><a href="#" id="open-size-foot">Size &amp; Fit</a>
       </div>
       <div class="foot-col">
-        <h5>House</h5>
+        <h5>Help</h5>
+        <a href="help/shipping/">Shipping &amp; Delivery</a><a href="help/returns/">Returns &amp; Exchanges</a>
+        <a href="help/faq/">FAQ</a><a href="help/contact/">Help &amp; Contact</a>
+        <a href="help/duties-and-taxes/">Duties &amp; Taxes</a><a href="help/size-guide/">Size Guide &amp; Care</a>
+      </div>
+      <div class="foot-col">
+        <h5>Legal</h5>
+        <a href="legal/privacy-policy/">Privacy Policy</a><a href="legal/cookie-policy/">Cookie Policy</a>
+        <a href="legal/terms/">Terms</a><a href="legal/accessibility/">Accessibility</a>
+        <button type="button" class="foot-link-btn" data-cc="open">Cookie settings</button>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
         <a href="#journal">The Journal</a><a href="#muses">The Muses</a>
-        <a href="#story">Our Story</a><a href="#world">Our World</a>
+        <a href="affiliates/">Affiliates</a><a href="account/">Account</a>
       </div>
     </div>
+    <p class="foot-id">
+      <span data-token="LEGAL_ENTITY">[LEGAL_ENTITY]</span> &middot;
+      Company no. <span data-token="COMPANY_NUMBER">[COMPANY_NUMBER]</span> &middot;
+      VAT <span data-token="VAT_NUMBER">[VAT_NUMBER]</span> &middot;
+      <span data-token="REGISTERED_ADDRESS">[REGISTERED_ADDRESS]</span> &middot;
+      <a data-token-mail="CONTACT_EMAIL">[CONTACT_EMAIL]</a>
+    </p>
     <div class="foot-bottom">
-      <span>© 2026 MAREN. Sample storefront — placeholder content.</span>
-      <span>Brand imagery and characters on this site are AI-generated.</span>
+      <span>© 2026 Maren. Some imagery and characters on this site are AI-generated; garment details reflect the actual product.</span>
+      <button type="button" class="foot-cookie" data-cc="open">Cookie settings</button>
     </div>
   </div>
 </footer>
@@ -286,6 +306,8 @@
 
 <div class="toast" id="toast"></div>
 
-<script src="assets/js/app.js?v=20260616a"></script>
+<script src="assets/js/app.js?v=20260616b"></script>
+<script src="assets/js/site-config.js?v=20260616b"></script>
+<script src="assets/js/maren-consent.js?v=20260616b"></script>
 </body>
 </html>

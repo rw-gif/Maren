@@ -1,0 +1,122 @@
+/* ============================================================
+   MAREN — supporting / legal page styles
+   Uses the brand tokens from styles.css. Presentation only;
+   content lives in the page HTML so it ports to Shopify cleanly.
+   ============================================================ */
+
+.legal-body{background:var(--cream);color:var(--ink);}
+
+/* ---------- light page header ---------- */
+.lp-head{position:sticky;top:0;z-index:40;background:rgba(242,236,223,.92);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+.lp-head-in{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+.lp-back,.lp-help{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);text-decoration:none;}
+.lp-back:hover,.lp-help:hover{color:var(--clay);}
+.lp-logo{font-family:var(--serif);font-size:22px;letter-spacing:.42em;padding-left:.42em;color:var(--ink);text-decoration:none;}
+
+/* ---------- page + prose ---------- */
+.legal-page{max-width:760px;margin:0 auto;padding:56px 22px 96px;}
+.legal-page .eyebrow{display:block;margin-bottom:14px;}
+.prose h1{font-family:var(--serif);font-weight:400;font-size:clamp(30px,5vw,46px);line-height:1.1;margin:0 0 8px;}
+.prose .updated{color:var(--muted);font-size:13px;letter-spacing:.04em;margin:0 0 36px;}
+.prose .lead{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.4vw,22px);color:var(--clay);margin:0 0 32px;line-height:1.5;}
+.prose h2{font-family:var(--serif);font-weight:500;font-size:24px;margin:40px 0 12px;}
+.prose h3{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--clay);margin:28px 0 8px;}
+.prose p{margin:0 0 16px;}
+.prose ul,.prose ol{margin:0 0 18px;padding-left:22px;}
+.prose li{margin:0 0 9px;}
+.prose a{color:var(--ink);text-decoration:underline;text-underline-offset:2px;}
+.prose a:hover{color:var(--clay);}
+.prose strong{font-weight:500;}
+.prose hr{border:none;border-top:1px solid var(--line);margin:38px 0;}
+.prose blockquote{margin:0 0 18px;padding:14px 18px;background:var(--cream-2);border-left:2px solid var(--sky);}
+.prose .note{font-size:13px;color:var(--muted);}
+
+/* callout for sections awaiting solicitor sign-off / placeholders */
+.prose .callout{background:var(--cream-2);border:1px solid var(--line);padding:16px 18px;margin:0 0 24px;font-size:14px;}
+.prose .callout strong{color:var(--clay);}
+
+/* tables (size guide) */
+.prose table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:14px;}
+.prose th,.prose td{border:1px solid var(--line);padding:9px 12px;text-align:left;}
+.prose thead th{background:var(--cream-2);font-weight:500;}
+
+/* definition-style FAQ */
+.faq-group{margin:0 0 30px;}
+.faq-item{border-bottom:1px solid var(--line);padding:14px 0;}
+.faq-item h4{margin:0 0 6px;font-size:15px;font-weight:500;}
+.faq-item p{margin:0;font-size:14px;color:var(--ink);}
+
+/* contact form (no more data than needed) */
+.lp-form{display:grid;gap:14px;max-width:520px;margin:8px 0 18px;}
+.lp-form label{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--clay);margin:0 0 5px;}
+.lp-form input,.lp-form textarea{width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid var(--line);
+  background:var(--cream-2);font-family:var(--sans);font-size:14px;color:var(--ink);}
+.lp-form textarea{min-height:120px;resize:vertical;}
+
+/* missing config tokens stay obvious on light and dark backgrounds */
+.token-missing{background:rgba(233,217,166,.30);box-shadow:0 0 0 1px rgba(169,150,127,.5) inset;
+  border-radius:2px;padding:0 3px;}
+
+/* ---------- footer additions (reuses footer styles from styles.css) ---------- */
+.foot-id{font-size:12px;color:#bcccd9;margin:26px 0 0;line-height:1.7;}
+.foot-id a{color:#cdd7e2;}
+.foot-link-btn,.foot-cookie{background:none;border:none;padding:0;font-family:var(--sans);
+  font-size:inherit;letter-spacing:inherit;color:inherit;cursor:pointer;text-align:left;}
+.foot-col .foot-link-btn{display:block;font-size:13px;color:var(--ink);opacity:.8;margin-top:2px;}
+.foot-col .foot-link-btn:hover{opacity:1;text-decoration:underline;}
+.foot-cookie{text-decoration:underline;}
+
+/* newsletter consent */
+.news[data-newsletter] .nl-line{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0 0 10px;}
+.nl-row{display:flex;gap:8px;}
+.nl-row .nl-email{flex:1;min-width:0;padding:11px 12px;border:1px solid var(--line);background:var(--cream-2);
+  font-family:var(--sans);font-size:13px;color:var(--ink);}
+.nl-row .nl-join{padding:11px 18px;border:1px solid var(--ink);background:var(--ink);color:var(--cream);
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;}
+.nl-consent-row{display:flex;gap:8px;align-items:flex-start;margin-top:10px;font-size:12px;color:var(--muted);line-height:1.5;}
+.nl-consent-row input{margin-top:2px;}
+
+/* ---------- cookie banner ---------- */
+.cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:400;background:var(--cream-2);
+  border-top:1px solid var(--line);box-shadow:0 -8px 30px rgba(42,59,82,.12);}
+.cb-inner{max-width:var(--maxw);margin:0 auto;padding:18px 22px;display:flex;gap:20px;align-items:center;
+  flex-wrap:wrap;justify-content:space-between;}
+.cb-text{margin:0;font-size:13px;color:var(--ink);max-width:62ch;line-height:1.6;}
+.cb-text a{color:var(--ink);}
+.cb-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.cb-btn{font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  padding:12px 18px;border:1px solid var(--ink);background:var(--cream-2);color:var(--ink);cursor:pointer;
+  transition:background .25s,color .25s;}
+.cb-btn:hover{background:var(--ink);color:var(--cream);}
+@media(max-width:640px){ .cb-actions{width:100%;} .cb-btn{flex:1;text-align:center;} }
+
+/* ---------- cookie preference modal ---------- */
+.cookie-modal{position:fixed;inset:0;z-index:420;display:flex;align-items:center;justify-content:center;padding:20px;}
+.cm-overlay{position:absolute;inset:0;background:rgba(42,59,82,.45);}
+.cm-card{position:relative;background:var(--cream);max-width:560px;width:100%;max-height:88vh;overflow:auto;
+  padding:34px 32px;border:1px solid var(--line);box-shadow:0 24px 70px rgba(42,59,82,.3);}
+.cm-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:24px;color:var(--ink);cursor:pointer;line-height:1;}
+.cm-card h2{font-family:var(--serif);font-weight:500;font-size:24px;margin:0 0 10px;}
+.cm-intro{font-size:13.5px;color:var(--ink);margin:0 0 22px;line-height:1.6;}
+.cm-cat{border-top:1px solid var(--line);padding:16px 0;}
+.cm-cat-head{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.cm-cat-title{font-size:14px;font-weight:500;}
+.cm-cat-desc{margin:6px 0 0;font-size:13px;color:var(--muted);line-height:1.55;}
+.cm-always{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.cm-switch{position:relative;display:inline-block;width:42px;height:24px;flex:none;}
+.cm-switch input{opacity:0;width:0;height:0;}
+.cm-track{position:absolute;inset:0;background:var(--line);border-radius:24px;transition:background .25s;cursor:pointer;}
+.cm-track::before{content:"";position:absolute;width:18px;height:18px;left:3px;top:3px;background:var(--cream-2);
+  border-radius:50%;transition:transform .25s;}
+.cm-switch input:checked + .cm-track{background:var(--ink);}
+.cm-switch input:checked + .cm-track::before{transform:translateX(18px);}
+.cm-actions{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 6px;}
+.cm-actions .cb-btn{flex:1;text-align:center;min-width:120px;}
+.cm-version{font-size:11px;color:var(--muted);margin:14px 0 0;letter-spacing:.06em;}
+
+/* ---------- toast ---------- */
+.mc-toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);z-index:440;
+  background:var(--ink);color:var(--cream);padding:13px 20px;font-size:13px;letter-spacing:.02em;
+  opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;max-width:90vw;text-align:center;}
+.mc-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
