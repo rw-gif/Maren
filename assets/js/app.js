@@ -89,41 +89,41 @@
   // Shoppable lookbook looks — hotspots map x/y% to catalogue ids.
   var looks = [
     {img:'assets/muses/cami-look.jpg', k:'The Linen Set', t:'Quiet tailoring, by the water.',
-      hotspots:[{x:50,y:42,id:'vest'},{x:50,y:72,id:'skirt'}]},
+      hotspots:[{x:50,y:42,id:'vest',c:'Natural'},{x:50,y:72,id:'skirt',c:'White'}]},
     {img:'assets/muses/looks/shirt-cap.jpg', k:'Harbour Whites', t:'Linen, and a cap.',
-      hotspots:[{x:50,y:16,id:'cap'},{x:50,y:54,id:'shirt'}]},
+      hotspots:[{x:50,y:16,id:'cap',c:'White'},{x:50,y:54,id:'shirt',c:'White'}]},
     {img:'assets/muses/looks/navy-set.jpg', k:'Easy Navy', t:'Top to toe, off the boat.',
-      hotspots:[{x:50,y:54,id:'crewneck'},{x:50,y:82,id:'pants'}]},
+      hotspots:[{x:50,y:54,id:'crewneck',c:'Navy'},{x:50,y:82,id:'pants',c:'Navy'}]},
     {img:'assets/muses/vivi-look.jpg', k:'Off-duty', t:'Golden hour on the deck.',
-      hotspots:[{x:50,y:40,id:'breton'},{x:50,y:80,id:'pants'}]},
+      hotspots:[{x:50,y:40,id:'breton',c:'Navy stripe'},{x:50,y:80,id:'pants',c:'Navy'}]},
     {img:'assets/muses/looks/brown-vest-flares.jpg', k:'Tonal Brown', t:'Tailored, then softened.',
-      hotspots:[{x:50,y:48,id:'vest'},{x:50,y:84,id:'pants'}]},
+      hotspots:[{x:50,y:48,id:'vest',c:'Brown'},{x:50,y:84,id:'pants',c:'Brown'}]},
     {img:'assets/muses/looks/shorts.jpg', k:'Slow Mornings', t:'Gingham, always.',
-      hotspots:[{x:50,y:72,id:'shorts'}]},
+      hotspots:[{x:50,y:72,id:'shorts',c:'Navy gingham'}]},
     {img:'assets/muses/edit/crewneck-marl.jpg', k:'The Crewneck', t:'Marl, harbourside.',
-      hotspots:[{x:50,y:50,id:'crewneck'}]},
+      hotspots:[{x:50,y:50,id:'crewneck',c:'Marl Grey'}]},
     {img:'assets/muses/edit/crewneck-navy.jpg', k:'Navy Crewneck', t:'Pocket detail.',
-      hotspots:[{x:50,y:50,id:'crewneck'}]},
+      hotspots:[{x:50,y:50,id:'crewneck',c:'Navy'}]},
     {img:'assets/muses/edit/shirt-white.jpg', k:'White Linen Shirt', t:'Crisp and easy.',
-      hotspots:[{x:50,y:46,id:'shirt'}]},
+      hotspots:[{x:50,y:46,id:'shirt',c:'White'}]},
     {img:'assets/muses/edit/shirt-sky.jpg', k:'Sky Linen Shirt', t:'Soft blue.',
-      hotspots:[{x:50,y:46,id:'shirt'}]},
+      hotspots:[{x:50,y:46,id:'shirt',c:'Sky'}]},
     {img:'assets/muses/edit/shirt-navy.jpg', k:'Navy Linen Shirt', t:'Deep and off-duty.',
-      hotspots:[{x:50,y:46,id:'shirt'}]},
+      hotspots:[{x:50,y:46,id:'shirt',c:'Navy'}]},
     {img:'assets/muses/edit/dress-white.jpg', k:'Linen Pinafore', t:'Square-neck white.',
-      hotspots:[{x:50,y:52,id:'dress'}]},
+      hotspots:[{x:50,y:52,id:'dress',c:'White'}]},
     {img:'assets/muses/edit/dress-oat.jpg', k:'Natural Pinafore', t:'Oat tones.',
-      hotspots:[{x:50,y:52,id:'dress'}]},
+      hotspots:[{x:50,y:52,id:'dress',c:'Natural'}]},
     {img:'assets/muses/edit/dress-brown.jpg', k:'Brown Pinafore', t:'Evening light.',
-      hotspots:[{x:50,y:52,id:'dress'}]},
+      hotspots:[{x:50,y:52,id:'dress',c:'Brown'}]},
     {img:'assets/muses/edit/vest-natural.jpg', k:'Natural Waistcoat', t:'Quietly tailored.',
-      hotspots:[{x:50,y:46,id:'vest'}]},
+      hotspots:[{x:50,y:46,id:'vest',c:'Natural'}]},
     {img:'assets/muses/edit/vest-navy.jpg', k:'Navy Waistcoat', t:'Sharp, then soft.',
-      hotspots:[{x:50,y:46,id:'vest'}]},
+      hotspots:[{x:50,y:46,id:'vest',c:'Navy'}]},
     {img:'assets/muses/edit/skirt-navy.jpg', k:'Navy Mini', t:'Clean A-line.',
-      hotspots:[{x:50,y:72,id:'skirt'}]},
+      hotspots:[{x:50,y:72,id:'skirt',c:'Navy'}]},
     {img:'assets/muses/edit/set-navy.jpg', k:'Navy Co-ord', t:'Top to toe navy.',
-      hotspots:[{x:50,y:40,id:'vest'},{x:50,y:74,id:'skirt'}]}
+      hotspots:[{x:50,y:40,id:'vest',c:'Navy'},{x:50,y:74,id:'skirt',c:'Navy'}]}
   ];
 
   // The Journal — trend & editorial entries.
@@ -290,7 +290,7 @@
       var host = $('#lb-looks'); if(!host) return;
       host.innerHTML = looks.map(function(lk){
         var hs = lk.hotspots.map(function(h){
-          return '<button class="hotspot" style="left:'+h.x+'%;top:'+h.y+'%" data-quick="'+h.id+'" aria-label="Shop '+(byId[h.id]?byId[h.id].name:'product')+'">+</button>';
+          return '<button class="hotspot" style="left:'+h.x+'%;top:'+h.y+'%" data-quick="'+h.id+'"'+(h.c?' data-pcolor="'+h.c+'"':'')+' aria-label="Shop '+(byId[h.id]?byId[h.id].name:'product')+'">+</button>';
         }).join('');
         return '<figure class="lb-look" style="background-image:url(\''+lk.img+'\')">'+
           hs +
