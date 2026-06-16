@@ -28,17 +28,22 @@
     '</div></header>';
   }
 
+  function club(){
+    return '<section class="nl-club" data-newsletter><div class="nl-club-in">'+
+      '<span class="eyebrow">The Maren List</span>'+
+      '<h2 class="nl-club-h">Join the <em>list</em></h2>'+
+      '<p class="nl-club-sub">First access to new arrivals, the occasional letter from Maren, and <strong><span data-token="NEWSLETTER_INCENTIVE">[NEWSLETTER_INCENTIVE]</span></strong> when you sign up.</p>'+
+      '<div class="nl-club-form"><input class="nl-email" type="email" placeholder="Enter your email address" aria-label="Email address"><button class="nl-join" type="button">Submit</button></div>'+
+      '<label class="nl-consent-row nl-club-consent"><input type="checkbox" class="nl-consent"> <span>Yes, email me Maren updates. I can unsubscribe at any time. See our <a href="'+BASE+'legal/privacy-policy/">Privacy Policy</a>. T&amp;Cs apply.</span></label>'+
+    '</div></section>';
+  }
+
   function footer(){
     return '<footer class="site-foot"><div class="wrap">'+
       '<div class="foot-top">'+
         '<div class="foot-brand">'+
           '<div class="fm">MAREN</div>'+
           '<p>Coastal essentials in linen and cotton. Designed for slow days, by the sea.</p>'+
-          '<div class="news" data-newsletter>'+
-            '<p class="nl-line">Sign up for early access, new arrivals and the occasional letter from Maren. You can unsubscribe at any time. See our <a href="'+BASE+'legal/privacy-policy/">Privacy Policy</a>.</p>'+
-            '<div class="nl-row"><input class="nl-email" type="email" placeholder="Your email" aria-label="Email for newsletter"><button class="nl-join" type="button">Join</button></div>'+
-            '<label class="nl-consent-row"><input type="checkbox" class="nl-consent"> <span>Yes, please email me Maren updates. I have read the Privacy Policy.</span></label>'+
-          '</div>'+
         '</div>'+
         '<div class="foot-col"><h5>Help</h5>'+
           L('help/shipping/','Shipping &amp; Delivery')+L('help/returns/','Returns &amp; Exchanges')+
@@ -72,7 +77,7 @@
     var h = document.getElementById('site-header');
     var f = document.getElementById('site-footer');
     if(h) h.outerHTML = header();
-    if(f) f.outerHTML = footer();
+    if(f) f.outerHTML = club() + footer();
     // Fill config tokens in the freshly injected footer once config is ready.
     if(window.MarenConfig && window.MarenConfig.ready){
       window.MarenConfig.ready.then(function(cfg){ cfg.apply(document); });

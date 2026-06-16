@@ -77,6 +77,27 @@
 .nl-consent-row{display:flex;gap:8px;align-items:flex-start;margin-top:10px;font-size:12px;color:var(--muted);line-height:1.5;}
 .nl-consent-row input{margin-top:2px;}
 
+/* ---------- newsletter club banner ---------- */
+.nl-club{background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:74px 0;text-align:center;}
+.nl-club-in{max-width:600px;margin:0 auto;padding:0 22px;}
+.nl-club .eyebrow{display:block;margin-bottom:16px;}
+.nl-club-h{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,44px);line-height:1.05;
+  margin:0 0 14px;letter-spacing:.01em;}
+.nl-club-h em{font-style:italic;}
+.nl-club-sub{font-size:15px;color:var(--clay);margin:0 0 32px;line-height:1.6;}
+.nl-club-form{display:flex;align-items:flex-end;gap:16px;max-width:460px;margin:0 auto;
+  border-bottom:1px solid var(--ink);padding-bottom:9px;}
+.nl-club-form .nl-email{flex:1;min-width:0;border:none;background:transparent;font-family:var(--sans);
+  font-size:15px;color:var(--ink);padding:6px 2px;}
+.nl-club-form .nl-email::placeholder{color:var(--muted);}
+.nl-club-form .nl-email:focus{outline:none;}
+.nl-club-form .nl-join{background:none;border:none;font-family:var(--sans);font-size:12px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--ink);cursor:pointer;padding:6px 2px;white-space:nowrap;transition:color .25s;}
+.nl-club-form .nl-join:hover{color:var(--clay);}
+.nl-club-consent{justify-content:center;max-width:460px;margin:16px auto 0;color:var(--muted);font-size:11.5px;}
+.nl-club-consent a{color:var(--clay);}
+
 /* ---------- cookie banner ---------- */
 .cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:400;background:var(--cream-2);
   border-top:1px solid var(--line);box-shadow:0 -8px 30px rgba(42,59,82,.12);}
@@ -93,6 +114,7 @@
 
 /* ---------- cookie preference modal ---------- */
 .cookie-modal{position:fixed;inset:0;z-index:420;display:flex;align-items:center;justify-content:center;padding:20px;}
+.cookie-modal[hidden]{display:none;}
 .cm-overlay{position:absolute;inset:0;background:rgba(42,59,82,.45);}
 .cm-card{position:relative;background:var(--cream);max-width:560px;width:100%;max-height:88vh;overflow:auto;
   padding:34px 32px;border:1px solid var(--line);box-shadow:0 24px 70px rgba(42,59,82,.3);}
