@@ -148,9 +148,10 @@
 
   // Promotional films — drop matching files into /assets/video to play.
   var films = [
-    {kind:'Campaign',         title:'SS26 — By the Sea',  posterImg:'assets/muses/lib/film-1.jpg', src:'assets/video/promo-campaign.mp4'},
-    {kind:'Fabric story',     title:'The Linen Story',    posterImg:'assets/muses/lib/film-2.jpg', src:'assets/video/promo-linen.mp4'},
-    {kind:'Behind the seams', title:'In the Studio',      posterImg:'assets/muses/lib/film-3.jpg', src:'assets/video/promo-studio.mp4'}
+    {kind:'Campaign',    title:'Mediterranean Steps', posterImg:'assets/video/promo-steps.jpg',   src:'assets/video/promo-steps.mp4'},
+    {kind:'Off-duty',    title:'By the Boardwalk',    posterImg:'assets/video/promo-offduty.jpg', src:'assets/video/promo-offduty.mp4'},
+    {kind:'The Linen',   title:'Sun-Bleached Linen',  posterImg:'assets/video/promo-linen.jpg',   src:'assets/video/promo-linen.mp4'},
+    {kind:'Slow living', title:'Slow Mornings',       posterImg:'assets/video/promo-morning.jpg', src:'assets/video/promo-morning.mp4'}
   ];
 
   // Size chart (cm) and fit-finder logic.
