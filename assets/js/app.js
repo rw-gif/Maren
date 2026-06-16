@@ -149,9 +149,11 @@
   // Promotional films — drop matching files into /assets/video to play.
   var films = [
     {kind:'Campaign',    title:'Mediterranean Steps', posterImg:'assets/video/promo-steps.jpg',   src:'assets/video/promo-steps.mp4'},
+    {kind:'Campaign',    title:'Golden Hour',         posterImg:'assets/video/promo-hero.jpg',    src:'assets/video/promo-hero.mp4'},
     {kind:'Off-duty',    title:'By the Boardwalk',    posterImg:'assets/video/promo-offduty.jpg', src:'assets/video/promo-offduty.mp4'},
     {kind:'The Linen',   title:'Sun-Bleached Linen',  posterImg:'assets/video/promo-linen.jpg',   src:'assets/video/promo-linen.mp4'},
-    {kind:'Slow living', title:'Slow Mornings',       posterImg:'assets/video/promo-morning.jpg', src:'assets/video/promo-morning.mp4'}
+    {kind:'Slow living', title:'Slow Mornings',       posterImg:'assets/video/promo-morning.jpg', src:'assets/video/promo-morning.mp4'},
+    {kind:'By the sea',  title:'On the Water',        posterImg:'assets/video/hero.jpg',          src:'assets/video/hero.mp4'}
   ];
 
   // Size chart (cm) and fit-finder logic.
@@ -663,11 +665,12 @@
     document.addEventListener('click', function(e){
       var pb = e.target.closest('.vplay'); if(!pb) return;
       var card = pb.closest('.vcard'); var v = card.querySelector('video');
-      card.classList.add('playing'); v.setAttribute('controls','controls');
+      v.muted = true; v.setAttribute('muted',''); v.loop = true;  // silent for now
+      card.classList.add('playing');
       var pr = v.play();
       if(pr && pr.catch) pr.catch(function(){
-        card.classList.remove('playing'); v.removeAttribute('controls');
-        showToast('Add this film to /assets/video to play it.');
+        card.classList.remove('playing');
+        showToast('Sorry, this film could not play.');
       });
     });
 
