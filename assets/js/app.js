@@ -290,7 +290,7 @@
           return '<button class="hotspot" style="left:'+h.x+'%;top:'+h.y+'%" data-quick="'+h.id+'" aria-label="Shop '+(byId[h.id]?byId[h.id].name:'product')+'">+</button>';
         }).join('');
         return '<figure class="lb-look" style="background-image:url(\''+lk.img+'\')">'+
-          '<span class="ai-corner">AI-generated</span>'+ hs +
+          hs +
           '<figcaption class="cap"><div class="k">'+lk.k+'</div><div class="t">'+lk.t+'</div></figcaption>'+
         '</figure>';
       }).join('');

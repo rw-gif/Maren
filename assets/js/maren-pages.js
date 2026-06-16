@@ -67,7 +67,7 @@
         '<a data-token-mail="CONTACT_EMAIL">[CONTACT_EMAIL]</a>'+
       '</p>'+
       '<div class="foot-bottom">'+
-        '<span>&copy; 2026 Maren. Some imagery and characters on this site are AI-generated; garment details reflect the actual product.</span>'+
+        '<span>&copy; 2026 Maren.</span>'+
         '<button type="button" class="foot-cookie" data-cc="open">Cookie settings</button>'+
       '</div>'+
     '</div></footer>';
