@@ -15,7 +15,7 @@
       desc:'Heavyweight marl cotton, oversized with a chest pocket', colors:[{name:'Marl Grey',hex:'#C9C2B4',m:['crewneck-marl','crewneck-marl-2']},{name:'Navy',hex:'#2A3B52',img:'crewneck-navy',m:'crewneck-navy'}],
       fabric:'Heavyweight brushed-back cotton fleece with a soft marl. Dropped shoulders, ribbed neck, cuffs and hem, with a patch chest pocket and an embroidered MAREN wordmark.', care:'Machine wash cold inside out; dry flat to keep its shape.'},
     {id:'cap',      name:'The MAREN Cap',       price:42,  cat:'Accessories', g:'top',   blooms:'#2A3B52', hero:true, sizes:['One size'], pal:['blues','neutrals'], occ:['harbour','town'],
-      desc:'Soft washed-cotton six-panel with an embroidered wordmark', colors:[{name:'Navy',hex:'#2A3B52',m:'cap-navy'},{name:'White',hex:'#FBF8F2',img:'cap-white',m:'cap-white'}],
+      desc:'Soft washed-cotton six-panel with an embroidered wordmark', colors:[{name:'Navy',hex:'#2A3B52',m:['cap-navy','cap-navy-2']},{name:'White',hex:'#FBF8F2',img:'cap-white',m:'cap-white'}],
       fabric:'Unstructured six-panel cap in soft washed cotton with a low crown, curved brim and an embroidered MAREN wordmark.', care:'Spot clean and air dry. Do not machine wash.'},
     {id:'shirt',    name:'The Linen Shirt',     price:88,  cat:'Shirts',      g:'top',   blooms:'#AFC7DA', hero:true, pal:['neutrals','blues'], occ:['town','harbour'],
       desc:'Relaxed pre-washed linen with mother-of-pearl buttons', colors:[{name:'White',hex:'#FBF8F2',m:'shirt-white'},{name:'Sky',hex:'#AFC7DA',img:'shirt-sky',m:'shirt-sky'},{name:'Navy',hex:'#2A3B52',img:'shirt-navy',m:'shirt-navy'}],
