@@ -3,3 +3,16 @@
 
 # Local preview screenshots (not part of the build)
 .preview/
+
+# Secrets / credentials — never commit these (important for Shopify/API keys later)
+.env
+.env.*
+*.pem
+*.key
+*.p12
+secrets.json
+credentials.json
+
+# Dependencies / build noise
+node_modules/
+.DS_Store
